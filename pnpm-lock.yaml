@@ -43,6 +43,9 @@ devDependencies:
   '@types/node':
     specifier: ^18.18.4
     version: 18.18.4
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   eslint:
     specifier: ^8.51.0
     version: 8.51.0
@@ -3416,6 +3419,10 @@ packages:
     dependencies:
       es5-ext: 0.10.62
       type: 1.2.0
+    dev: true
+
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: true
 
   /debug@2.6.9:

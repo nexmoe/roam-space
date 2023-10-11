@@ -3,10 +3,8 @@ const props = defineProps({
 	section: Object,
 	item: Object,
 });
-const section = props.section;
-const item = props.item;
-const image = getFirstImageSrc(item.content);
-const text = extractTextFromHTML(item.content);
+const image = computed(() => getFirstImageSrc(props.item.content));
+const text = computed(() => extractTextFromHTML(props.item.content));
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const text = extractTextFromHTML(item.content);
 			{{ item.title }}
 		</div>
 		<div v-if="item.platform.length > 1" class="mx-7 mb-5 flex flex-row">
-			<a
+			<!-- <a
 				class="w-5 h-5 mr-1 block"
 				v-for="platform in item.platform"
 				:href="platform"
@@ -33,7 +31,21 @@ const text = extractTextFromHTML(item.content);
 					referrerpolicy="no-referrer"
 					loading="lazy"
 				/>
-			</a>
+			</a> -->
+			<div
+				v-for="platform in item.platform" 
+				class="w-5 h-5 mr-1 block" 
+				@click="navigateTo(platform, { open: true, external: true })"
+			>
+			<img
+				class="rounded-md outline-2 hover:outline"
+				:src="`https://lib.xiaoshuapp.com/icon/x?url=${platform}`"
+				:alt="item.title"
+				referrerpolicy="no-referrer"
+				loading="lazy"
+			/>
+			</div>
+			
 		</div>
 		<div
 			v-if="image && !section.noImage"
@@ -51,7 +63,7 @@ const text = extractTextFromHTML(item.content);
 			/>
 			<div class="absolute pb-5 px-7 w-full bottom-0 left-0">
 				<UBadge color="white" variant="solid">
-					{{ new Date(item.date).toLocaleDateString() }}
+					{{ formatDateTime(item.date) }}
 				</UBadge>
 			</div>
 		</div>
@@ -65,7 +77,7 @@ const text = extractTextFromHTML(item.content);
 			class="absolute bg-gradient-to-t from-white pt-7 pb-5 px-7 w-full bottom-0 left-0"
 		>
 			<UBadge v-if="!image" color="gray" variant="solid">
-				{{ new Date(item.date).toLocaleDateString() }}
+				{{ formatDateTime(item.date) }}
 			</UBadge>
 		</div>
 	</div>
