@@ -1,4 +1,4 @@
-import { Config, Hero, Flow } from "./types";
+import type { Config, Flow, Hero } from "./types";
 
 const hero: Hero = {
 	title: "Nexmoe",
