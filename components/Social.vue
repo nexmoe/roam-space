@@ -5,15 +5,14 @@ const props = defineProps({
 	icon: String,
 	color: String,
 	tip: String,
-});
-let res = {};
+})
+let res = {}
 if (props.path) {
 	res = await $fetch(`https://api.swo.moe/stats/${props.path}`).catch(
-		(error) => error.data
-	);
+		error => error.data,
+	)
 }
 // const { data, pending, error, refresh } = await useFetch(section.api);
-
 </script>
 
 <template>
@@ -26,8 +25,7 @@ if (props.path) {
 				class="mr-2"
 				:color="color"
 				:ui="{ rounded: 'rounded-full' }"
-				>{{ res.count }}</UButton
-			>
+			>{{ res.count }}</UButton>
 		</UTooltip>
 	</a>
 </template>

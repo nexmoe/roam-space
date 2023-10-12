@@ -5,9 +5,8 @@ const props = defineProps({
 	list: Array,
 	section: Object,
 
-});
-const section = props.section;
-
+})
+const section = props.section
 </script>
 
 <template>
@@ -16,7 +15,7 @@ const section = props.section;
 	<div class="grid grid-cols-1 gap-7 mt-5 mb-16 md:grid-cols-4">
 		<div v-for="item in props.list" :key="item.url">
 			<a :href="item.url" target="_blank">
-				<ModuleProject :item="item" :section="section"/>
+				<ModuleProject :item="item" :section="section" />
 			</a>
 		</div>
 	</div>

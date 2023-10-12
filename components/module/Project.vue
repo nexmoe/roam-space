@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
 	item: Object,
-});
+})
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const props = defineProps({
 			<div
 				class="mt-3 text-base leading-7 text-gray-500"
 				v-html="props.item.des"
-			></div>
+			/>
 		</div>
 	</div>
 </template>

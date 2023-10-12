@@ -1,8 +1,6 @@
-import { Item } from "./types";
-import { XMLParser } from "fast-xml-parser";
-const parser = new XMLParser();
+import type { Item } from './types'
 
-export const rsshubJson = (data: any): Item[] => {
+export function rsshubJson(data: any): Item[] {
 	return data.items.map((item: any) => {
 		return {
 			id: item.id,
@@ -11,12 +9,12 @@ export const rsshubJson = (data: any): Item[] => {
 			content: item.content_html,
 			date: item.date_published,
 			platform: [item.url],
-		};
-	});
-};
+		}
+	})
+}
 
 // https://nexmoe.com/content.json
-export const hexo = (data: any): Item[] => {
+export function hexo(data: any): Item[] {
 	return data.posts.map((item: any) => {
 		return {
 			id: item.permalink,
@@ -24,6 +22,6 @@ export const hexo = (data: any): Item[] => {
 			url: item.permalink,
 			content: item.text,
 			date: item.date,
-		};
-	});
-};
+		}
+	})
+}

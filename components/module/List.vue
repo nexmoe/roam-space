@@ -3,11 +3,11 @@ const props = defineProps({
 	cover: String,
 	section: Object,
 	item: Object,
-});
-const section = props.section;
-const item = props.item;
-const image = props.cover || getFirstImageSrc(item.content);
-const text = extractTextFromHTML(item.content);
+})
+const section = props.section
+const item = props.item
+const image = props.cover || getFirstImageSrc(item.content)
+const text = extractTextFromHTML(item.content)
 </script>
 
 <template>
@@ -25,15 +25,15 @@ const text = extractTextFromHTML(item.content);
 			/>
 
 			<div
-				class="text-base font-bold tracking-tight text-black truncate"
 				v-if="!section.noTitle"
+				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ item.title }}
 			</div>
 		</div>
 
 		<div v-if="!section.noContent" class="truncate">
-			<div v-html="text"></div>
+			<div v-html="text" />
 		</div>
 	</div>
 </template>
