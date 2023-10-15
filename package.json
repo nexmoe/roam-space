@@ -11,14 +11,14 @@
 		"lint:fix": "eslint . --fix"
 	},
 	"dependencies": {
-		"@nuxt/image": "1.0.0-rc.2",
+		"@nuxt/image": "1.0.0-rc.3",
 		"@nuxt/ui": "^2.9.0",
 		"@pinia/nuxt": "^0.4.11",
 		"nuxt": "^3.7.4",
 		"sharp": "^0.32.6"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "1.0.0-beta.26",
+		"@antfu/eslint-config": "1.0.0-beta.27",
 		"@iconify/json": "^2.2.127",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "^1.1.3",
