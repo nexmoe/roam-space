@@ -1,7 +1,7 @@
 {
 	"title": "Nexmoe",
 	"description": "一个开发者。关于勇敢与热爱，互联网/创造/赛博朋克",
-	"avatar": "https: //i.dawnlab.me/84781b0f979ee4183c0ca0ab0fab1682.png/nexmoe",
+	"avatar": "https://i.dawnlab.me/84781b0f979ee4183c0ca0ab0fab1682.png/nexmoe",
 	"avatarTip": "用 Stable Diffusion 画的，很喜欢红色",
 	"tags": [
 		"🔆热爱",
@@ -22,28 +22,28 @@
 		},
 		{
 			"name": "Github",
-			"url": "https: //github.com/nexmoe",
+			"url": "https://github.com/nexmoe",
 			"path": "github/nexmoe",
 			"icon": "i-mdi-github",
 			"color": "black"
 		},
 		{
 			"name": "哔哩哔哩",
-			"url": "https: //space.bilibili.com/20238211",
+			"url": "https://space.bilibili.com/20238211",
 			"path": "bilibili/20238211",
 			"icon": "i-ri-bilibili-fill",
 			"color": "pink"
 		},
 		{
 			"name": "即刻",
-			"url": "https: //okjk.co/ZeWNUv",
+			"url": "https://okjk.co/ZeWNUv",
 			"path": "jike/7a751a1a-d2d1-492d-88fb-ed153c49105b",
 			"icon": "i-mdi-alpha-j",
 			"color": "yellow"
 		},
 		{
 			"name": "Twitter",
-			"url": "https: //twitter.com/nexmoe",
+			"url": "https://twitter.com/nexmoe",
 			"icon": "i-mdi-twitter",
 			"color": "blue"
 		}
