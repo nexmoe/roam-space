@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
 	modules: [
 		'@nuxt/ui',
-		'@nuxt/content',
 		'@nuxt/image',
 		'nuxt-gtag',
 		'@pinia/nuxt',
