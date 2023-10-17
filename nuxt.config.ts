@@ -5,7 +5,11 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'nuxt-gtag',
 		'@pinia/nuxt',
+		'@model-w/sentry'
 	],
+	sentry: {
+        dsn: "https://8895d416e86e4f56fc7e32c78bfbf901@sentry.mixcm.com//4",
+    },
 	gtag: {
 		id: 'G-JF2ZGKT7MM',
 	},
