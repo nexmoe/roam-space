@@ -26,4 +26,5 @@ useHead({
 		</UContainer>
 	</div>
 	<IndexTool />
+	<IndexFooter />
 </template>

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.card {
+		@apply hover:scale-105 hover:shadow-2xl transition-all bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5;
+	}
+}

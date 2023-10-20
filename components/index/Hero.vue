@@ -8,13 +8,13 @@ const hero = useConfig().hero
 			<NuxtImg class="h-32 w-32 rounded-full" height="128px" width="128px" :alt="hero.title" :src="hero.avatar" />
 		</UTooltip>
 		<div class="space-y-2">
-			<div class="text-2xl font-bold drop-shadow-md">
+			<div class="text-3xl font-bold drop-shadow-md">
 				{{ hero.title }}
 			</div>
 			<div class="flex flex-row flex-wrap -ml-px gap-2">
 				<div
 					v-for="item in hero.tags" :key="item"
-					class="bg-white px-3 py-1 rounded-full inline-block text-black text-sm"
+					class="px-3 py-1 text-black rounded-full inline-block card text-sm"
 				>
 					{{ item }}
 				</div>
