@@ -19,7 +19,7 @@
 		"sharp": "^0.32.6"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "1.0.0-beta.27",
+		"@antfu/eslint-config": "1.0.0",
 		"@iconify/json": "^2.2.129",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "^1.1.3",
