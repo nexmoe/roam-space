@@ -52,7 +52,8 @@ export default defineEventHandler(async (event) => {
 			return useAdapter(api.adapter, data).slice(0, 8)
 		})()
 	})
-	const data = await Promise.all(tasks)
+	const res = await Promise.allSettled(tasks)
+	const data = res.flatMap(r => r.status === 'fulfilled' ? [r.value] : [])
 	return {
 		code: 0,
 		message: 'ok',
