@@ -32,8 +32,8 @@ devDependencies:
     specifier: 1.2.1
     version: 1.2.1(eslint@8.55.0)(typescript@5.2.2)
   '@iconify/json':
-    specifier: 2.2.152
-    version: 2.2.152
+    specifier: 2.2.153
+    version: 2.2.153
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.4(nuxt@3.8.2)(vite@4.5.0)
@@ -963,8 +963,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/json@2.2.152:
-    resolution: {integrity: sha512-CV1qk51ydDJ+dooir8/OBOZw9/mfzTx7GY7U9OmnlH3r5+ErTdGjhQ1b+PrB8nX/RQ5AVkC9n/9l7yw1qJZqtw==}
+  /@iconify/json@2.2.153:
+    resolution: {integrity: sha512-aGX9jwdUHpH0Iqr2k5d+eRdheklsloSrnvpdgkOWZOmgNaSP5JqkuTsOgSOwZySqotFbDqZK8Il7ezMj1vCFJQ==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
