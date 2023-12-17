@@ -16,7 +16,7 @@
 		"@nuxt/ui": "2.11.1",
 		"@pinia/nuxt": "0.5.1",
 		"nuxt": "3.8.2",
-		"sharp": "0.33.0",
+		"sharp": "0.33.1",
 		"unstorage": "1.10.1"
 	},
 	"devDependencies": {
