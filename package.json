@@ -21,14 +21,14 @@
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "1.2.1",
-		"@iconify/json": "2.2.159",
+		"@iconify/json": "2.2.160",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "1.1.4",
 		"@types/node": "18.19.3",
 		"dayjs": "1.11.10",
 		"eslint": "8.56.0",
 		"lint-staged": "14.0.1",
-		"nuxt-gtag": "1.1.1",
+		"nuxt-gtag": "1.1.2",
 		"simple-git-hooks": "2.9.0"
 	},
 	"simple-git-hooks": {
