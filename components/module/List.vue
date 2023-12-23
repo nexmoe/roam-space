@@ -12,7 +12,7 @@ const text = extractTextFromHTML(item.content)
 
 <template>
 	<div
-		class="module hover:scale-105 hover:shadow-2xl transition-all flex justify-between space-x-4 items-center py-4 px-5 overflow-hidden rounded-2xl bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5"
+		class="module shu-card space-x-4 py-4 px-5"
 	>
 		<div class="max-w-full flex space-x-4 items-center">
 			<NuxtImg

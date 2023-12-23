@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
 	<div
-		class="module hover:scale-105 hover:shadow-2xl transition-all py-8 h-full overflow-hidden rounded-2xl bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5"
+		class="module shu-card py-8"
 	>
 		<div class="px-10">
 			<div class="mt-1 mb-5 h-12 w-12 rounded-lg">

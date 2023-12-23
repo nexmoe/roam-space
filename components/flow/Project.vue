@@ -12,7 +12,7 @@ const section = props.section
 <template>
 	<FlowHeader :title="props.title" :url="props.url" />
 
-	<div class="grid grid-cols-1 gap-7 mt-5 mb-16 md:grid-cols-4">
+	<div class="flow-body">
 		<div v-for="item in props.list" :key="item.url">
 			<a :href="item.url" target="_blank">
 				<ModuleProject :item="item" :section="section" />

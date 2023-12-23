@@ -1,7 +1,13 @@
 <script setup>
 const props = defineProps({
-	section: Object,
-	item: Object,
+	section: {
+		type: Object,
+		required: true
+	}	,
+	item: {
+		type: Object,
+		required: true
+	},
 })
 const image = computed(() => getFirstImageSrc(props.item.content))
 const text = computed(() => extractTextFromHTML(props.item.content))
@@ -9,7 +15,7 @@ const text = computed(() => extractTextFromHTML(props.item.content))
 
 <template>
 	<div
-		class="module relative hover:scale-105 hover:shadow-2xl transition-all h-full overflow-hidden rounded-2xl bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5"
+		class="module shu-card"
 	>
 		<div v-if="!section.noTitle" class="mx-7 mt-5 mb-3 text-base font-bold tracking-tight text-black">
 			{{ item.title }}

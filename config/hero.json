@@ -1,8 +1,7 @@
 {
 	"title": "Nexmoe",
 	"description": "一个开发者。关于勇敢与热爱，互联网/创造/赛博朋克",
-	"avatar": "https://i.dawnlab.me/84781b0f979ee4183c0ca0ab0fab1682.png/nexmoe",
-	"avatarTip": "用 Stable Diffusion 画的，很喜欢红色",
+	"avatar": "https://unavatar.io/nexmoe?ttl=21",
 	"tags": [
 		"🔆热爱",
 		"🔥内心炽热",
@@ -13,6 +12,16 @@
 		"喜欢创造",
 		"坦诚",
 		"豁达"
+	],
+	"menus": [
+		{
+			"title": "人生大事",
+			"url": "https://blog.nexmoe.com/line"
+		},
+		{
+			"title": "我的朋友",
+			"url": "https://blog.nexmoe.com/PY"
+		}
 	],
 	"socials": [
 		{

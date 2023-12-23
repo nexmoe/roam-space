@@ -14,17 +14,42 @@ useHead({
 	</Head>
 	<div>
 		<div
-			class="fixed w-screen h-screen bg-cover bg-fixed bg-no-repeat bg-[url(https://dogefs.s3.ladydaily.com/~/source/unsplash/photo-1688636596185-798367e2cb6b?fmt=webp&w=2560)]"
-			style="z-index: -1"
+		class="fixed w-screen h-screen bg-cover bg-fixed bg-no-repeat bg-[url(https://lib.xiaoshuapp.com/wall/bing)]"			
+		style="z-index: -1;"
 		/>
-		<UContainer class="pb-24 pt-16">
-			<IndexHero />
-			<section v-for="item in config.flow" :key="item">
-				<FlowProject v-if="item.adapter === 'project'" :title="item.title" :list="item.list" :section="item" />
-				<Flow v-else :section="item" />
-			</section>
-		</UContainer>
+		<div class="">
+			<div class="sidebar">
+				<IndexCatalog />
+			</div>
+			<div class="content">
+				<UContainer class="pb-24 pt-16">
+					<IndexHero />
+					<section v-for="item in config.flow" :key="item">
+						<FlowProject v-if="item.adapter === 'project'" :title="item.title" :list="item.list" :section="item" />
+						<Flow v-else :section="item" />
+					</section>
+				</UContainer>
+			</div>
+		</div>
 	</div>
 	<IndexTool />
 	<IndexFooter />
 </template>
+
+<style scoped>
+.sidebar {
+	@apply fixed w-72 bg-white h-full;
+}
+.content {
+	@apply pl-72;
+}
+</style>
+
+<style>
+.shu-card {
+	@apply relative hover:scale-105 hover:shadow-2xl transition-all h-full overflow-hidden rounded-2xl bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5;
+}
+.flow-body {
+	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+}
+</style>

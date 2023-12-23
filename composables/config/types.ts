@@ -22,7 +22,12 @@ export interface Hero {
 	avatarTip?: string
 	tags?: string[]
 	description?: string
+	menus?: Menu[]
 	socials?: Social[]
+}
+export interface Menu {
+	title: string
+	url: string
 }
 export interface Social {
 	name: string
