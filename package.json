@@ -20,7 +20,7 @@
 		"unstorage": "1.10.1"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "1.2.1",
+		"@antfu/eslint-config": "2.4.6",
 		"@iconify/json": "2.2.161",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "1.1.4",
