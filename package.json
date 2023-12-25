@@ -15,12 +15,12 @@
 		"@nuxt/image": "1.1.0",
 		"@nuxt/ui": "2.11.1",
 		"@pinia/nuxt": "0.5.1",
-		"nuxt": "3.8.2",
+		"nuxt": "3.9.0",
 		"sharp": "0.33.1",
 		"unstorage": "1.10.1"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "2.4.6",
+		"@antfu/eslint-config": "2.6.0",
 		"@iconify/json": "2.2.161",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "1.1.4",
