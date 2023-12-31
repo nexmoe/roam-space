@@ -1,13 +1,16 @@
-<script setup>
-const props = defineProps({
-	cover: String,
-	section: Object,
-	item: Object,
-})
+<script setup lang="ts">
+import type { Module } from '~/composables/filter/types'
+
+interface Props {
+	cover: string;
+	section: any;
+	module: Module;
+}
+
+const props = defineProps<Props>()
 const section = props.section
-const item = props.item
-const image = props.cover || getFirstImageSrc(item.content)
-const text = extractTextFromHTML(item.content)
+const image = props.cover || getFirstImageSrc(props.module.content)
+const text = extractTextFromHTML(props.module.content)
 </script>
 
 <template>
@@ -28,7 +31,7 @@ const text = extractTextFromHTML(item.content)
 				v-if="!section.noTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
-				{{ item.title }}
+				{{ props.module.title }}
 			</div>
 		</div>
 

@@ -16,9 +16,9 @@ const res = computed(() => data.value.data)
 	<FlowHeader :title="section.title" :url="section.homepage" />
 
 	<div class="flow-body" :class="section.class">
-		<a v-for="item in res" :key="item.url" :href="item.url" target="_blank">
-			<ModuleList v-if="section.card === 'list'" v-bind="{ item, section }" />
-			<ModuleImage v-else v-bind="{ item, section }" />
+		<a v-for="module in res" :key="module.url" :href="module.url" target="_blank">
+			<ModuleList v-if="section.card === 'list'" v-bind="{ module, section }" />
+			<ModuleImage v-else v-bind="{ module, section }" />
 		</a>
 	</div>
 </template>

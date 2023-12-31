@@ -58,11 +58,11 @@ export default defineEventHandler(async (event) => {
 
 	const response = res.flatMap(r => r.status === 'fulfilled' ? [r.value] : [])
 	const final = response.reduce(mergeArrays, [])
-	const { data, error } = await supabase
+	const { error } = await supabase
 		.from('module')
 		.insert(final)
 		.select()
-	console.log(error)
+	console.error(error)
 
 	return {
 		code: 0,
