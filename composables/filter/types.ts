@@ -1,5 +1,4 @@
-export interface Item {
-	id: string
+export interface Module {
 	title: string
 	url: string
 	content: string

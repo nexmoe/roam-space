@@ -1,9 +1,9 @@
 import useConfig from '~/composables/config/useConfig'
-import type { Item } from '~/composables/filter/types'
+import type { Module } from '~/composables/filter/types'
 import useAdapter from '~/composables/filter/useAdapter'
 import { serverSupabaseClient } from '#supabase/server'
 
-function mergeArrays(a: Item[], b: Item[]) {
+function mergeArrays(a: Module[], b: Module[]) {
 	for (const ele of b) {
 		const item = a.find(v => v.title === ele.title)
 
@@ -31,6 +31,7 @@ function mergeArrays(a: Item[], b: Item[]) {
 }
 
 export default defineEventHandler(async (event) => {
+	const supabase = await serverSupabaseClient<Module>(event)
 	const name = decodeURI(getRouterParam(event, 'name') || '')
 	const { flow: flows } = useConfig()
 	const flow = flows.find(f => f.title === name)
@@ -55,18 +56,18 @@ export default defineEventHandler(async (event) => {
 	})
 	const res = await Promise.allSettled(tasks)
 
-	const client = await serverSupabaseClient(event)
-
-	const res1 = await client
-		.from('module')
-		.select('*')
-
-	console.log(res1)
 	const response = res.flatMap(r => r.status === 'fulfilled' ? [r.value] : [])
+	const final = response.reduce(mergeArrays, [])
+	const { data, error } = await supabase
+		.from('module')
+		.insert(final)
+		.select()
+	console.log(error)
+
 	return {
 		code: 0,
 		message: 'ok',
-		data: response.reduce(mergeArrays, []),
+		data: final,
 		ts: Date.now(),
 	}
 })

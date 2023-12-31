@@ -1,9 +1,8 @@
-import type { Item } from './types'
+import type { Module } from './types'
 
-export function rsshubJson(data: any): Item[] {
+export function rsshubJson(data: any): Module[] {
 	return data.items.map((item: any) => {
 		return {
-			id: item.id,
 			title: item.title,
 			url: item.url,
 			content: item.content_html,
@@ -14,10 +13,9 @@ export function rsshubJson(data: any): Item[] {
 }
 
 // https://nexmoe.com/content.json
-export function hexo(data: any): Item[] {
+export function hexo(data: any): Module[] {
 	return data.posts.map((item: any) => {
 		return {
-			id: item.permalink,
 			title: item.title,
 			url: item.permalink,
 			content: item.text,

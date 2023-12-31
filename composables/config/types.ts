@@ -55,7 +55,12 @@ export interface Project {
 	url: string
 }
 
+export interface Configuration {
+	rsshub: string[]
+}
+
 export interface Config {
 	hero: Hero
 	flow: Flow[]
+	config: Configuration
 }
