@@ -42,11 +42,11 @@
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.mixc.top/juejin/column/7287429638019121208.json?limit=4&key=ZBu6acweLRwkKpycCmBK"
+				"url": "https://lib.xiaoshuapp.com/rss/juejin/column/7287429638019121208.json?limit=4&key=ZBu6acweLRwkKpycCmBK"
 			},
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.mixc.top/zhihu/posts/people/nexmoe.json?&limit=4&key=ZBu6acweLRwkKpycCmBK"
+				"url": "https://lib.xiaoshuapp.com/rss/zhihu/posts/people/nexmoe.json?&limit=4&key=ZBu6acweLRwkKpycCmBK"
 			},
 			{
 				"adapter": "rsshubJson",
@@ -59,7 +59,7 @@
 		"homepage": "https://juejin.cn/column/7287241187447308345",
 		"api": [
 			{
-				"url": "https://rss.mixc.top/juejin/column/7287241187447308345.json?limit=4&key=ZBu6acweLRwkKpycCmBK",
+				"url": "https://lib.xiaoshuapp.com/rss/juejin/column/7287241187447308345.json?limit=4&key=ZBu6acweLRwkKpycCmBK",
 				"adapter": "rsshubJson"
 			}
 		],
@@ -70,7 +70,7 @@
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.mixc.top/jike/user/7a751a1a-d2d1-492d-88fb-ed153c49105b.json?limit=4&key=ZBu6acweLRwkKpycCmBK"
+				"url": "https://lib.xiaoshuapp.com/rss/jike/user/7a751a1a-d2d1-492d-88fb-ed153c49105b.json?limit=4&key=ZBu6acweLRwkKpycCmBK"
 			}
 		],
 		"title": "即刻",
@@ -81,7 +81,7 @@
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.mixc.top/163/music/user/playrecords/129387613/0.json?limit=8&key=ZBu6acweLRwkKpycCmBK"
+				"url": "https://lib.xiaoshuapp.com/rss/163/music/user/playrecords/129387613/0.json?limit=8&key=ZBu6acweLRwkKpycCmBK"
 			}
 		],
 		"title": "听歌总榜",
