@@ -22,7 +22,7 @@ useHead({
 				<IndexCatalog />
 			</div>
 			<div class="content">
-				<UContainer class="pb-24 pt-16">
+				<UContainer class="px-12 pb-24 pt-16">
 					<IndexHero />
 					<section v-for="item in config.flow" :key="item">
 						<FlowProject v-if="item.adapter === 'project'" :title="item.title" :list="item.list" :section="item" />
@@ -38,10 +38,10 @@ useHead({
 
 <style scoped>
 .sidebar {
-	@apply fixed w-72 bg-white h-full;
+	@apply fixed w-64 bg-white h-full;
 }
 .content {
-	@apply pl-72;
+	@apply pl-72 pr-8;
 }
 </style>
 
