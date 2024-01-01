@@ -78,6 +78,17 @@
 		"noTitle": true
 	},
 	{
+		"homepage": "https://x.com/nexmoe",
+		"api": [
+			{
+				"adapter": "rsshubJson",
+				"url": "https://rsshub.app/twitter/user/nexmoe.json?limit=6"
+			}
+		],
+		"title": "Twitter",
+		"noTitle": true
+	},
+	{
 		"homepage": "https://music.163.com/#/user/home?id=129387613",
 		"api": [
 			{
