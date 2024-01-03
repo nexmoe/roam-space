@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Module } from '~/composables/filter/types'
-
 interface Props {
 	section: any
 	module: Module

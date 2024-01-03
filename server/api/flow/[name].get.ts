@@ -33,7 +33,7 @@ function mergeArrays(a: Module[], b: Module[]) {
 export default defineEventHandler(async (event) => {
 	const supabase = await serverSupabaseClient<Module>(event)
 	const name = decodeURI(getRouterParam(event, 'name') || '')
-	const { flow: flows } = useConfig()
+	const { flow: flows, config } = useConfig()
 	const flow = flows.find(f => f.title === name)
 	if (!flow || !flow.api) {
 		setResponseStatus(event, 404)
@@ -47,7 +47,8 @@ export default defineEventHandler(async (event) => {
 
 	const tasks = flow.api.map((api) => {
 		return (async () => {
-			const data = await $fetch<Record<string, any>>(api.url, {
+			const apiUrl = api.url.replace('{rsshub}', config.rsshub[0])
+			const data = await $fetch<Record<string, any>>(apiUrl, {
 				method: 'GET',
 				parseResponse: JSON.parse,
 			})
@@ -58,11 +59,13 @@ export default defineEventHandler(async (event) => {
 
 	const response = res.flatMap(r => r.status === 'fulfilled' ? [r.value] : [])
 	const final = response.reduce(mergeArrays, [])
-	const { error } = await supabase
-		.from('module')
-		.insert(final)
-		.select()
-	console.error(error)
+	
+	// // store to supabase
+	// const { error } = await supabase
+	// 	.from('module')
+	// 	.insert(final)
+	// 	.select()
+	// console.error(error)
 
 	return {
 		code: 0,

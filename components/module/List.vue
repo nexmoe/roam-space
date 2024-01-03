@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { Module } from '~/composables/filter/types'
-
 interface Props {
-	cover: string;
+	cover?: string;
 	section: any;
 	module: Module;
 }
