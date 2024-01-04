@@ -13,7 +13,7 @@ function scrollToTitle(title: string) {
 </script>
 
 <template>
-	<div class="py-6 px-4 flex items-center h-full shu-card">
+	<div class="hidden md:flex py-6 px-4 items-center h-full shu-card ">
 		<div class="space-y-1 w-full">
 			<a
 				v-for="item in menus"
