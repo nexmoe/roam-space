@@ -15,7 +15,7 @@
 		"@nuxt/image": "1.1.0",
 		"@nuxt/ui": "2.11.1",
 		"@pinia/nuxt": "0.5.1",
-		"nuxt": "3.9.0",
+		"nuxt": "3.9.1",
 		"sharp": "0.33.1"
 	},
 	"devDependencies": {
