@@ -38,10 +38,10 @@ useHead({
 
 <style scoped>
 .sidebar {
-	@apply fixed w-64 bg-white h-full;
+	@apply fixed w-0 md:w-64 bg-white h-full;
 }
 .content {
-	@apply pl-72 pr-8;
+	@apply pl-8 md:pl-72 pr-8;
 }
 </style>
 
