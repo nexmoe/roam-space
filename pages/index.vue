@@ -41,7 +41,7 @@ useHead({
 	@apply fixed w-0 md:w-64 bg-white h-full;
 }
 .content {
-	@apply pl-8 md:pl-72 pr-8;
+	@apply md:pl-72 md:pr-8;
 }
 </style>
 
