@@ -22,7 +22,7 @@ useHead({
 				<IndexCatalog />
 			</div>
 			<div class="content">
-				<UContainer class="px-12 pb-24 pt-16">
+				<UContainer class="px-6 md:px-12 pb-24 pt-16">
 					<IndexHero />
 					<section v-for="item in config.flow" :key="item">
 						<FlowProject v-if="item.adapter === 'project'" :title="item.title" :list="item.list" :section="item" />

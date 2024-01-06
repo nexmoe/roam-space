@@ -5,7 +5,7 @@ const hero = useConfig().hero
 <template>
 	<div class="transition-all rounded-2xl md:py-8 flex items-center text-white space-x-4">
 		<UTooltip v-if="hero.avatarTip" class="hidden md:block" :text="hero.avatarTip">
-			<NuxtImg class="h-32 w-32 rounded-full" height="128px" width="128px" :alt="hero.title" :src="hero.avatar" />
+			<NuxtImg class="hidden md:block h-32 w-32 rounded-full" height="128px" width="128px" :alt="hero.title" :src="hero.avatar" />
 		</UTooltip>
 		<NuxtImg v-else class="h-32 w-32 rounded-full" height="128px" width="128px" :alt="hero.title" :src="hero.avatar" />
 		<div class="space-y-2">
