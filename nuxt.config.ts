@@ -44,6 +44,7 @@ export default defineNuxtConfig({
 			'p4.music.126.net',
 			'picx.zhimg.com',
 			'nexmoe.com',
+			'pbs.twimg.com',
 		],
 		quality: 90,
 	},
