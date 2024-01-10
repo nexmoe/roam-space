@@ -29,8 +29,8 @@ devDependencies:
     specifier: 2.6.2
     version: 2.6.2(@vue/compiler-sfc@3.4.5)(eslint@8.56.0)(typescript@5.3.3)
   '@iconify/json':
-    specifier: 2.2.166
-    version: 2.2.166
+    specifier: 2.2.167
+    version: 2.2.167
   '@nuxt/devtools':
     specifier: latest
     version: 1.0.6(nuxt@3.9.1)(vite@5.0.11)
@@ -829,8 +829,8 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
-  /@iconify/json@2.2.166:
-    resolution: {integrity: sha512-Cq+t8xOBWU2Dt+bECLvGnF6yxj5hEEF5rmHiEvVR68flgcmG6/ph5xDr9+YWqT3Ita1WxDtj5lVWxoEe/c+U3A==}
+  /@iconify/json@2.2.167:
+    resolution: {integrity: sha512-5VFebxiHKApn9U9IFuBniJ0BSlDfDhkyNsWIVGYwBT9jSW2HSQJhybnuBh8EiEi2KL3l8NF7QP86RrJfWgRsNA==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
