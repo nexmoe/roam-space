@@ -23,7 +23,7 @@
 		"@iconify/json": "2.2.167",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "1.1.5",
-		"@types/node": "20.10.8",
+		"@types/node": "20.11.0",
 		"dayjs": "1.11.10",
 		"eslint": "8.56.0",
 		"lint-staged": "15.2.0",
