@@ -6,11 +6,11 @@ export default defineNuxtConfig({
 		'nuxt-gtag',
 		'@pinia/nuxt',
 		'@model-w/sentry',
-		'@nuxtjs/supabase',
+		// '@nuxtjs/supabase',
 	],
-	supabase: {
-		redirect: false,
-	},
+	// supabase: {
+	// 	redirect: false,
+	// },
 	sentry: {
 		dsn: 'https://8895d416e86e4f56fc7e32c78bfbf901@sentry.mixcm.com//4',
 	},

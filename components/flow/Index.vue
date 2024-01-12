@@ -22,3 +22,19 @@ const res = computed(() => data.value.data)
 		</a>
 	</div>
 </template>
+
+<style>
+.flow-body {
+	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+}
+@media (min-width: 1280px) {
+	.flow-body a:nth-child(n+10) {
+		display: none;
+	}
+}
+@media (min-width: 1536px) {
+	.flow-body a:nth-child(n+9) {
+        display: none;
+    }
+}
+</style>

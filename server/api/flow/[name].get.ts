@@ -1,7 +1,8 @@
 import useConfig from '~/composables/config/useConfig'
 import type { Module } from '~/composables/filter/types'
 import useAdapter from '~/composables/filter/useAdapter'
-import { serverSupabaseClient } from '#supabase/server'
+
+// import { serverSupabaseClient } from '#supabase/server'
 
 function mergeArrays(a: Module[], b: Module[]) {
 	for (const ele of b) {
@@ -31,7 +32,7 @@ function mergeArrays(a: Module[], b: Module[]) {
 }
 
 export default defineEventHandler(async (event) => {
-	const supabase = await serverSupabaseClient<Module>(event)
+	// const supabase = await serverSupabaseClient<Module>(event)
 	const name = decodeURI(getRouterParam(event, 'name') || '')
 	const { flow: flows, config } = useConfig()
 	const flow = flows.find(f => f.title === name)
@@ -59,7 +60,7 @@ export default defineEventHandler(async (event) => {
 
 	const response = res.flatMap(r => r.status === 'fulfilled' ? [r.value] : [])
 	const final = response.reduce(mergeArrays, [])
-	
+
 	// // store to supabase
 	// const { error } = await supabase
 	// 	.from('module')

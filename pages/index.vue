@@ -14,8 +14,8 @@ useHead({
 	</Head>
 	<div>
 		<div
-		class="fixed w-screen h-screen bg-cover bg-fixed bg-no-repeat bg-[url(https://lib.xiaoshuapp.com/wall/bing)]"			
-		style="z-index: -1;"
+			class="fixed w-screen h-screen bg-cover bg-fixed bg-no-repeat bg-[url(https://lib.xiaoshuapp.com/wall/bing)]"
+			style="z-index: -1;"
 		/>
 		<div class="">
 			<div class="sidebar">
@@ -48,8 +48,5 @@ useHead({
 <style>
 .shu-card {
 	@apply relative hover:scale-105 hover:shadow-2xl transition-all h-full overflow-hidden rounded-2xl bg-white text-sm leading-6 shadow-md ring-1 ring-gray-900/5;
-}
-.flow-body {
-	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
 }
 </style>
