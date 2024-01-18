@@ -12,8 +12,8 @@ dependencies:
     specifier: 1.3.0
     version: 1.3.0
   '@nuxt/ui':
-    specifier: 2.12.2
-    version: 2.12.2(nuxt@3.9.3)(vite@5.0.11)(vue@3.4.14)
+    specifier: 2.12.3
+    version: 2.12.3(nuxt@3.9.3)(vite@5.0.11)(vue@3.4.14)
   '@pinia/nuxt':
     specifier: 0.5.1
     version: 0.5.1(typescript@5.3.3)(vue@3.4.14)
@@ -1628,8 +1628,8 @@ packages:
   /@nuxt/ui-templates@1.3.1:
     resolution: {integrity: sha512-5gc02Pu1HycOVUWJ8aYsWeeXcSTPe8iX8+KIrhyEtEoOSkY0eMBuo0ssljB8wALuEmepv31DlYe5gpiRwkjESA==}
 
-  /@nuxt/ui@2.12.2(nuxt@3.9.3)(vite@5.0.11)(vue@3.4.14):
-    resolution: {integrity: sha512-n9/yr1httrImnDC3TwYhFQ/UVvPiFc6RpBObNf1sF3zcmxDvzAO0QPQEX+UpI+3ye5EpSizTxntFVcL96h+vxA==}
+  /@nuxt/ui@2.12.3(nuxt@3.9.3)(vite@5.0.11)(vue@3.4.14):
+    resolution: {integrity: sha512-F/eoqU8pTBVCdJ1QHvWKZjXHVNNV6Q1SCgPRWJyNnfbnIi97a50/aiHVJZfvr0zp3FQKa/ogWTITF5Vxss5TtA==}
     engines: {node: '>=v16.20.2'}
     dependencies:
       '@egoist/tailwindcss-icons': 1.7.2(tailwindcss@3.4.1)
