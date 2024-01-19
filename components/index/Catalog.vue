@@ -13,7 +13,7 @@ function scrollToTitle(title: string) {
 </script>
 
 <template>
-	<div class="hidden md:flex py-6 px-4 items-center h-full shu-card ">
+	<div class="hidden md:flex py-6 px-4 items-center h-full shu-card !rounded-none">
 		<div class="space-y-1 w-full">
 			<a
 				v-for="item in menus"
@@ -25,8 +25,9 @@ function scrollToTitle(title: string) {
 				<div class="text-base truncate">
 					{{ item.title }}
 				</div>
-                <UIcon name="i-mdi-open-in-new" />
+				<UIcon name="i-mdi-open-in-new" />
 			</a>
+			<div class="border-b pt-2 !mb-3" />
 			<div
 				v-for="item in list"
 				:key="item.title"

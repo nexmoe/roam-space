@@ -14,7 +14,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 	<div
 		class="module shu-card"
 	>
-		<div v-if="!section.noTitle" class="mx-7 mt-5 mb-3 text-base font-bold tracking-tight text-black">
+		<div v-if="!section.noTitle" class="mx-7 mt-5 mb-3 font-bold tracking-tight text-black">
 			{{ props.module.title }}
 		</div>
 		<div v-if="props.module.platform && props.module.platform.length > 1" class="mx-7 mb-5 flex flex-row">

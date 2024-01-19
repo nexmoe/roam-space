@@ -6,10 +6,10 @@ const props = defineProps({
 </script>
 
 <template>
-	<div :id="props.title" class="pl-2 mt-32 flex items-center justify-between">
+	<div :id="props.title" class="pl-2.5 mt-32 flex items-center justify-between">
 		<div class="flex items-center space-x-3">
 			<div
-				class="text-xl -mt-1 font-bold drop-shadow-md text-white sm:truncate sm:text-3xl sm:tracking-tight"
+				class="text-xl -mt-1 font-bold sm:truncate sm:text-3xl sm:tracking-tight"
 			>
 				{{ props.title }}
 			</div>

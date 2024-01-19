@@ -16,7 +16,7 @@ if (props.path) {
 <template>
 	<a :href="url" target="_blank" :title="props.tip">
 		<UTooltip :text="props.tip">
-			<UButton :aria-label="props.tip" size="xs" class="mr-2" :color="color" :ui="{ rounded: 'rounded-full' }">{{
+			<UButton :aria-label="props.tip" size="xs" class="mr-2" :color="color" variant="outline" :ui="{ rounded: 'rounded-full' }">{{
 				props.tip }} {{ res.count ? `${res.count} 粉` : "" }}</UButton>
 		</UTooltip>
 	</a>
