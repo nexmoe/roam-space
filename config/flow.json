@@ -43,11 +43,11 @@
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.nexmoe.com/juejin/column/7287429638019121208.json?limit=9&key=ZBu6acweLRwkKpycCmBK"
+				"url": "{rsshub}/juejin/column/7287429638019121208.json"
 			},
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.nexmoe.com/zhihu/posts/people/nexmoe.json?&limit=9&key=ZBu6acweLRwkKpycCmBK"
+				"url": "{rsshub}/zhihu/posts/people/nexmoe.json"
 			},
 			{
 				"adapter": "rsshubJson",
@@ -60,29 +60,18 @@
 		"homepage": "https://juejin.cn/column/7287241187447308345",
 		"api": [
 			{
-				"url": "https://rss.nexmoe.com/juejin/column/7287241187447308345.json?limit=6&key=ZBu6acweLRwkKpycCmBK",
+				"url": "{rsshub}/juejin/column/7287241187447308345.json?limit=6&key=ZBu6acweLRwkKpycCmBK",
 				"adapter": "rsshubJson"
 			}
 		],
 		"title": "笔记"
 	},
 	{
-		"homepage": "https://m.okjike.com/users/7a751a1a-d2d1-492d-88fb-ed153c49105b",
-		"api": [
-			{
-				"adapter": "rsshubJson",
-				"url": "https://rss.nexmoe.com/jike/user/7a751a1a-d2d1-492d-88fb-ed153c49105b.json?limit=6&key=ZBu6acweLRwkKpycCmBK"
-			}
-		],
-		"title": "即刻",
-		"noTitle": true
-	},
-	{
 		"homepage": "https://x.com/nexmoe",
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rsshub.app/twitter/user/nexmoe.json?limit=6"
+				"url": "https://rsshub.app/twitter/user/nexmoe.json?limit=9"
 			}
 		],
 		"title": "Twitter",
@@ -93,7 +82,7 @@
 		"api": [
 			{
 				"adapter": "rsshubJson",
-				"url": "https://rss.nexmoe.com/163/music/user/playrecords/129387613/0.json?limit=9&key=ZBu6acweLRwkKpycCmBK"
+				"url": "{rsshub}/163/music/user/playrecords/129387613/0.json?limit=9&key=ZBu6acweLRwkKpycCmBK"
 			}
 		],
 		"title": "听歌总榜",

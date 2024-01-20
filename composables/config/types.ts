@@ -55,8 +55,13 @@ export interface Project {
 	url: string
 }
 
+
+export interface Rsshub {
+	origin: string[]
+}
+
 export interface Configuration {
-	rsshub: string[]
+	rsshub: Rsshub
 }
 
 export interface Config {

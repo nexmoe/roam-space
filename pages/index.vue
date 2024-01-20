@@ -11,6 +11,11 @@ useHead({
 	<Head>
 		<Title>{{ config.hero.title }}</Title>
 		<Meta name="description" :content="config.hero.description" />
+		<Link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap"
+			media="all"
+		/>
 	</Head>
 	<div class="bg-[#fefefe]">
 		<!-- <div
@@ -29,12 +34,18 @@ useHead({
 						<Flow v-else :section="item" />
 					</section>
 				</UContainer>
+				<IndexFooter />
 			</div>
 		</div>
 	</div>
 	<IndexTool />
-	<IndexFooter />
 </template>
+
+<style>
+body * {
+    font-family: Noto Serif SC;
+}
+</style>
 
 <style scoped>
 .sidebar {

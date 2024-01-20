@@ -1,5 +1,7 @@
 {
-	"rsshub": [
-		"https: //lib.xiaoshuapp.com/rss"
-	]
+	"rsshub": {
+		"origin": [
+			"https://rss.nexmoe.com"
+		]
+	}
 }
