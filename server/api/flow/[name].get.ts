@@ -1,3 +1,4 @@
+import { consola } from "consola";
 import useConfig from '~/composables/config/useConfig'
 import type { Module } from '~/composables/filter/types'
 import useAdapter from '~/composables/filter/useAdapter'
@@ -36,7 +37,7 @@ function levenshteinDistance(a: string, b: string) {
 function mergeArrays(a: Module[], b: Module[]) {
 	for (const ele of b) {
 		const item = a.find((v) => {
-			const similarity = 1 - levenshteinDistance(v.title, ele.title) / Math.max(v.title.length, ele.title.length)         
+			const similarity = 1 - levenshteinDistance(v.title, ele.title) / Math.max(v.title.length, ele.title.length)
 			return similarity >= 0.9 // 设置相似度阈值为90%
 		})
 		if (!item) {
@@ -82,16 +83,25 @@ export default defineEventHandler(async (event) => {
 			let apiUrlRetry = api.url
 			let originIndex = 0
 			while (originIndex < config.rsshub.origin.length) {
-				apiUrlRetry = apiUrlRetry.replace('{rsshub}', config.rsshub.origin[originIndex])
+				apiUrlRetry = apiUrlRetry.includes('{rsshub}') ? apiUrlRetry.replace('{rsshub}', config.rsshub.origin[originIndex]) : apiUrlRetry
+
 				try {
-					const dataRetry = await $fetch<Record<string, any>>(apiUrlRetry, {
+					consola.info(originIndex === 0 ? 'Fetching' : 'Retry fetching', apiUrlRetry)
+					const res = await $fetch<Record<string, any>>(apiUrlRetry, {
 						method: 'GET',
 						parseResponse: JSON.parse,
 					})
-					return useAdapter(api.adapter, dataRetry).slice(0, 8)
+					consola.success('Success fetching', apiUrlRetry)
+
+					return useAdapter(api.adapter, res).slice(0, 8)
 				}
 				catch (error) {
-					originIndex++
+					consola.error('Error fetching', apiUrlRetry)
+					consola.error(error)
+					if (apiUrlRetry.includes('{rsshub}'))
+						originIndex++
+					else
+						break
 				}
 			}
 			throw new Error('All retry attempts failed')
@@ -101,7 +111,7 @@ export default defineEventHandler(async (event) => {
 	const res = await Promise.allSettled(tasks)
 
 	const response = res.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []))
-	const final = response.reduce(mergeArrays, [])
+	const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : response
 
 	// // store to supabase
 	// const { error } = await supabase

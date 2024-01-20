@@ -1,15 +1,57 @@
 <script setup lang="ts">
-const list = useConfig().flow
+interface List extends Flow {
+	active: boolean
+}
+const list = ref<List[]>(useConfig().flow as List[])
 const menus = useConfig().hero.menus
+
 function scrollToTitle(title: string) {
 	const element: HTMLElement | null = document.querySelector(decodeURI(title))
 	if (!element)
 		return
-	window.scroll({
-		top: element.offsetTop - 96,
-		behavior: 'smooth',
+
+	element.scrollIntoView({ block: 'center', behavior: 'smooth' })
+}
+
+function updateActiveSection() {
+	const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+	const screenHeight = window.innerHeight
+
+	let activeSectionIndex = 0
+	let minDistanceToCenter = Number.POSITIVE_INFINITY
+
+	list.value.forEach((section, index) => {
+		const element = document.getElementById(section.title)
+		if (element) {
+			const elementTop = element.offsetTop
+			const elementBottom = elementTop + element.offsetHeight
+			const distanceToCenter = Math.abs((elementTop + elementBottom) / 2 - (scrollTop + screenHeight / 2))
+
+			if (distanceToCenter < minDistanceToCenter) {
+				activeSectionIndex = index
+				minDistanceToCenter = distanceToCenter
+			}
+		}
+	})
+
+	list.value.forEach((section, index) => {
+		if (index === activeSectionIndex)
+			section.active = true
+
+		else
+			section.active = false
 	})
 }
+
+onMounted(() => {
+	window.addEventListener('scroll', updateActiveSection)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('scroll', updateActiveSection)
+})
+
+list.value[0].active = true
 </script>
 
 <template>
@@ -27,11 +69,14 @@ function scrollToTitle(title: string) {
 				</div>
 				<UIcon name="i-mdi-open-in-new" />
 			</a>
-			<div class="border-b pt-2 !mb-3" />
+			<div class="border-b pt-3 !mb-4" />
 			<div
 				v-for="item in list"
 				:key="item.title"
 				class="item"
+				:class="{
+					active: item.active,
+				}"
 				@click="scrollToTitle(`#${item.title}`)"
 			>
 				<div class="text-base truncate">
@@ -44,6 +89,9 @@ function scrollToTitle(title: string) {
 
 <style scoped>
 .item {
-    @apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-2xl;
+    @apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-xl;
+}
+.active {
+	@apply bg-black text-white hover:bg-black
 }
 </style>
