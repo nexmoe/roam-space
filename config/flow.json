@@ -71,6 +71,17 @@
 		"title": "笔记"
 	},
 	{
+		"homepage": "https://github.com/nexmoe",
+		"api": [
+			{
+				"adapter": "github_repos",
+				"url": "https://lib.xiaoshuapp.com/repos"
+			}
+		],
+		"title": "最近贡献",
+		"noTitle": true
+	},
+	{
 		"homepage": "https://x.com/nexmoe",
 		"api": [
 			{
@@ -82,14 +93,14 @@
 		"noTitle": true
 	},
 	{
-		"homepage": "https://x.com/nexmoe",
+		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5?limit=6",
 		"api": [
 			{
-				"adapter": "github_repos",
-				"url": "https://lib.xiaoshuapp.com/repos"
+				"adapter": "rsshub_json",
+				"url": "{rsshub}/xiaohongshu/user/64ddaa5200000000010069c5/notes.json"
 			}
 		],
-		"title": "最近贡献",
+		"title": "小红书",
 		"noTitle": true
 	},
 	{

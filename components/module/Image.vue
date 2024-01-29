@@ -23,7 +23,7 @@ function getOrigin(url: string) {
 			{{ props.module.title }}
 		</div>
 
-		<div class="mx-6 flex flex-row items-center gap-1">
+		<div v-if="!image || (props.module.platform?.length || 0) > 1" class="mx-6 flex flex-row items-center gap-1">
 			<UBadge v-if="!image" class="mr-2 -ml-px" color="gray" variant="solid">
 				{{ formatDateTime(module.date) }}
 			</UBadge>
