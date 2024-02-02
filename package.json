@@ -20,7 +20,7 @@
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "2.6.3",
-		"@iconify/json": "2.2.177",
+		"@iconify/json": "2.2.178",
 		"@nuxt/devtools": "latest",
 		"@nuxtjs/supabase": "1.1.6",
 		"@types/node": "20.11.16",
