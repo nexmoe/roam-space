@@ -57,20 +57,6 @@
 		"title": "文章"
 	},
 	{
-		"homepage": "https://juejin.cn/column/7287241187447308345",
-		"api": [
-			{
-				"url": "{rsshub}/juejin/column/7287241187447308345.json?limit=6",
-				"adapter": "rsshub_json"
-			},
-			{
-				"url": "{rsshub}/juejin/column/7319308352557973555.json?limit=6",
-				"adapter": "rsshub_json"
-			}
-		],
-		"title": "笔记"
-	},
-	{
 		"homepage": "https://github.com/nexmoe",
 		"api": [
 			{
@@ -82,26 +68,47 @@
 		"noTitle": true
 	},
 	{
-		"homepage": "https://x.com/nexmoe",
+		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
 		"api": [
+			{
+				"adapter": "rsshub_json",
+				"url": "{rsshub}/juejin/collection/7330439050032906252.json?limit=8"
+			},
+			{
+				"adapter": "rsshub_json",
+				"url": "{rsshub}/zhihu/xhu/collection/942080738.json?limit=8"
+			}
+		],
+		"title": "收藏文章"
+	},
+	{
+		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
+		"api": [
+			{
+				"adapter": "rsshub_json",
+				"url": "{rsshub}/xiaohongshu/user/64ddaa5200000000010069c5/notes.json?limit=4"
+			},
 			{
 				"adapter": "rsshub_json",
 				"url": "https://gh.7761.cf/https://rsshub.app/twitter/user/nexmoe.json?limit=9"
 			}
 		],
-		"title": "Twitter",
+		"title": "社交媒体",
 		"noTitle": true
 	},
 	{
-		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5?limit=6",
+		"homepage": "https://juejin.cn/column/7287241187447308345",
 		"api": [
 			{
-				"adapter": "rsshub_json",
-				"url": "{rsshub}/xiaohongshu/user/64ddaa5200000000010069c5/notes.json"
+				"url": "{rsshub}/juejin/column/7287241187447308345.json?limit=9",
+				"adapter": "rsshub_json"
+			},
+			{
+				"url": "{rsshub}/juejin/column/7319308352557973555.json?limit=9",
+				"adapter": "rsshub_json"
 			}
 		],
-		"title": "小红书",
-		"noTitle": true
+		"title": "笔记"
 	},
 	{
 		"homepage": "https://music.163.com/#/user/home?id=129387613",

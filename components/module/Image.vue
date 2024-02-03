@@ -13,6 +13,11 @@ function getOrigin(url: string) {
 	const urlx = new URL(url)
 	return urlx.origin.toString()
 }
+
+function getUrl(url: string) {
+	const urlx = new URL(url)
+	return urlx.host.replace('www.', '') + urlx.pathname
+}
 </script>
 
 <template>
@@ -51,10 +56,25 @@ function getOrigin(url: string) {
 				</UBadge>
 			</div>
 		</div>
-		<div v-if="!section.noContent && text !== ' '" class="mx-6 max-h-16">
+		<div v-if="!section.noContent && text !== ' '" class="mx-6 max-h-24">
 			<div v-html="text" />
 		</div>
-		<div class="absolute bg-gradient-to-t from-white pt-7 pb-5 px-6 w-full bottom-0 left-0" />
+		<div class="absolute w-full bottom-0 left-0">
+			<div class="bg-gradient-to-t from-white h-12" />
+			<div class="px-6 pb-3 bg-white/95">
+				<div class="flex flex-row items-center gap-1">
+					<div class="-ml-px w-5 h-5 block">
+						<img
+							class="rounded-md outline-2 hover:outline" :src="`https://lib.xiaoshuapp.com/icon/x?url=${getOrigin(props.module.url)}`"
+							:alt="module.title" referrerpolicy="no-referrer" loading="lazy"
+						>
+					</div>
+					<div class="flex-1 text-blue-400 truncate">
+						{{ getUrl(props.module.url) }}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
