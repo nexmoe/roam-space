@@ -5,7 +5,7 @@ const { data: module } = useFetch(`/api/flow/${id}`)
 </script>
 
 <template>
-    <div>
-        {{ module }}
-    </div>
+	<div>
+		{{ module }}
+	</div>
 </template>

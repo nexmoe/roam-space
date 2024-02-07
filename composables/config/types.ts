@@ -38,7 +38,6 @@ export interface Project {
 	url: string
 }
 
-
 export interface Rsshub {
 	origin: string[]
 }

@@ -1,5 +1,5 @@
 export interface Module {
-	id: string;
+	id: string
 	title: string
 	url: string
 	content: string

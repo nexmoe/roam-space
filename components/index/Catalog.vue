@@ -4,14 +4,15 @@ import type { Flow } from '@prisma/client'
 interface List extends Flow {
 	active: boolean
 }
-const flows = inject("flows") as Flow[]
+const flows = inject('flows') as Flow[]
 
 const list = ref<List[]>(flows as List[])
 const menus = useConfig().hero.menus
 
 function scrollToTitle(title: string) {
 	const element: HTMLElement | null = document.querySelector(decodeURI(title))
-	if (!element) return
+	if (!element)
+		return
 
 	element.scrollIntoView({ block: 'center', behavior: 'smooth' })
 }
@@ -29,7 +30,7 @@ function updateActiveSection() {
 			const elementTop = element.offsetTop
 			const elementBottom = elementTop + element.offsetHeight
 			const distanceToCenter = Math.abs(
-				(elementTop + elementBottom) / 2 - (scrollTop + screenHeight / 2)
+				(elementTop + elementBottom) / 2 - (scrollTop + screenHeight / 2),
 			)
 
 			if (distanceToCenter < minDistanceToCenter) {
@@ -40,7 +41,8 @@ function updateActiveSection() {
 	})
 
 	list.value.forEach((section, index) => {
-		if (index === activeSectionIndex) section.active = true
+		if (index === activeSectionIndex)
+			section.active = true
 		else section.active = false
 	})
 }

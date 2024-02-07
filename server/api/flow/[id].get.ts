@@ -1,8 +1,8 @@
-import { consola } from "consola";
+import { consola } from 'consola'
 import type { H3Event } from 'h3'
 import type { Module } from '~/composables/filter/types'
 import useAdapter from '~/composables/filter/useAdapter'
-import config from '~/config/config.json';
+import config from '~/config/config.json'
 
 function levenshteinDistance(a: string, b: string) {
 	if (a.length === 0)
@@ -66,7 +66,7 @@ export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma
 	const { params } = event.context
 
-	const flow = await prisma. flow.findFirst({
+	const flow = await prisma.flow.findFirst({
 		where: { id: params?.id },
 		include: {
 			api: true,
@@ -127,7 +127,8 @@ export default eventHandler(async (event: H3Event) => {
 				},
 			})
 		}
-	} catch (error) {
+	}
+	catch (error) {
 		consola.error(error)
 	}
 

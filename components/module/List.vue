@@ -1,8 +1,8 @@
 <script setup lang="ts">
 interface Props {
-	cover?: string;
-	section: any;
-	module: Module;
+	cover?: string
+	section: any
+	module: Module
 }
 
 const props = defineProps<Props>()

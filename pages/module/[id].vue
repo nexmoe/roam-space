@@ -5,7 +5,7 @@ const { data: module } = useFetch(`/api/module/${id}`)
 </script>
 
 <template>
-    <div>
-        {{ module }}
-    </div>
+	<div>
+		{{ module }}
+	</div>
 </template>
