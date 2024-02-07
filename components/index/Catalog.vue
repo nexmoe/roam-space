@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import type { Flow } from '@prisma/client'
+
 interface List extends Flow {
 	active: boolean
 }
-const list = ref<List[]>(useConfig().flow as List[])
+const flows = inject("flows") as Flow[]
+
+const list = ref<List[]>(flows as List[])
 const menus = useConfig().hero.menus
 
 function scrollToTitle(title: string) {
 	const element: HTMLElement | null = document.querySelector(decodeURI(title))
-	if (!element)
-		return
+	if (!element) return
 
 	element.scrollIntoView({ block: 'center', behavior: 'smooth' })
 }
@@ -25,7 +28,9 @@ function updateActiveSection() {
 		if (element) {
 			const elementTop = element.offsetTop
 			const elementBottom = elementTop + element.offsetHeight
-			const distanceToCenter = Math.abs((elementTop + elementBottom) / 2 - (scrollTop + screenHeight / 2))
+			const distanceToCenter = Math.abs(
+				(elementTop + elementBottom) / 2 - (scrollTop + screenHeight / 2)
+			)
 
 			if (distanceToCenter < minDistanceToCenter) {
 				activeSectionIndex = index
@@ -35,11 +40,8 @@ function updateActiveSection() {
 	})
 
 	list.value.forEach((section, index) => {
-		if (index === activeSectionIndex)
-			section.active = true
-
-		else
-			section.active = false
+		if (index === activeSectionIndex) section.active = true
+		else section.active = false
 	})
 }
 
@@ -57,13 +59,7 @@ list.value[0].active = true
 <template>
 	<div class="hidden md:flex py-6 px-4 items-center h-full shu-card !rounded-none">
 		<div class="space-y-1 w-full">
-			<a
-				v-for="item in menus"
-				:key="item.title"
-				class="item"
-				:href="item.url"
-				target="_blank"
-			>
+			<a v-for="item in menus" :key="item.title" class="item" :href="item.url" target="_blank">
 				<div class="text-base truncate">
 					{{ item.title }}
 				</div>
@@ -89,9 +85,9 @@ list.value[0].active = true
 
 <style scoped>
 .item {
-    @apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-xl;
+	@apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-xl;
 }
 .active {
-	@apply bg-black text-white hover:bg-black
+	@apply bg-black text-white hover:bg-black;
 }
 </style>

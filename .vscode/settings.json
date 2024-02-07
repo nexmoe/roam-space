@@ -1,6 +1,6 @@
 {
   "[vue]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[js]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -9,7 +9,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
   "files.associations": {
@@ -56,5 +56,6 @@
     "jsonc",
     "yaml",
     "toml"
-  ]
+  ],
+  "prisma.fileWatcher": true
 }

@@ -1,9 +1,8 @@
 import { consola } from "consola";
-import useConfig from '~/composables/config/useConfig'
+import type { H3Event } from 'h3'
 import type { Module } from '~/composables/filter/types'
 import useAdapter from '~/composables/filter/useAdapter'
-
-// import { serverSupabaseClient } from '#supabase/server'
+import config from '~/config/config.json';
 
 function levenshteinDistance(a: string, b: string) {
 	if (a.length === 0)
@@ -63,12 +62,17 @@ function mergeArrays(a: Module[], b: Module[]) {
 	return a
 }
 
-export default defineEventHandler(async (event) => {
-	// const supabase = await serverSupabaseClient<Module>(event)
-	const name = decodeURI(getRouterParam(event, 'name') || '')
-	const { flow: flows, config } = useConfig()
-	const flow = flows.find(f => f.title === name)
-	if (!flow || !flow.api) {
+export default eventHandler(async (event: H3Event) => {
+	const prisma = event.context.prisma
+	const { params } = event.context
+
+	const flow = await prisma.flow.findFirst({
+		where: { id: params?.id },
+		include: {
+			api: true,
+		},
+	})
+	if (!flow) {
 		setResponseStatus(event, 404)
 		return {
 			code: -1,

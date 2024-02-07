@@ -3,7 +3,7 @@ const props = defineProps({
 	section: Object,
 })
 
-const requestURL = computed(() => `/api/flow/${encodeURI(props.section.title)}`)
+const requestURL = computed(() => `/api/flow/${props.section.id}`)
 const { data, error } = await useFetch(requestURL, { immediate: true })
 // TODO: handle error
 if (error.value || data.value.code !== 0)
@@ -28,13 +28,13 @@ const res = computed(() => data.value.data)
 	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
 }
 @media (min-width: 1280px) {
-	.flow-body a:nth-child(n+10) {
+	.flow-body a:nth-child(n + 10) {
 		display: none;
 	}
 }
 @media (min-width: 1536px) {
-	.flow-body a:nth-child(n+9) {
-        display: none;
-    }
+	.flow-body a:nth-child(n + 9) {
+		display: none;
+	}
 }
 </style>
