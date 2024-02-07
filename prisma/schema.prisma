@@ -44,7 +44,7 @@ model Flow {
   card      String?
   noContent Boolean? @default(false)
   noTitle   Boolean? @default(false)
-  Module    Module[]
+  module    Module[]
   space     Space?   @relation(fields: [spaceId], references: [id])
   spaceId   String?
 }

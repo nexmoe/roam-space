@@ -8,9 +8,6 @@
 	"[ts]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
-	"[typescript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	},
 	"tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
 	"files.associations": {
 		"*.css": "tailwindcss"

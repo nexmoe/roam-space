@@ -3,7 +3,7 @@ const props = defineProps({
 	section: Object,
 })
 
-const requestURL = computed(() => `/api/flow/${props.section.id}`)
+const requestURL = computed(() => `/api/flow/c/${props.section.id}`)
 const { data, error } = await useFetch(requestURL, { immediate: true })
 // TODO: handle error
 if (error.value || data.value.code !== 0)

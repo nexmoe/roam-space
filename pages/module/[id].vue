@@ -6,6 +6,6 @@ const { data: module } = useFetch(`/api/module/${id}`)
 
 <template>
 	<div>
-		{{ module }}
+		<div class="content" v-html="module.content" />
 	</div>
 </template>
