@@ -19,33 +19,41 @@ model API {
   flowId  String?
 }
 
+model Module {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  url       String   @unique
+  content   String   @unique
+  date      String
+  platform  String
+  flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
+  flowId    String?
+}
+
+/// Flow is a section includes modules
 model Flow {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   title     String
   homepage  String?
+  index     Int?
   api       API[]
   card      String?
   noContent Boolean? @default(false)
   noTitle   Boolean? @default(false)
   Module    Module[]
+  space     Space?   @relation(fields: [spaceId], references: [id])
+  spaceId   String?
 }
 
-model Module {
+model Space {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   title     String
-  url       String
-  content   String
-  date      String
-  flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
-  flowId    String?
-}
-
-model Space {
-  id          String @id @default(uuid())
-  description String
-  details     String
+  details   String
+  Flow      Flow[]
 }

@@ -66,7 +66,7 @@ export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma
 	const { params } = event.context
 
-	const flow = await prisma.flow.findFirst({
+	const flow = await prisma. flow.findFirst({
 		where: { id: params?.id },
 		include: {
 			api: true,
@@ -115,14 +115,21 @@ export default eventHandler(async (event: H3Event) => {
 	const res = await Promise.allSettled(tasks)
 
 	const response = res.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []))
-	const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : response
+	const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : []
 
-	// // store to supabase
-	// const { error } = await supabase
-	// 	.from('module')
-	// 	.insert(final)
-	// 	.select()
-	// console.error(error)
+	try {
+		for (const ele of final) {
+			await prisma.module.create({
+				data: {
+					...ele,
+					platform: JSON.stringify(ele.platform),
+					flowId: flow.id,
+				},
+			})
+		}
+	} catch (error) {
+		consola.error(error)
+	}
 
 	return {
 		code: 0,

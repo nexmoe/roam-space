@@ -6,14 +6,15 @@
     "build": "prisma generate && nuxt build",
     "start": "NODE_ENV=production node .output/server/index.mjs",
     "lint": "eslint .",
-    "test": "TZ=UTC vitest --run",
-    "test:components": "TZ=UTC vitest --run components/",
-    "test:watch": "TZ=UTC vitest",
-    "test:ui": "TZ=UTC vitest --ui --open",
+    "test": "vitest --run",
+    "test:components": "vitest --run components/",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui --open",
     "postinstall": "nuxt prepare",
     "generate": "nuxt generate",
     "preview": "DATABASE_URL=file:./db.sqlite nuxt preview",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "studio": "prisma studio"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
