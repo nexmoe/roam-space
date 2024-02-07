@@ -1,26 +1,39 @@
-# 第一阶段：构建阶段
-FROM node:20.11.1-alpine as build
+# see https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
+ARG NODE_VERSION=node:16.14.2
 
-WORKDIR /src
+FROM $NODE_VERSION AS dependency-base
 
-# 将依赖项安装到单独的图层中
-COPY package.json pnpm-lock.yaml .npmrc ./
-RUN npm config set registry https://registry.npmmirror.com && \
-    npm install -g pnpm && \
-    pnpm install
+# create destination directory
+RUN mkdir -p /app
+WORKDIR /app
 
-# 复制应用程序代码并构建
+# copy the app, note .dockerignore
+COPY package.json .
+COPY package-lock.json .
+RUN npm ci
+
+FROM dependency-base AS production-base
+
+# build will also take care of building
+# if necessary
 COPY . .
-RUN pnpm build
+RUN npm run build
 
-# 第二阶段：运行阶段
-FROM node:20.11.1-alpine as base
+FROM $NODE_VERSION AS production
 
-EXPOSE 3000
+COPY --from=production-base /app/.output /app/.output
 
-WORKDIR /src
+# Service hostname
+ENV NUXT_HOST=0.0.0.0
 
-# 复制构建阶段生成的代码和依赖项（仅复制构建所需的文件和依赖项）
-COPY --from=build /src/.output /src/.output
+# Service version
+ARG NUXT_APP_VERSION
+ENV NUXT_APP_VERSION=${NUXT_APP_VERSION}
 
-CMD [ "node", ".output/server/index.mjs" ]
+ENV DATABASE_URL=file:./db.sqlite
+
+# Run in production mode
+ENV NODE_ENV=production
+
+# start the app
+CMD [ "node", "/app/.output/server/index.mjs" ]

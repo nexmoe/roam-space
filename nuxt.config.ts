@@ -1,72 +1,24 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { setAbsoluteSqliteDatabaseUrlForPrisma } from './prisma/utils'
+
+setAbsoluteSqliteDatabaseUrlForPrisma()
+
 export default defineNuxtConfig({
-	modules: [
-		'@nuxt/ui',
-		'@nuxt/image',
-		'nuxt-gtag',
-		'@pinia/nuxt',
-		'@model-w/sentry',
-		// '@nuxtjs/supabase',
-	],
-
-	// supabase: {
-	// 	redirect: false,
-	// },
-	sentry: {
-		dsn: 'https://8895d416e86e4f56fc7e32c78bfbf901@sentry.mixcm.com//4',
-	},
-
-	gtag: {
-		id: 'G-JF2ZGKT7MM',
-	},
-
-	experimental: {
-		inlineSSRStyles: false,
-	},
-
-	ui: {
-		icons: 'all',
-	},
-
-	image: {
-		screens: {
-			'xs': 48,
-			'sm': 128,
-			'md': 320,
-			'lg': 1024,
-			'xl': 1280,
-			'xxl': 1536,
-			'2xl': 1536,
-		},
-		domains: [
-			'xiaoshuapp.com',
-			'lib.xiaoshuapp.com',
-			'ipfs.xlog.app',
-			'cdn.dribbble.com',
-			'cdnv2.ruguoapp.com',
-			'p3.music.126.net',
-			'p4.music.126.net',
-			'picx.zhimg.com',
-			'nexmoe.com',
-			'pbs.twimg.com',
-		],
-		quality: 90,
-	},
-
-	imports: {
-		dirs: [
-			// Scan top-level modules
-			'composables',
-			// ... or scan modules nested one level deep with a specific name and file extension
-			'composables/*/index.{ts,js,mjs,mts}',
-			// ... or scan all modules within given directory
-			'composables/**',
-		],
-	},
-
-	devtools: {
-		timeline: {
-			enabled: true,
-		},
-	},
+  runtimeConfig: {
+    version: '0.0.1'
+  },
+  modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image'],
+  extends: ['@sidebase/core'],
+  typescript: {
+    shim: false
+  },
+  imports: {
+    dirs: [
+      // Scan top-level modules
+      'composables',
+      // ... or scan modules nested one level deep with a specific name and file extension
+      'composables/*/index.{ts,js,mjs,mts}',
+      // ... or scan all modules within given directory
+      'composables/**'
+    ]
+  }
 })
