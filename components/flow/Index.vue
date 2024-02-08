@@ -14,11 +14,15 @@ provide('flow', props.flow)
 	<FlowHeader :title="props.flow.title" :url="props.flow.homepage" />
 
 	<div class="flow-body">
-		<a v-for="(module) in props.flow.module" :key="module.url" :href="module.url" target="_blank">
+		<NuxtLink
+			v-for="(module) in props.flow.module" :key="module.url"
+			:to="props.flow.configOpenURL ? module.url : `/module/${module.id}`"
+			:external="props.flow.configOpenURL"
+		>
 			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module }" />
 			<ModuleProject v-else-if="props.flow.card === 'project'" v-bind="{ module }" />
 			<ModuleImage v-else v-bind="{ module }" />
-		</a>
+		</NuxtLink>
 	</div>
 </template>
 

@@ -35,19 +35,20 @@ model Module {
 
 /// Flow is a section includes modules
 model Flow {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  homepage  String?
-  index     Int?
-  api       API[]
-  card      String?
-  noContent Boolean? @default(false)
-  noTitle   Boolean? @default(false)
-  module    Module[]
-  space     Space?   @relation(fields: [spaceId], references: [id])
-  spaceId   String?
+  id              String   @id @default(uuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  title           String
+  homepage        String?
+  index           Int?
+  api             API[]
+  card            String?
+  configNoContent Boolean? @default(false)
+  configNoTitle   Boolean? @default(false)
+  configOpenURL   Boolean? @default(false)
+  module          Module[]
+  space           Space?   @relation(fields: [spaceId], references: [id])
+  spaceId         String?
 }
 
 model Space {

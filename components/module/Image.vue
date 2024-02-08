@@ -24,7 +24,7 @@ function getUrl(url: string) {
 	<div
 		class="module shu-card py-4 space-y-3"
 	>
-		<div v-if="!flow.noTitle" class="mx-6 font-bold tracking-tight text-black">
+		<div v-if="!flow.configNoTitle" class="mx-6 font-bold tracking-tight text-black">
 			{{ props.module.title }}
 		</div>
 
@@ -42,7 +42,7 @@ function getUrl(url: string) {
 				</div>
 			</template>
 		</div>
-		<div v-if="props.module.image && !flow.noImage" class="max-h-48 relative overflow-hidden">
+		<div v-if="props.module.image" class="max-h-48 relative overflow-hidden">
 			<NuxtImg
 				class="w-full" format="webp" :src="props.module.image" :alt="module.title" referrerpolicy="no-referrer" loading="lazy"
 				width="320px" height="200px"
@@ -53,12 +53,12 @@ function getUrl(url: string) {
 				</UBadge>
 			</div>
 		</div>
-		<div v-if="!flow.noContent && text !== ' '" class="mx-6 max-h-24">
+		<div v-if="!flow.configNoContent && text !== ' '" class="mx-6 max-h-24">
 			<div v-html="text" />
 		</div>
 		<div class="absolute w-full bottom-0 left-0">
 			<div class="bg-gradient-to-t from-white h-12" />
-			<div class="px-6 pb-3 bg-white/95">
+			<div v-if="flow.configOpenURL" class="px-6 pb-3 bg-white/95">
 				<div class="flex flex-row items-center gap-1">
 					<div class="-ml-px w-5 h-5 block">
 						<img

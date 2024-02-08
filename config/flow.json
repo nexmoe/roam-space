@@ -27,7 +27,7 @@
 			}
 		],
 		"title": "最近贡献",
-		"noTitle": true
+		"configNoTitle": true
 	},
 	{
 		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
@@ -56,7 +56,7 @@
 			}
 		],
 		"title": "社交媒体",
-		"noTitle": true
+		"configNoTitle": true
 	},
 	{
 		"homepage": "https://juejin.cn/column/7287241187447308345",
@@ -82,6 +82,6 @@
 		],
 		"title": "听歌总榜",
 		"card": "list",
-		"noContent": true
+		"configNoContent": true
 	}
 ]

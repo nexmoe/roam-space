@@ -26,14 +26,14 @@ const text = extractTextFromHTML(props.module.content)
 			/>
 
 			<div
-				v-if="!flow.noTitle"
+				v-if="!flow.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
 			</div>
 		</div>
 
-		<div v-if="!flow.noContent" class="truncate">
+		<div v-if="!flow.configNoContent" class="truncate">
 			<div v-html="text" />
 		</div>
 	</div>
