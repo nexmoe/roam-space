@@ -1,13 +1,17 @@
-<script setup>
-const props = defineProps({
-	flow: Object,
-})
+<script setup lang="ts">
+import type { Flow } from '@prisma/client'
+
+interface Props {
+	flow: Flow
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
 	<FlowHeader :title="props.flow.title" :url="props.flow.homepage" />
 
-	<div class="flow-body" :class="props.flow.class">
+	<div class="flow-body">
 		<a v-for="(module) in props.flow.module" :key="module.url" :href="module.url" target="_blank">
 			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module, section: props.flow }" />
 			<ModuleImage v-else v-bind="{ module, section: props.flow }" />

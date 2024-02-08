@@ -1,6 +1,6 @@
-import type { Module } from './types'
+import type { Modulex } from './types'
 
-export function rsshub_json(data: any): Module[] {
+export function rsshub_json(data: any): Modulex[] {
 	return data.items.map((item: any) => {
 		return {
 			title: item.title,
@@ -13,7 +13,7 @@ export function rsshub_json(data: any): Module[] {
 }
 
 // https://nexmoe.com/content.json
-export function hexo(data: any): Module[] {
+export function hexo(data: any): Modulex[] {
 	return data.posts.map((item: any) => {
 		return {
 			title: item.title,
@@ -25,7 +25,7 @@ export function hexo(data: any): Module[] {
 }
 
 // https://api.github.com/users/nexmoe/repos?sort=pushed&type=all
-export function github_repos(data: any): Module[] {
+export function github_repos(data: any): Modulex[] {
 	return data.map((item: any) => {
 		return {
 			title: item.name,

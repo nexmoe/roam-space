@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { Modulex } from '~/composables/filter/types'
+
 interface Props {
 	section: any
-	module: Module
+	module: Modulex
 }
 
 const props = defineProps<Props>()
@@ -38,10 +40,7 @@ function getUrl(url: string) {
 					:key="platform" class="w-5 h-5 block"
 					@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
 				>
-					<img
-						class="rounded-md outline-2 hover:outline" :src="`https://lib.xiaoshuapp.com/icon/x?url=${getOrigin(platform)}`"
-						:alt="module.title" referrerpolicy="no-referrer" loading="lazy"
-					>
+					<LinkIcon :url="platform" />
 				</div>
 			</template>
 		</div>

@@ -1,10 +1,5 @@
 import type { H3Event } from 'h3'
-import type { Module } from '@prisma/client'
-
-// Use type intersection to combine types
-type Modulex = Module & {
-	platform?: string[]
-}
+import type { Modulex } from '~/composables/filter/types'
 
 export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma

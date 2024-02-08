@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type { Modulex } from '~/composables/filter/types'
+
 interface Props {
 	cover?: string
 	section: any
-	module: Module
+	module: Modulex
 }
 
 const props = defineProps<Props>()

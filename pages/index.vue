@@ -1,9 +1,12 @@
 <script setup lang="ts">
 const config = useConfig()
 const { data: flows, error } = useFetch('/api/flow')
-// TODO: handle error
-if (error.value)
+
+if (error.value) {
 	console.error(`Error fetching data`, error.value)
+	const toast = useToast()
+	toast.add({ title: 'Error fetching data' })
+}
 
 provide('flows', flows)
 useHead({
@@ -24,19 +27,17 @@ useHead({
 		/>
 	</Head>
 	<div class="bg-[#fefefe]">
-		<div class="">
-			<div class="sidebar">
-				<IndexCatalog />
-			</div>
-			<div class="content">
-				<UContainer class="px-6 lg:px-12 pb-24 pt-16">
-					<IndexHero />
-					<template v-for="flow in flows" :key="flow.id">
-						<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
-					</template>
-				</UContainer>
-				<IndexFooter />
-			</div>
+		<div class="sidebar">
+			<IndexCatalog />
+		</div>
+		<div class="content">
+			<UContainer class="px-6 lg:px-12 pb-24 pt-16">
+				<IndexHero />
+				<template v-for="flow in flows" :key="flow.id">
+					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
+				</template>
+			</UContainer>
+			<IndexFooter />
 		</div>
 	</div>
 	<IndexTool />

@@ -6,7 +6,7 @@ interface List extends Flow {
 }
 const flows = inject('flows') as Flow[]
 
-const list = ref<List[]>(flows as List[])
+const list = ref<List[]>(flows as List[]) // .filter(flow => flow.module.length > 0)
 const menus = useConfig().hero.menus
 
 function scrollToTitle(title: string) {
