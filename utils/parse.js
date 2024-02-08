@@ -1,17 +1,9 @@
-export function libGetFirstImageSrc(html) {
-	if (!html)
-		return
-	// 匹配第一个 <img> 标签的 src 属性内容
-	const regex = /<img[^>]+src="([^">]+)"/
-	const match = html.match(regex)
-
-	// 如果匹配成功，则返回第一个匹配结果的 src 属性内容
-	if (match && match.length > 1)
-		return match[1].replace('http://', 'https://')
-
-	// 如果没有匹配结果，则返回空字符串
-}
-
+/**
+ * Extracts text from HTML content and returns the first 300 characters.
+ *
+ * @param {string} html - The HTML content to extract text from
+ * @return {string} The extracted text, up to 300 characters
+ */
 export function extractTextFromHTML(html) {
 	if (!html)
 		return

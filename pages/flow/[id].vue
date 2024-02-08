@@ -8,13 +8,14 @@ if (error.value) {
 	const toast = useToast()
 	toast.add({ title: 'Error fetching data' })
 }
+provide('flow', flow)
 </script>
 
 <template>
 	<div class="flow-body">
 		<a v-for="(module, index) in flow.module" :key="module.url + index" :href="module.url" target="_blank">
-			<ModuleList v-if="flow.card === 'list'" v-bind="{ module, section: flow }" />
-			<ModuleImage v-else v-bind="{ module, section: flow }" />
+			<ModuleList v-if="flow.card === 'list'" v-bind="{ module }" />
+			<ModuleImage v-else v-bind="{ module }" />
 		</a>
 	</div>
 </template>

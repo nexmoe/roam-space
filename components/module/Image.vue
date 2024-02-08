@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { Modulex } from '~/composables/adapter/types'
+import type { Flow } from '@prisma/client'
 
 interface Props {
-	section: any
-	module: Modulex
+	module: NModule
 }
 
 const props = defineProps<Props>()
-
+const flow = inject('flow') as Flow
 const text = computed(() => extractTextFromHTML(props.module.content))
 
 function getOrigin(url: string) {
@@ -25,7 +24,7 @@ function getUrl(url: string) {
 	<div
 		class="module shu-card py-4 space-y-3"
 	>
-		<div v-if="!section.noTitle" class="mx-6 font-bold tracking-tight text-black">
+		<div v-if="!flow.noTitle" class="mx-6 font-bold tracking-tight text-black">
 			{{ props.module.title }}
 		</div>
 
@@ -43,7 +42,7 @@ function getUrl(url: string) {
 				</div>
 			</template>
 		</div>
-		<div v-if="props.module.image && !section.noImage" class="max-h-48 relative overflow-hidden">
+		<div v-if="props.module.image && !flow.noImage" class="max-h-48 relative overflow-hidden">
 			<NuxtImg
 				class="w-full" format="webp" :src="props.module.image" :alt="module.title" referrerpolicy="no-referrer" loading="lazy"
 				width="320px" height="200px"
@@ -54,7 +53,7 @@ function getUrl(url: string) {
 				</UBadge>
 			</div>
 		</div>
-		<div v-if="!section.noContent && text !== ' '" class="mx-6 max-h-24">
+		<div v-if="!flow.noContent && text !== ' '" class="mx-6 max-h-24">
 			<div v-html="text" />
 		</div>
 		<div class="absolute w-full bottom-0 left-0">
@@ -88,4 +87,3 @@ function getUrl(url: string) {
 	max-width: 100%;
 }
 </style>
-~/composables/adapters/types

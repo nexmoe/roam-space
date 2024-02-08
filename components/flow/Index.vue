@@ -6,6 +6,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+provide('flow', props.flow)
 </script>
 
 <template>
@@ -13,8 +15,9 @@ const props = defineProps<Props>()
 
 	<div class="flow-body">
 		<a v-for="(module) in props.flow.module" :key="module.url" :href="module.url" target="_blank">
-			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module, section: props.flow }" />
-			<ModuleImage v-else v-bind="{ module, section: props.flow }" />
+			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module }" />
+			<ModuleProject v-else-if="props.flow.card === 'project'" v-bind="{ module }" />
+			<ModuleImage v-else v-bind="{ module }" />
 		</a>
 	</div>
 </template>

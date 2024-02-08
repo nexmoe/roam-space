@@ -1,6 +1,6 @@
 import { consola } from 'consola'
 import { PrismaClient } from '@prisma/client'
-import type { Modulex } from '~/composables/adapter/types'
+import type { NModule } from '~/composables/adapter/types'
 import useAdapter from '~/composables/adapter/useAdapter'
 import config from '~/config/config.json'
 
@@ -43,11 +43,11 @@ function levenshteinDistance(a: string, b: string): number {
 /**
  * Merge two arrays of modules, ensuring uniqueness and updating platform information.
  *
- * @param {Modulex[]} a - the first array of modules
- * @param {Modulex[]} b - the second array of modules
- * @return {Modulex[]} the merged array of modules
+ * @param {NModule[]} a - the first array of modules
+ * @param {NModule[]} b - the second array of modules
+ * @return {NModule[]} the merged array of modules
  */
-function mergeArrays(a: Modulex[], b: Modulex[]): Modulex[] {
+function mergeArrays(a: NModule[], b: NModule[]): NModule[] {
 	for (const ele of b) {
 		const item = a.find((v) => {
 			const similarity = 1 - levenshteinDistance(v.title, ele.title) / Math.max(v.title.length, ele.title.length)

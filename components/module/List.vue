@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { Modulex } from '~/composables/adapter/types'
+import type { Flow } from '@prisma/client'
 
 interface Props {
-	section: any
-	module: Modulex
+	module: NModule
 }
 
 const props = defineProps<Props>()
-const section = props.section
+const flow = inject('flow') as Flow
 const text = extractTextFromHTML(props.module.content)
 </script>
 
@@ -27,14 +26,14 @@ const text = extractTextFromHTML(props.module.content)
 			/>
 
 			<div
-				v-if="!section.noTitle"
+				v-if="!flow.noTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
 			</div>
 		</div>
 
-		<div v-if="!section.noContent" class="truncate">
+		<div v-if="!flow.noContent" class="truncate">
 			<div v-html="text" />
 		</div>
 	</div>

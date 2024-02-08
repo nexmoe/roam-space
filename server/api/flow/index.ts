@@ -10,6 +10,7 @@ export default eventHandler(async (event: H3Event) => {
 				orderBy: { date: "desc" },
 			},
 		},
+		orderBy: { index: "asc" },
 	})
 
 	for (const flow of flows) {
