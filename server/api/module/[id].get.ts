@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import type { Modulex } from '~/composables/filter/types'
+import type { Modulex } from '~/composables/adapter/types'
 
 export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma

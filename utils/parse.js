@@ -1,4 +1,4 @@
-export function getFirstImageSrc(html) {
+export function libGetFirstImageSrc(html) {
 	if (!html)
 		return
 	// 匹配第一个 <img> 标签的 src 属性内容

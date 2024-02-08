@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Modulex } from '~/composables/filter/types'
+import type { Modulex } from '~/composables/adapter/types'
 
 interface Props {
 	section: any
@@ -8,7 +8,6 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const image = computed(() => getFirstImageSrc(props.module.content))
 const text = computed(() => extractTextFromHTML(props.module.content))
 
 function getOrigin(url: string) {
@@ -30,8 +29,8 @@ function getUrl(url: string) {
 			{{ props.module.title }}
 		</div>
 
-		<div v-if="!image || (props.module.platform?.length || 0) > 1" class="mx-6 flex flex-row items-center gap-1">
-			<UBadge v-if="!image" class="mr-2 -ml-px" color="gray" variant="solid">
+		<div v-if="!props.module.image || (props.module.platform?.length || 0) > 1" class="mx-6 flex flex-row items-center gap-1">
+			<UBadge v-if="!props.module.image" class="mr-2 -ml-px" color="gray" variant="solid">
 				{{ formatDateTime(module.date) }}
 			</UBadge>
 			<template v-if="(props.module.platform?.length || 0) > 1">
@@ -44,9 +43,9 @@ function getUrl(url: string) {
 				</div>
 			</template>
 		</div>
-		<div v-if="image && !section.noImage" class="max-h-48 relative overflow-hidden">
+		<div v-if="props.module.image && !section.noImage" class="max-h-48 relative overflow-hidden">
 			<NuxtImg
-				class="w-full" format="webp" :src="image" :alt="module.title" referrerpolicy="no-referrer" loading="lazy"
+				class="w-full" format="webp" :src="props.module.image" :alt="module.title" referrerpolicy="no-referrer" loading="lazy"
 				width="320px" height="200px"
 			/>
 			<div class="absolute pb-5 px-6 w-full bottom-0 left-0">
@@ -89,3 +88,4 @@ function getUrl(url: string) {
 	max-width: 100%;
 }
 </style>
+~/composables/adapters/types

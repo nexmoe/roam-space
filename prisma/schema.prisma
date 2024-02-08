@@ -25,6 +25,7 @@ model Module {
   updatedAt DateTime @updatedAt
   title     String
   url       String   @unique
+  image     String?
   content   String   @unique
   date      String
   platform  String?

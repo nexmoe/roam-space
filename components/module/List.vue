@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import type { Modulex } from '~/composables/filter/types'
+import type { Modulex } from '~/composables/adapter/types'
 
 interface Props {
-	cover?: string
 	section: any
 	module: Modulex
 }
 
 const props = defineProps<Props>()
 const section = props.section
-const image = props.cover || getFirstImageSrc(props.module.content)
 const text = extractTextFromHTML(props.module.content)
 </script>
 
@@ -19,10 +17,11 @@ const text = extractTextFromHTML(props.module.content)
 	>
 		<div class="max-w-full flex space-x-4 items-center">
 			<NuxtImg
+				v-if="props.module.image"
 				height="40px"
 				width="40px"
 				class="h-10 w-10 rounded-full"
-				:src="image"
+				:src="props.module.image"
 				loading="lazy"
 				alt="Cover"
 			/>
@@ -52,3 +51,4 @@ const text = extractTextFromHTML(props.module.content)
 	max-width: 100%;
 }
 </style>
+~/composables/adapters/types
