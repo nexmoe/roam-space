@@ -1,11 +1,21 @@
 import type { H3Event } from 'h3'
 
-export default eventHandler((event: H3Event) => {
+export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma
 
-	return prisma.flow.findMany({
+	const flows = await prisma.flow.findMany({
 		include: {
-			api: true,
+			module: {
+				take: 9,
+				orderBy: { date: "desc" },
+			},
 		},
 	})
+
+	for (const flow of flows) {
+		for (const module of flow.module)
+			module.platform = JSON.parse(module.platform)
+	}
+
+	return flows
 })

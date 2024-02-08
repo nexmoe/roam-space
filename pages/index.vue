@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const config = useConfig()
-const { data: flows } = useFetch('/api/flow')
+const { data: flows, error } = useFetch('/api/flow')
+// TODO: handle error
+if (error.value)
+	console.error(`Error fetching data`, error.value)
+
 provide('flows', flows)
 useHead({
 	htmlAttrs: {
@@ -27,9 +31,9 @@ useHead({
 			<div class="content">
 				<UContainer class="px-6 lg:px-12 pb-24 pt-16">
 					<IndexHero />
-					<section v-for="flow in flows" :key="flow.id">
-						<Flow :section="flow" />
-					</section>
+					<template v-for="flow in flows" :key="flow.id">
+						<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
+					</template>
 				</UContainer>
 				<IndexFooter />
 			</div>

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		version: '0.0.1',
 	},
-	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image'],
+	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler'],
 	extends: ['@sidebase/core'],
 	typescript: {
 		shim: false,

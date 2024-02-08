@@ -26,8 +26,8 @@ model Module {
   title     String
   url       String   @unique
   content   String   @unique
-  date      String
-  platform  String
+  date      String?
+  platform  String?
   flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
   flowId    String?
 }
