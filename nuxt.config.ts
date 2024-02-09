@@ -3,11 +3,19 @@ import { setAbsoluteSqliteDatabaseUrlForPrisma } from './prisma/utils'
 setAbsoluteSqliteDatabaseUrlForPrisma()
 
 export default defineNuxtConfig({
+	app: {
+		pageTransition: { name: 'page', mode: 'out-in' },
+	},
 	runtimeConfig: {
 		version: '0.0.1',
 	},
 	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler'],
 	extends: ['@sidebase/core'],
+	image: {
+		format: ['webp'],
+		quality: 80,
+		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com']
+	},
 	typescript: {
 		shim: false,
 	},

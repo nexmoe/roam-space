@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const id = useRoute().params.id
+const useImg = useImage()
 
 const { data: module, error } = useFetch(`/api/module/${id}`)
 
@@ -7,6 +8,22 @@ if (error.value || module.value) {
 	console.error(`Error fetching data`, error.value)
 	const toast = useToast()
 	toast.add({ title: 'Error fetching data' })
+}
+
+function replaceImg(html: string) {
+	// Define a regular expression to match img tags and capture the src attribute
+	const imgRegex = /<img [^>]*src="([^"]*)"[^>]*>/gi
+
+	// Replace the src attribute in each img tag
+	html = html.replace(imgRegex, (match: string, src: string) => {
+		// Replace the src with the new value from useImg function
+		const newSrc = useImg(src)
+		// Return the modified img tag
+		return match.replace(src, newSrc)
+	})
+
+	// Return the modified HTML string
+	return html
 }
 </script>
 
@@ -33,7 +50,7 @@ if (error.value || module.value) {
 				<LinkIcon v-for="platform in module.platform" :key="platform" class="w-6 h-6 block" :url="platform" @click="navigateTo(platform, { open: { target: '_blank' }, external: true })" />
 			</div>
 			<div class="my-6 border-b border-gray-200 w-1/3" />
-			<div class="apple-markdown" v-html="module.content" />
+			<div class="apple-markdown" v-html="replaceImg(module.content)" />
 		</UContainer>
 	</div>
 </template>
@@ -82,40 +99,35 @@ if (error.value || module.value) {
 }
 
 .apple-markdown ul {
-  @apply list-inside;
-  @apply my-6;
-}
-
-.apple-markdown ol {
-  @apply list-decimal;
-  @apply list-inside;
-  @apply my-6;
-}
-
-.apple-markdown li {
-  @apply mb-3;
-  @apply text-lg;
+  @apply list-inside list-disc my-6;
+  @apply text-base text-gray-700;
   @apply pl-4;
 }
 
+.apple-markdown ol {
+  @apply list-decimal list-inside my-6;
+  @apply text-base text-gray-700;
+  @apply pl-4;
+}
+
+.apple-markdown li {
+  @apply mb-2;
+  @apply text-base text-gray-700;
+  @apply leading-6;
+}
+
 .apple-markdown code {
-  @apply bg-gray-100;
-  @apply text-base;
-  @apply p-1;
-  @apply rounded-md;
-  @apply font-mono;
-  @apply shadow-sm;
+  @apply bg-gray-100 text-sm px-2 py-1 rounded-md font-mono shadow-sm border border-gray-300;
 }
 
 .apple-markdown pre {
-  @apply bg-gray-800;
-  @apply text-white;
-  @apply text-base;
-  @apply p-6;
-  @apply my-6;
-  @apply overflow-x-auto;
-  @apply rounded-lg;
-  @apply shadow-md;
+  @apply bg-gray-800 text-white text-sm p-4 my-4 overflow-x-auto rounded-lg shadow-lg;
+}
+
+.apple-markdown pre code {
+  @apply bg-transparent p-0;
+  @apply border-none;
+  @apply shadow-none;
 }
 
 .apple-markdown blockquote {
@@ -139,7 +151,6 @@ if (error.value || module.value) {
 .apple-markdown img {
   @apply my-6;
   @apply mx-auto;
-  @apply shadow-lg;
 }
 
 .apple-markdown hr {

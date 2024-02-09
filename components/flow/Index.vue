@@ -17,7 +17,7 @@ provide('flow', props.flow)
 		<NuxtLink
 			v-for="(module) in props.flow.module" :key="module.url"
 			:to="props.flow.configOpenURL ? module.url : `/module/${module.id}`"
-			:external="props.flow.configOpenURL"
+			:target="props.flow.configOpenURL ? '_blank' : '_self'"
 		>
 			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module }" />
 			<ModuleProject v-else-if="props.flow.card === 'project'" v-bind="{ module }" />
