@@ -27,7 +27,7 @@
 		"dayjs": "1.11.10",
 		"eslint": "8.56.0",
 		"lint-staged": "15.2.2",
-		"nuxt-gtag": "1.1.2",
+		"nuxt-gtag": "1.2.0",
 		"simple-git-hooks": "2.9.0"
 	},
 	"simple-git-hooks": {
