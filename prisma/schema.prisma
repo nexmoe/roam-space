@@ -57,5 +57,5 @@ model Space {
   updatedAt DateTime @updatedAt
   title     String
   details   String
-  Flow      Flow[]
+  flow      Flow[]
 }
