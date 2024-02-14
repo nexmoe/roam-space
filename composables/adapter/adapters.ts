@@ -1,64 +1,77 @@
+import type { API } from '@prisma/client'
 import type { NModule } from './types'
 
 /**
  * Get the src attribute of the first <img> tag in the provided HTML.
  *
  * @param {string} html - The HTML content to search for the first <img> tag.
- * @return {string} The src attribute of the first <img> tag, or an empty string if no <img> tag is found.
+ * @return {string | undefined} The src attribute of the first <img> tag, or undefined if no <img> tag is found.
  */
-function libGetFirstImageSrc(html) {
-	if (!html)
-		return
-	// 匹配第一个 <img> 标签的 src 属性内容
+function libGetFirstImageSrc(html: string): string | undefined {
 	const regex = /<img[^>]+src="([^">]+)"/
 	const match = html.match(regex)
 
-	// 如果匹配成功，则返回第一个匹配结果的 src 属性内容
-	if (match && match.length > 1)
-		return match[1].replace('http://', 'https://')
-
-	// 如果没有匹配结果，则返回空字符串
+	return match ? match[1].replace(/^http:\/\//i, 'https://') : undefined
 }
 
-export function rsshub_json(data: any): NModule[] {
-	return data.items.map((item: any) => {
-		return {
-			title: item.title,
-			url: item.url,
-			image: libGetFirstImageSrc(item.content_html),
-			content: item.content_html,
-			date: item.date_published,
-			platform: [item.url],
-		}
-	})
+interface RSSHubItem {
+	title: string
+	url: string
+	content_html: string
+	date_published: string
 }
 
-// https://nexmoe.com/content.json
-export function hexo(data: any): NModule[] {
-	return data.posts.map((item: any) => {
-		return {
-			title: item.title,
-			url: item.permalink,
-			image: libGetFirstImageSrc(item.text),
-			content: item.text,
-			date: item.date,
-		}
-	})
+export async function rsshub_json(api: API): Promise<NModule[]> {
+	const { items } = await $fetch<{ items: RSSHubItem[] }>(api.url)
+
+	return items.map(({ title, url, content_html, date_published }: RSSHubItem) => ({
+		title,
+		url,
+		image: libGetFirstImageSrc(content_html),
+		content: content_html,
+		date: new Date(date_published),
+		platform: [url],
+	}))
 }
 
-// https://api.github.com/users/nexmoe/repos?sort=pushed&type=all
-export function github_repos(data: any): NModule[] {
-	return data.map((item: any) => {
-		return {
-			title: item.name,
-			url: item.html_url,
-			image: libGetFirstImageSrc(item.html_url),
-			content: item.description || item.name,
-			date: item.pushed_at,
-		}
-	})
+interface HexoPost {
+	title: string
+	permalink: string
+	text: string
+	date: Date
 }
 
-export function roam_space(data: any): NModule[] {
-	return data as NModule[]
+export async function hexo(api: API): Promise<NModule[]> {
+	const { posts } = await $fetch<{ posts: HexoPost[] }>(api.url)
+
+	return posts.map(({ title, permalink, text, date }: HexoPost) => ({
+		title,
+		url: permalink,
+		image: libGetFirstImageSrc(text),
+		content: text,
+		date,
+	}))
+}
+
+interface GitHubRepo {
+	name: string
+	html_url: string
+	description?: string
+	pushed_at: string
+}
+
+export async function github_repos(api: API): Promise<NModule[]> {
+	const repos = await $fetch<GitHubRepo[]>(api.url)
+
+	return repos.map(({ name, html_url, description, pushed_at }: GitHubRepo) => ({
+		title: name,
+		url: html_url,
+		image: '', // GitHub repos do not have an HTML content field to extract images from
+		content: description || name,
+		date: new Date(pushed_at),
+	}))
+}
+
+export async function roam_space(api: API): Promise<NModule[]> {
+	return $fetch<NModule[]>(api.url)
 }

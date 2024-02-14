@@ -42,7 +42,7 @@ model Flow {
   homepage        String?
   index           Int?
   api             API[]
-  card            String?
+  configCard      String?
   configNoContent Boolean? @default(false)
   configNoTitle   Boolean? @default(false)
   configOpenURL   Boolean? @default(false)

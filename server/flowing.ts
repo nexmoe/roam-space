@@ -87,25 +87,22 @@ export default async function () {
 	for (const flow of flows) {
 		const tasks = flow.api.map((api) => {
 			return (async () => {
-				let apiUrlRetry = api.url
 				let originIndex = 0
 				while (originIndex < config.rsshub.origin.length) {
-					apiUrlRetry = apiUrlRetry.includes('{rsshub}') ? apiUrlRetry.replace('{rsshub}', config.rsshub.origin[originIndex]) : apiUrlRetry
+					api.url = api.url.includes('{rsshub}') ? api.url.replace('{rsshub}', config.rsshub.origin[originIndex]) : api.url
 
 					try {
-						consola.info(originIndex === 0 ? 'Fetching' : 'Retry fetching', apiUrlRetry)
-						const res = await $fetch<Record<string, any>>(apiUrlRetry, {
-							method: 'GET',
-							parseResponse: JSON.parse,
-						})
-						consola.success('Success fetching', apiUrlRetry)
+						consola.info(originIndex === 0 ? 'Fetching' : 'Retry fetching', api.url)
 
-						return useAdapter(api.adapter, res).slice(0, 8)
+						const adapter = await useAdapter(api)
+						consola.success('Success fetching', api.url)
+
+						return adapter
 					}
 					catch (error) {
-						consola.error('Error fetching', apiUrlRetry)
+						consola.error('Error fetching', api.url)
 						consola.error(error)
-						if (apiUrlRetry.includes('{rsshub}'))
+						if (api.url.includes('{rsshub}'))
 							originIndex++
 						else
 							break
