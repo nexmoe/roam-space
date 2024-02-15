@@ -3,9 +3,9 @@ import { setAbsoluteSqliteDatabaseUrlForPrisma } from './prisma/utils'
 setAbsoluteSqliteDatabaseUrlForPrisma()
 
 export default defineNuxtConfig({
-	// app: {
-	// 	pageTransition: { name: 'page', mode: 'out-in' },
-	// },
+	app: {
+		pageTransition: { name: 'page', mode: 'out-in' },
+	},
 	runtimeConfig: {
 		version: '0.0.1',
 	},

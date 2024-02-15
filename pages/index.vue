@@ -1,20 +1,20 @@
 <script setup lang="ts">
 // Fetching data from the server side only
 const { data: flows, error } = useFetch('/api/flow', {
-  server: true 
-});
+	server: true,
+})
 
 // Only perform client-side operations within onMounted to avoid SSR issues
 onMounted(() => {
-  if (error.value) {
-    console.error('Error fetching data', error.value);
-    const toast = useToast();
-    toast.add({ title: 'Error fetching data' });
-  }
-});
+	if (error.value) {
+		console.error('Error fetching data', error.value)
+		const toast = useToast()
+		toast.add({ title: 'Error fetching data' })
+	}
+})
 
 // Providing the 'flows' data to the component tree
-provide('flows', flows);
+provide('flows', flows)
 
 useHead({
 	htmlAttrs: {
@@ -37,14 +37,11 @@ useHead({
 			</UContainer>
 			<IndexFooter />
 		</div>
+		<IndexTool />
 	</div>
-	<IndexTool />
 </template>
 
 <style scoped>
-.page {
-	/* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e"); */
-}
 .sidebar {
 	@apply fixed w-0 lg:w-64 bg-white h-full;
 }
