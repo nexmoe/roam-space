@@ -1,14 +1,21 @@
 <script setup lang="ts">
-const config = useConfig()
-const { data: flows, error } = useFetch('/api/flow')
+// Fetching data from the server side only
+const { data: flows, error } = useFetch('/api/flow', {
+  server: true 
+});
 
-if (error.value) {
-	console.error(`Error fetching data`, error.value)
-	const toast = useToast()
-	toast.add({ title: 'Error fetching data' })
-}
+// Only perform client-side operations within onMounted to avoid SSR issues
+onMounted(() => {
+  if (error.value) {
+    console.error('Error fetching data', error.value);
+    const toast = useToast();
+    toast.add({ title: 'Error fetching data' });
+  }
+});
 
-provide('flows', flows)
+// Providing the 'flows' data to the component tree
+provide('flows', flows);
+
 useHead({
 	htmlAttrs: {
 		lang: 'zh-CN',
@@ -43,5 +50,15 @@ useHead({
 }
 .content {
 	@apply lg:pl-72 lg:pr-8;
+}
+@media (min-width: 1280px) {
+	.page :deep(.flow-body a:nth-child(n + 10)) {
+		display: none;
+	}
+}
+@media (min-width: 1536px) {
+	.page :deep(.flow-body a:nth-child(n + 9)) {
+		display: none;
+	}
 }
 </style>

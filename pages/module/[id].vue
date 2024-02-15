@@ -2,13 +2,19 @@
 const id = useRoute().params.id
 const useImg = useImage()
 
-const { data: module, error } = useFetch(`/api/module/${id}`)
+// Fetching data from the server side only
+const { data: module, error } = useFetch(`/api/module/${id}`, {
+  server: true 
+});
 
-if (error.value || module.value) {
-	console.error(`Error fetching data`, error.value)
-	const toast = useToast()
-	toast.add({ title: 'Error fetching data' })
-}
+// Only perform client-side operations within onMounted to avoid SSR issues
+onMounted(() => {
+  if (error.value) {
+    console.error('Error fetching data', error.value);
+    const toast = useToast();
+    toast.add({ title: 'Error fetching data' });
+  }
+});
 
 function replaceImg(html: string) {
 	// Define a regular expression to match img tags and capture the src attribute
