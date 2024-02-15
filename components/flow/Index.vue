@@ -19,8 +19,8 @@ provide('flow', props.flow)
 			:to="props.flow.configOpenURL ? module.url : `/module/${module.id}`"
 			:target="props.flow.configOpenURL ? '_blank' : '_self'"
 		>
-			<ModuleList v-if="props.flow.card === 'list'" v-bind="{ module }" />
-			<ModuleProject v-else-if="props.flow.card === 'project'" v-bind="{ module }" />
+			<ModuleList v-if="props.flow.configCard === 'list'" v-bind="{ module }" />
+			<ModuleProject v-else-if="props.flow.configCard === 'project'" v-bind="{ module }" />
 			<ModuleImage v-else v-bind="{ module }" />
 		</NuxtLink>
 	</div>

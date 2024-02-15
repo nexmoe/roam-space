@@ -1,8 +1,10 @@
 import { consola } from 'consola'
-import { PrismaClient } from '@prisma/client'
+import { type API, type Flow, PrismaClient } from '@prisma/client'
 import type { NModule } from '~/composables/adapter/types'
 import useAdapter from '~/composables/adapter/useAdapter'
 import config from '~/config/config.json'
+
+const prisma = new PrismaClient()
 
 /**
  * Calculate the Levenshtein distance between two strings.
@@ -76,62 +78,75 @@ function mergeArrays(a: NModule[], b: NModule[]): NModule[] {
 	return a
 }
 
-export default async function () {
+export async function flowingByFlowId(flowId: string) {
+	const flow = await prisma.flow.findUnique({
+		where: { id: flowId },
+		include: {
+			api: true,
+		},
+	})
+	if (flow)
+		await flowingByFlow(flow)
+}
+
+async function flowingByFlow(flow: Flow) {
+	const tasks = flow.api.map((api: API) => {
+		return (async () => {
+			let originIndex = 0
+			while (originIndex < config.rsshub.origin.length) {
+				api.url = api.url.includes('{rsshub}') ? api.url.replace('{rsshub}', config.rsshub.origin[originIndex]) : api.url
+
+				try {
+					consola.info(originIndex === 0 ? 'Fetching' : 'Retry fetching', api.url)
+
+					const adapter = await useAdapter(api)
+					consola.success('Success fetching', api.url)
+
+					return adapter
+				}
+				catch (error) {
+					consola.error('Error fetching', api.url)
+					consola.error(error)
+					if (api.url.includes('{rsshub}'))
+						originIndex++
+					else
+						break
+				}
+			}
+			throw new Error('All retry attempts failed')
+		})()
+	})
+
+	const res = await Promise.allSettled(tasks)
+
+	const response = res.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []))
+	const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : []
+
+	try {
+		for (const ele of final) {
+			await prisma.module.create({
+				data: {
+					...ele,
+					date: ele.date || new Date().toISOString(),
+					flowId: flow.id,
+				},
+			})
+		}
+	}
+	catch (error) {
+		consola.error(error)
+	}
+}
+
+export async function flowing() {
 	consola.info('Flowing started')
-	const prisma = new PrismaClient()
 	const flows = await prisma.flow.findMany({
 		include: {
 			api: true,
 		},
 	})
-	for (const flow of flows) {
-		const tasks = flow.api.map((api) => {
-			return (async () => {
-				let originIndex = 0
-				while (originIndex < config.rsshub.origin.length) {
-					api.url = api.url.includes('{rsshub}') ? api.url.replace('{rsshub}', config.rsshub.origin[originIndex]) : api.url
+	for (const flow of flows)
+		await flowingByFlow(flow)
 
-					try {
-						consola.info(originIndex === 0 ? 'Fetching' : 'Retry fetching', api.url)
-
-						const adapter = await useAdapter(api)
-						consola.success('Success fetching', api.url)
-
-						return adapter
-					}
-					catch (error) {
-						consola.error('Error fetching', api.url)
-						consola.error(error)
-						if (api.url.includes('{rsshub}'))
-							originIndex++
-						else
-							break
-					}
-				}
-				throw new Error('All retry attempts failed')
-			})()
-		})
-
-		const res = await Promise.allSettled(tasks)
-
-		const response = res.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []))
-		const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : []
-
-		try {
-			for (const ele of final) {
-				await prisma.module.create({
-					data: {
-						...ele,
-						date: ele.date || new Date().toISOString(),
-						platform: JSON.stringify(ele.platform),
-						flowId: flow.id,
-					},
-				})
-			}
-		}
-		catch (error) {
-			consola.error(error)
-		}
-	}
 	consola.success('Flowing end')
 }

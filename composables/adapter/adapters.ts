@@ -29,7 +29,7 @@ export async function rsshub_json(api: API): Promise<NModule[]> {
 		url,
 		image: libGetFirstImageSrc(content_html),
 		content: content_html,
-		date: new Date(date_published),
+		date: date_published ? new Date(date_published) : new Date(),
 		platform: [url],
 	}))
 }
@@ -49,7 +49,7 @@ export async function hexo(api: API): Promise<NModule[]> {
 		url: permalink,
 		image: libGetFirstImageSrc(text),
 		content: text,
-		date,
+		date: new Date(date),
 	}))
 }
 

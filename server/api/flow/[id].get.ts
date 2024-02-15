@@ -1,4 +1,5 @@
 import type { H3Event } from 'h3'
+import { flowingByFlowId } from '~/server/flowing'
 
 export default eventHandler(async (event: H3Event) => {
 	const prisma = event.context.prisma
@@ -8,13 +9,15 @@ export default eventHandler(async (event: H3Event) => {
 		where: { id: params?.id },
 		include: {
 			module: {
-				orderBy: { date: "desc" },
+				orderBy: { date: 'desc' },
 			},
 		},
 	})
 
-	for (const module of flow.module)
-			module.platform = JSON.parse(module.platform)
+	if (flow.module.length === 0 && flow.id) {
+		flowingByFlowId(flow.id)
+		return
+	}
 
 	return flow
 })

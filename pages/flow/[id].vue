@@ -14,7 +14,7 @@ provide('flow', flow)
 <template>
 	<div class="flow-body">
 		<a v-for="(module, index) in flow.module" :key="module.url + index" :href="module.url" target="_blank">
-			<ModuleList v-if="flow.card === 'list'" v-bind="{ module }" />
+			<ModuleList v-if="flow.configCard === 'list'" v-bind="{ module }" />
 			<ModuleImage v-else v-bind="{ module }" />
 		</a>
 	</div>

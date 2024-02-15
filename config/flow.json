@@ -1,7 +1,18 @@
 [
-
+	{
+		"title": "项目",
+		"homepage": "https://roam.mixcm.com/bookmarks/63908420e127c076e239",
+		"configCard": "project",
+		"api": [
+			{
+				"url": "http://localhost:3000/project.json",
+				"adapter": "roam_space"
+			}
+		]
+	},
 	{
 		"homepage": "https://nex.xlog.app",
+		"title": "文章",
 		"api": [
 			{
 				"adapter": "rsshub_json",
@@ -15,8 +26,7 @@
 				"adapter": "rsshub_json",
 				"url": "https://nex.xlog.app/feed?format=json"
 			}
-		],
-		"title": "文章"
+		]
 	},
 	{
 		"homepage": "https://github.com/nexmoe",
@@ -81,7 +91,7 @@
 			}
 		],
 		"title": "听歌总榜",
-		"card": "list",
+		"configCard": "list",
 		"configNoContent": true
 	}
 ]

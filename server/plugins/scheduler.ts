@@ -1,5 +1,5 @@
 import { useScheduler } from '#scheduler'
-import Flowing from '~/server/flowing'
+import { flowing } from '~/server/flowing'
 
 export default defineNitroPlugin(() => {
     startScheduler()
@@ -10,6 +10,6 @@ function startScheduler() {
 
     // fetch every 1 hour
     scheduler.run(async () => {
-        await Flowing()
+        await flowing()
     }).everyHours(1)
 }
