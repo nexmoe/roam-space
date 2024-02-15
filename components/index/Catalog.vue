@@ -55,7 +55,8 @@ onUnmounted(() => {
 	window.removeEventListener('scroll', updateActiveSection)
 })
 
-list.value[0].active = true
+if (list.value && list.value.length > 0)
+	list.value[0].active = true
 </script>
 
 <template>
