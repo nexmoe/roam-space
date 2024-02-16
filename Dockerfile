@@ -1,5 +1,5 @@
 # 第一阶段：构建阶段
-FROM node:20.11.0-alpine as build
+FROM node:20.11.1-alpine as build
 
 WORKDIR /src
 
@@ -14,7 +14,7 @@ COPY . .
 RUN pnpm build
 
 # 第二阶段：运行阶段
-FROM node:20.11.0-alpine as base
+FROM node:20.11.1-alpine as base
 
 EXPOSE 3000
 
