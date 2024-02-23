@@ -12,8 +12,8 @@ dependencies:
     specifier: 1.3.0
     version: 1.3.0
   '@nuxt/ui':
-    specifier: 2.14.0
-    version: 2.14.0(nuxt@3.10.3)(vite@5.1.4)(vue@3.4.19)
+    specifier: 2.14.1
+    version: 2.14.1(nuxt@3.10.3)(vite@5.1.4)(vue@3.4.19)
   '@pinia/nuxt':
     specifier: 0.5.1
     version: 0.5.1(typescript@5.3.3)(vue@3.4.19)
@@ -1045,7 +1045,7 @@ packages:
       debug: 4.3.4
       kolorist: 1.8.0
       local-pkg: 0.5.0
-      mlly: 1.5.0
+      mlly: 1.6.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1455,8 +1455,8 @@ packages:
       nuxt: ^3.8.2
       vite: '*'
     dependencies:
-      '@nuxt/kit': 3.10.2
-      '@nuxt/schema': 3.10.2
+      '@nuxt/kit': 3.10.3
+      '@nuxt/schema': 3.10.3
       execa: 7.2.0
       nuxt: 3.10.3(@types/node@20.11.20)(eslint@8.56.0)(typescript@5.3.3)(vite@5.1.4)
       vite: 5.1.4(@types/node@20.11.20)
@@ -1471,8 +1471,8 @@ packages:
       nuxt: ^3.9.0
       vite: '*'
     dependencies:
-      '@nuxt/kit': 3.10.2
-      '@nuxt/schema': 3.10.2
+      '@nuxt/kit': 3.10.3
+      '@nuxt/schema': 3.10.3
       execa: 7.2.0
       nuxt: 3.10.3(@types/node@20.11.20)(eslint@8.56.0)(typescript@5.3.3)(vite@5.1.4)
       vite: 5.1.4(@types/node@20.11.20)
@@ -1687,6 +1687,7 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
 
   /@nuxt/kit@3.10.3:
     resolution: {integrity: sha512-PUjYB9Mvx0qD9H1QZBwwtY4fLlCLET+Mm9BVqUOtXCaGoXd6u6BE4e/dGFPk2UEKkIcDGrUMSbqkHYvsEuK9NQ==}
@@ -1719,7 +1720,7 @@ packages:
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       '@nuxt/schema': 3.9.0
-      c12: 1.8.0
+      c12: 1.9.0
       consola: 3.2.3
       defu: 6.1.4
       globby: 14.0.1
@@ -1727,7 +1728,7 @@ packages:
       ignore: 5.3.1
       jiti: 1.21.0
       knitwork: 1.0.0
-      mlly: 1.5.0
+      mlly: 1.6.0
       pathe: 1.1.2
       pkg-types: 1.0.3
       scule: 1.3.0
@@ -1812,6 +1813,7 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
 
   /@nuxt/schema@3.10.3:
     resolution: {integrity: sha512-a4cYbeskEVBPazgAhvUGkL/j7ho/iPWMK3vCEm6dRMjSqHVEITRosrj0aMfLbRrDpTrMjlRs0ZitxiaUfE/p5Q==}
@@ -1919,15 +1921,15 @@ packages:
   /@nuxt/ui-templates@1.3.1:
     resolution: {integrity: sha512-5gc02Pu1HycOVUWJ8aYsWeeXcSTPe8iX8+KIrhyEtEoOSkY0eMBuo0ssljB8wALuEmepv31DlYe5gpiRwkjESA==}
 
-  /@nuxt/ui@2.14.0(nuxt@3.10.3)(vite@5.1.4)(vue@3.4.19):
-    resolution: {integrity: sha512-WLjHv1zdJCmSU//wiigMXz7C4k0sroL8tCSNXnBRJAD5UIQiZ70gN+RFV9YRv4Ofv/soeYUgXZoiYTu4u3NHbA==}
+  /@nuxt/ui@2.14.1(nuxt@3.10.3)(vite@5.1.4)(vue@3.4.19):
+    resolution: {integrity: sha512-yz6S05a37Q5PRskw1eXtRet4q8C463WMJFSu1Lw7zpKSl2yCyPJYegzwXqQV/fLo/NvM9j62XTuEy7+Xe7j0Kw==}
     engines: {node: '>=v16.20.2'}
     dependencies:
       '@egoist/tailwindcss-icons': 1.7.4(tailwindcss@3.4.1)
       '@headlessui/tailwindcss': 0.2.0(tailwindcss@3.4.1)
       '@headlessui/vue': 1.7.19(vue@3.4.19)
       '@iconify-json/heroicons': 1.1.20
-      '@nuxt/kit': 3.10.2
+      '@nuxt/kit': 3.10.3
       '@nuxtjs/color-mode': 3.3.2
       '@nuxtjs/tailwindcss': 6.11.4
       '@popperjs/core': 2.11.8
@@ -2030,7 +2032,7 @@ packages:
   /@nuxtjs/color-mode@3.3.2:
     resolution: {integrity: sha512-BLpBfrYZngV2QWFQ4HNEFwAXa3Pno43Ge+2XHcZJTTa1Z4KzRLvOwku8yiyV3ovIaaXKGwduBdv3Z5Ocdp0/+g==}
     dependencies:
-      '@nuxt/kit': 3.10.2
+      '@nuxt/kit': 3.10.3
       lodash.template: 4.5.0
       pathe: 1.1.2
     transitivePeerDependencies:
@@ -2055,13 +2057,13 @@ packages:
   /@nuxtjs/tailwindcss@6.11.4:
     resolution: {integrity: sha512-09cksgZD4seQj054Z/BeiwFg1bzQTol8KPulLDLGnmMTkEi21vj/z+WlXQRpVbN1GS9+oU9tcSsu2ufXCM3DBg==}
     dependencies:
-      '@nuxt/kit': 3.10.2
+      '@nuxt/kit': 3.10.3
       autoprefixer: 10.4.17(postcss@8.4.35)
       chokidar: 3.6.0
       clear-module: 4.1.2
       consola: 3.2.3
       defu: 6.1.4
-      h3: 1.10.1
+      h3: 1.10.2
       micromatch: 4.0.5
       pathe: 1.1.2
       postcss: 8.4.35
@@ -5262,6 +5264,7 @@ packages:
 
   /h3@1.10.1:
     resolution: {integrity: sha512-UBAUp47hmm4BB5/njB4LrEa9gpuvZj4/Qf/ynSMzO6Ku2RXaouxEfiG2E2IFnv6fxbhAkzjasDxmo6DFdEeXRg==}
+    requiresBuild: true
     dependencies:
       cookie-es: 1.0.0
       defu: 6.1.4
@@ -5963,10 +5966,10 @@ packages:
       consola: 3.2.3
       defu: 6.1.4
       get-port-please: 3.1.2
-      h3: 1.10.1
+      h3: 1.10.2
       http-shutdown: 1.2.2
       jiti: 1.21.0
-      mlly: 1.5.0
+      mlly: 1.6.0
       node-forge: 1.3.1
       pathe: 1.1.2
       std-env: 3.7.0
@@ -6017,7 +6020,7 @@ packages:
     resolution: {integrity: sha512-ok6z3qlYyCDS4ZEU27HaU6x/xZa9Whf8jD4ptH5UZTQYZVYeb9bnZ3ojVhiJNLiXK1Hfc0GNbLXcmZ5plLDDBg==}
     engines: {node: '>=14'}
     dependencies:
-      mlly: 1.5.0
+      mlly: 1.6.0
       pkg-types: 1.0.3
 
   /locate-path@5.0.0:
@@ -6431,7 +6434,7 @@ packages:
       '@types/http-proxy': 1.17.14
       '@vercel/nft': 0.24.4
       archiver: 6.0.1
-      c12: 1.8.0
+      c12: 1.9.0
       chalk: 5.3.0
       chokidar: 3.6.0
       citty: 0.1.5
@@ -6447,7 +6450,7 @@ packages:
       fs-extra: 11.2.0
       globby: 14.0.1
       gzip-size: 7.0.0
-      h3: 1.10.1
+      h3: 1.10.2
       hookable: 5.5.3
       httpxy: 0.1.5
       is-primitive: 3.0.1
@@ -6457,7 +6460,7 @@ packages:
       listhen: 1.5.5
       magic-string: 0.30.7
       mime: 3.0.0
-      mlly: 1.5.0
+      mlly: 1.6.0
       mri: 1.2.0
       node-fetch-native: 1.6.1
       ofetch: 1.3.3
@@ -6689,7 +6692,7 @@ packages:
       '@iconify/collections': 1.0.377
       '@iconify/vue': 4.1.1(vue@3.4.19)
       '@nuxt/devtools-kit': 1.0.8(nuxt@3.10.3)(vite@5.1.4)
-      '@nuxt/kit': 3.10.2
+      '@nuxt/kit': 3.10.3
     transitivePeerDependencies:
       - nuxt
       - rollup
@@ -7135,7 +7138,7 @@ packages:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
     dependencies:
       jsonc-parser: 3.2.1
-      mlly: 1.5.0
+      mlly: 1.6.0
       pathe: 1.1.2
 
   /pluralize@8.0.0:
@@ -8537,7 +8540,7 @@ packages:
       fast-glob: 3.3.2
       local-pkg: 0.5.0
       magic-string: 0.30.7
-      mlly: 1.5.0
+      mlly: 1.6.0
       pathe: 1.1.2
       pkg-types: 1.0.3
       scule: 1.3.0
