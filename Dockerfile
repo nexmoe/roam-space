@@ -1,26 +1,46 @@
-# 第一阶段：构建阶段
-FROM node:20.11.1-alpine as build
+# Use a smaller base image
+ARG NODE_VERSION=node:20-alpine
 
-WORKDIR /src
+# Stage 1: Build dependencies
+FROM $NODE_VERSION AS dependency-base
 
-# 将依赖项安装到单独的图层中
-COPY package.json pnpm-lock.yaml .npmrc ./
-RUN npm config set registry https://registry.npmmirror.com && \
-    npm install -g pnpm && \
-    pnpm install
+# Create app directory
+WORKDIR /app
 
-# 复制应用程序代码并构建
+# Install pnpm
+RUN npm install -g pnpm
+
+# Copy the package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
+
+# Stage 2: Build the application
+FROM dependency-base AS production-base
+
+# Copy the source code
 COPY . .
-RUN pnpm build
 
-# 第二阶段：运行阶段
-FROM node:20.11.1-alpine as base
+# Build the application
+RUN pnpm run build
+
+# Stage 3: Production image
+FROM $NODE_VERSION AS production
+
+# Copy built assets from previous stage
+COPY --from=production-base /app/.output /app/.output
+
+# Define environment variables
+ENV NUXT_HOST=0.0.0.0 \
+    NUXT_APP_VERSION=latest \
+    DATABASE_URL=file:./db.sqlite \
+    NODE_ENV=production
+
+# Set the working directory
+WORKDIR /app
 
 EXPOSE 3000
 
-WORKDIR /src
-
-# 复制构建阶段生成的代码和依赖项（仅复制构建所需的文件和依赖项）
-COPY --from=build /src/.output /src/.output
-
-CMD [ "node", ".output/server/index.mjs" ]
+# Start the app
+CMD ["node", "/app/.output/server/index.mjs"]

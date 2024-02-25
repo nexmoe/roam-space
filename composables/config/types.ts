@@ -1,20 +1,3 @@
-// Base
-export interface Flow {
-	title: string
-	adapter?: string
-	homepage?: string
-	api?: API[]
-	card?: string
-	list?: List[] | Project[]
-	noContent?: boolean
-	noTitle?: boolean
-}
-
-interface API {
-	url: string
-	adapter: string
-}
-
 // Hero
 export interface Hero {
 	title: string
@@ -55,7 +38,6 @@ export interface Project {
 	url: string
 }
 
-
 export interface Rsshub {
 	origin: string[]
 }
@@ -66,6 +48,5 @@ export interface Configuration {
 
 export interface Config {
 	hero: Hero
-	flow: Flow[]
 	config: Configuration
 }

@@ -1,45 +1,18 @@
 [
 	{
-		"adapter": "project",
 		"title": "项目",
 		"homepage": "https://roam.mixcm.com/bookmarks/63908420e127c076e239",
-		"list": [
+		"configCard": "project",
+		"api": [
 			{
-				"title": "小舒同学",
-				"logo": "https://xiaoshuapp.com/icon.svg",
-				"color": "#df5d64",
-				"des": "轻松得使你的收藏夹变成强大的新标签页，让你重新聚焦真正重要的事情",
-				"slogan": "我们费尽心思折腾主页，<br />却从未好好整理过我们的收藏夹",
-				"url": "https://xiaoshuapp.com/"
-			},
-			{
-				"title": "探索者小舒",
-				"logo": "https://xiaoshuapp.com/explorer/icon.svg",
-				"color": "#665cd5",
-				"des": "以最轻松快捷的方式在侧栏切换搜索",
-				"slogan": "专业的操作不需要那么痛苦",
-				"url": "https://xiaoshuapp.com/explorer/"
-			},
-			{
-				"title": "漫游云野",
-				"logo": "https://i.dawnlab.me/50929d62d1850bcc95495ff522ee127c.th.png/nexmoe",
-				"color": "#f04e45",
-				"des": "轻松随意地与你朋友分享你的宝藏，发现互联网上的秘宝",
-				"slogan": "让你的收藏不再是孤岛",
-				"url": "https://roam.mixcm.com"
-			},
-			{
-				"title": "Monitor Pro",
-				"logo": "https://i.dawnlab.me/b49f4dc77408b1e5446ad667323e7eda.png",
-				"color": "#ff5454",
-				"des": "监控一切你在意的资源信息",
-				"slogan": "专业的操作不需要那么痛苦",
-				"url": "https://marketplace.visualstudio.com/items?itemName=nexmoe.monitor-pro"
+				"url": "http://localhost:3000/project.json",
+				"adapter": "roam_space"
 			}
 		]
 	},
 	{
 		"homepage": "https://nex.xlog.app",
+		"title": "文章",
 		"api": [
 			{
 				"adapter": "rsshub_json",
@@ -53,8 +26,7 @@
 				"adapter": "rsshub_json",
 				"url": "https://nex.xlog.app/feed?format=json"
 			}
-		],
-		"title": "文章"
+		]
 	},
 	{
 		"homepage": "https://github.com/nexmoe",
@@ -65,7 +37,7 @@
 			}
 		],
 		"title": "最近贡献",
-		"noTitle": true
+		"configNoTitle": true
 	},
 	{
 		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
@@ -94,7 +66,7 @@
 			}
 		],
 		"title": "社交媒体",
-		"noTitle": true
+		"configNoTitle": true
 	},
 	{
 		"homepage": "https://juejin.cn/column/7287241187447308345",
@@ -119,7 +91,7 @@
 			}
 		],
 		"title": "听歌总榜",
-		"card": "list",
-		"noContent": true
+		"configCard": "list",
+		"configNoContent": true
 	}
 ]

@@ -1,40 +1,33 @@
-<script setup>
-const props = defineProps({
-	section: Object,
-})
+<script setup lang="ts">
+import type { Flow } from '@prisma/client'
 
-const requestURL = computed(() => `/api/flow/${encodeURI(props.section.title)}`)
-const { data, error } = await useFetch(requestURL, { immediate: true })
-// TODO: handle error
-if (error.value || data.value.code !== 0)
-	console.error(`Error fetching data from ${url}:`, error.value, data.value)
+interface Props {
+	flow: Flow
+}
 
-const res = computed(() => data.value.data)
+const props = defineProps<Props>()
+
+provide('flow', props.flow)
 </script>
 
 <template>
-	<FlowHeader :title="section.title" :url="section.homepage" />
+	<FlowHeader :title="props.flow.title" :url="props.flow.homepage" />
 
-	<div class="flow-body" :class="section.class">
-		<a v-for="module in res" :key="module.url" :href="module.url" target="_blank">
-			<ModuleList v-if="section.card === 'list'" v-bind="{ module, section }" />
-			<ModuleImage v-else v-bind="{ module, section }" />
-		</a>
+	<div class="flow-body">
+		<NuxtLink
+			v-for="(module) in props.flow.module" :key="module.url"
+			:to="props.flow.configOpenURL ? module.url : `/module/${module.id}`"
+			:target="props.flow.configOpenURL ? '_blank' : '_self'"
+		>
+			<ModuleList v-if="props.flow.configCard === 'list'" v-bind="{ module }" />
+			<ModuleProject v-else-if="props.flow.configCard === 'project'" v-bind="{ module }" />
+			<ModuleImage v-else v-bind="{ module }" />
+		</NuxtLink>
 	</div>
 </template>
 
 <style>
 .flow-body {
 	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
-}
-@media (min-width: 1280px) {
-	.flow-body a:nth-child(n+10) {
-		display: none;
-	}
-}
-@media (min-width: 1536px) {
-	.flow-body a:nth-child(n+9) {
-        display: none;
-    }
 }
 </style>

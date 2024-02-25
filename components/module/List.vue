@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import type { Flow } from '@prisma/client'
+
 interface Props {
-	cover?: string;
-	section: any;
-	module: Module;
+	module: NModule
 }
 
 const props = defineProps<Props>()
-const section = props.section
-const image = props.cover || getFirstImageSrc(props.module.content)
+const flow = inject('flow') as Flow
 const text = extractTextFromHTML(props.module.content)
 </script>
 
@@ -17,23 +16,24 @@ const text = extractTextFromHTML(props.module.content)
 	>
 		<div class="max-w-full flex space-x-4 items-center">
 			<NuxtImg
+				v-if="props.module.image"
 				height="40px"
 				width="40px"
 				class="h-10 w-10 rounded-full"
-				:src="image"
+				:src="props.module.image"
 				loading="lazy"
 				alt="Cover"
 			/>
 
 			<div
-				v-if="!section.noTitle"
+				v-if="!flow.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
 			</div>
 		</div>
 
-		<div v-if="!section.noContent" class="truncate">
+		<div v-if="!flow.configNoContent" class="truncate">
 			<div v-html="text" />
 		</div>
 	</div>
@@ -50,3 +50,4 @@ const text = extractTextFromHTML(props.module.content)
 	max-width: 100%;
 }
 </style>
+~/composables/adapters/types

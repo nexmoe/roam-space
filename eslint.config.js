@@ -1,11 +1,8 @@
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
+const antfu = require('@antfu/eslint-config').default
 
-export default antfu({
+module.exports = antfu({
 	stylistic: {
 		indent: 'tab',
 	},
-	// typescript: {
-	//     tsconfigPath: 'tsconfig.json',
-	// },
+	ignores: ['dist', '**/dist/**', 'public', '**/public/**', 'auto-imports.d.ts', '**/auto-imports.d.ts/**', 'components.d.ts', '**/components.d.ts/**', '.output', '**/.output/**', 'node_modules', '**/node_modules/**'],
 })

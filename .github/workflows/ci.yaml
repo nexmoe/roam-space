@@ -1,0 +1,57 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  testCodebase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Install pnpm and packages
+      - run: npm install -g pnpm
+      - run: pnpm install
+
+      # Generate prisma client & push to db
+      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      - run: npx prisma db push
+      - run: npx prisma generate
+
+      # Run linting and typechecking
+      - run: pnpm run lint
+      - run: pnpm run typecheck
+
+      # Run tests
+      - run: pnpm run test
+
+  testAppBuildsAndStarts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Install pnpm and packages
+      - run: npm install -g pnpm
+      - run: pnpm install
+
+      # Generate prisma client & push to db
+      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      - run: npx prisma db push
+      - run: npx prisma generate
+
+      # Start app in dev mode and load `/`-index page
+      - run: '(timeout 60 pnpm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful'
+
+      # Build & start app in production mode and load `/`-index page
+      - run: 'pnpm run build && (timeout 60 pnpm run preview & (sleep 10 && curl --fail localhost:3000)) && echo Run production check successful'

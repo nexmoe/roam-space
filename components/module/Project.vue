@@ -1,7 +1,8 @@
-<script setup>
-const props = defineProps({
-	item: Object,
-})
+<script setup lang="ts">
+interface Props {
+	module: NModule
+}
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -13,20 +14,18 @@ const props = defineProps({
 				<NuxtImg
 					width="48px"
 					height="48px"
-					:src="props.item.logo"
+					:src="props.module.image"
 					loading="lazy"
-					:title="props.item.title"
+					:title="props.module.title"
 				/>
 			</div>
 			<div
 				class="text-xl font-bold tracking-tight text-black"
-				:style="{ color: props.item.color }"
-			>
-				{{ props.item.title }}
-			</div>
+				v-html="props.module.title"
+			/>
 			<div
 				class="mt-3 text-base leading-7 text-gray-500"
-				v-html="props.item.des"
+				v-html="props.module.content"
 			/>
 		</div>
 	</div>

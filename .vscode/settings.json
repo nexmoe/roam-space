@@ -1,76 +1,46 @@
 {
+	"[vue]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[js]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[ts]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"editor.quickSuggestions": {
-		"strings": true
-	},
-	"tailwindCSS.experimental.classRegex": [
-		[
-			"ui:\\s*{([^)]*)\\s*}",
-			"[\"'`]([^\"'`]*).*?[\"'`]"
-		],
-		[
-			"/\\*ui\\*/\\s*{([^;]*)}",
-			":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
-		]
-	],
-	"tailwindCSS.classAttributes": [
-		"class",
-		"className",
-		"ngClass",
-		"ui"
-	],
-	"nuxt.isNuxtApp": false,
+	"volar.autoCompleteRefs": true,
+	"prisma.fileWatcher": true,
 	// Enable the ESlint flat config support
 	"eslint.experimental.useFlatConfig": true,
+
 	// Disable the default formatter, use eslint instead
 	"prettier.enable": false,
 	"editor.formatOnSave": false,
+
 	// Auto fix
 	"editor.codeActionsOnSave": {
-		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "explicit",
 		"source.organizeImports": "never"
 	},
+
 	// Silent the stylistic rules in you IDE, but still auto fix them
 	"eslint.rules.customizations": [
-		{
-			"rule": "style/*",
-			"severity": "off"
-		},
-		{
-			"rule": "*-indent",
-			"severity": "off"
-		},
-		{
-			"rule": "*-spacing",
-			"severity": "off"
-		},
-		{
-			"rule": "*-spaces",
-			"severity": "off"
-		},
-		{
-			"rule": "*-order",
-			"severity": "off"
-		},
-		{
-			"rule": "*-dangle",
-			"severity": "off"
-		},
-		{
-			"rule": "*-newline",
-			"severity": "off"
-		},
-		{
-			"rule": "*quotes",
-			"severity": "off"
-		},
-		{
-			"rule": "*semi",
-			"severity": "off"
-		}
+		{ "rule": "style/*", "severity": "off" },
+		{ "rule": "format/*", "severity": "off" },
+		{ "rule": "*-indent", "severity": "off" },
+		{ "rule": "*-spacing", "severity": "off" },
+		{ "rule": "*-spaces", "severity": "off" },
+		{ "rule": "*-order", "severity": "off" },
+		{ "rule": "*-dangle", "severity": "off" },
+		{ "rule": "*-newline", "severity": "off" },
+		{ "rule": "*quotes", "severity": "off" },
+		{ "rule": "*semi", "severity": "off" }
 	],
+
 	// Enable eslint for all supported languages
 	"eslint.validate": [
 		"javascript",
@@ -82,6 +52,7 @@
 		"markdown",
 		"json",
 		"jsonc",
-		"yaml"
+		"yaml",
+		"toml"
 	]
 }

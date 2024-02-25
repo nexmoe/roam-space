@@ -1,5 +1,21 @@
-<script setup>
-const config = useConfig()
+<script setup lang="ts">
+// Fetching data from the server side only
+const { data: flows, error } = useFetch('/api/flow', {
+	server: true,
+})
+
+// Only perform client-side operations within onMounted to avoid SSR issues
+onMounted(() => {
+	if (error.value) {
+		console.error('Error fetching data', error.value)
+		const toast = useToast()
+		toast.add({ title: 'Error fetching data' })
+	}
+})
+
+// Providing the 'flows' data to the component tree
+provide('flows', flows)
+
 useHead({
 	htmlAttrs: {
 		lang: 'zh-CN',
@@ -8,44 +24,22 @@ useHead({
 </script>
 
 <template>
-	<Head>
-		<Title>{{ config.hero.title }}</Title>
-		<Meta name="description" :content="config.hero.description" />
-		<Link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Noto+Serif+SC&display=swap"
-			media="all"
-		/>
-	</Head>
-	<div class="bg-[#fefefe]">
-		<!-- <div
-			class="fixed w-screen h-screen bg-cover bg-fixed bg-no-repeat bg-[url(https://lib.xiaoshuapp.com/wall/bing)]"
-			style="z-index: -1;"
-		/> -->
-		<div class="">
-			<div class="sidebar">
-				<IndexCatalog />
-			</div>
-			<div class="content">
-				<UContainer class="px-6 lg:px-12 pb-24 pt-16">
-					<IndexHero />
-					<section v-for="item in config.flow" :key="item">
-						<FlowProject v-if="item.adapter === 'project'" :title="item.title" :list="item.list" :section="item" />
-						<Flow v-else :section="item" />
-					</section>
-				</UContainer>
-				<IndexFooter />
-			</div>
+	<div class="page">
+		<div class="sidebar">
+			<IndexCatalog />
 		</div>
+		<div class="content">
+			<UContainer class="px-6 lg:px-12 pb-24 pt-16">
+				<IndexHero />
+				<template v-for="flow in flows" :key="flow.id">
+					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
+				</template>
+			</UContainer>
+			<IndexFooter />
+		</div>
+		<IndexTool />
 	</div>
-	<IndexTool />
 </template>
-
-<style>
-body * {
-    font-family: Noto Serif SC;
-}
-</style>
 
 <style scoped>
 .sidebar {
@@ -54,10 +48,14 @@ body * {
 .content {
 	@apply lg:pl-72 lg:pr-8;
 }
-</style>
-
-<style>
-.shu-card {
-	@apply relative hover:scale-105 hover:shadow-2xl transition-all h-full overflow-hidden rounded-xl bg-white text-sm leading-6 shadow-sm border;
+@media (min-width: 1280px) {
+	.page :deep(.flow-body a:nth-child(n + 10)) {
+		display: none;
+	}
+}
+@media (min-width: 1536px) {
+	.page :deep(.flow-body a:nth-child(n + 9)) {
+		display: none;
+	}
 }
 </style>
