@@ -7,7 +7,6 @@ on:
     branches: [main]
 
 jobs:
-  # This job will run linting, typechecking and tests on your codebase
   testCodebase:
     runs-on: ubuntu-latest
     steps:
@@ -16,9 +15,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.2
+          # Enable caching for pnpm
+          cache: 'pnpm'
 
-      # Install packages
-      - run: npm ci
+      # Install pnpm and packages
+      - run: npm install -g pnpm
+      - run: pnpm install
 
       # Generate prisma client & push to db
       - run: echo "DATABASE_URL=file:./db.sqlite" > .env
@@ -26,13 +28,12 @@ jobs:
       - run: npx prisma generate
 
       # Run linting and typechecking
-      - run: npm run lint
-      - run: npm run typecheck
+      - run: pnpm run lint
+      - run: pnpm run typecheck
 
       # Run tests
-      - run: npm run test
+      - run: pnpm run test
 
-  # This job will run the app and then use `curl` to visit the index-page. This is a smoke detector check that ensures that your app still builds & runs correctly
   testAppBuildsAndStarts:
     runs-on: ubuntu-latest
     steps:
@@ -41,17 +42,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.2
+          # Enable caching for pnpm
+          cache: 'pnpm'
 
-      # Install packages
-      - run: npm ci
+      # Install pnpm and packages
+      - run: npm install -g pnpm
+      - run: pnpm install
 
       # Generate prisma client & push to db
       - run: echo "DATABASE_URL=file:./db.sqlite" > .env
       - run: npx prisma db push
       - run: npx prisma generate
 
-      # start app in dev mode and load `/`-index page
-      - run: '(timeout 60 npm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful'
+      # Start app in dev mode and load `/`-index page
+      - run: '(timeout 60 pnpm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful'
 
-      # build & start app in production mode and load `/`-index page
-      - run: 'npm run build && (timeout 60 npm run preview & (sleep 10 && curl --fail localhost:3000)) && echo Run production check successful'
+      # Build & start app in production mode and load `/`-index page
+      - run: 'pnpm run build && (timeout 60 pnpm run preview & (sleep 10 && curl --fail localhost:3000)) && echo Run production check successful'
