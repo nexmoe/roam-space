@@ -1,5 +1,5 @@
 # see https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG NODE_VERSION=node:16.14.2
+ARG NODE_VERSION=node:20
 
 FROM $NODE_VERSION AS dependency-base
 
@@ -7,20 +7,25 @@ FROM $NODE_VERSION AS dependency-base
 RUN mkdir -p /app
 WORKDIR /app
 
+# Install pnpm
+RUN npm install -g pnpm
+
 # copy the app, note .dockerignore
 COPY package.json .
-COPY package-lock.json .
-RUN npm ci
+COPY pnpm-lock.yaml .
+
+# Install dependencies using pnpm
+RUN pnpm install --frozen-lockfile
 
 FROM dependency-base AS production-base
 
-# build will also take care of building
-# if necessary
+# Copy the source code and build the application
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 FROM $NODE_VERSION AS production
 
+# Copy built assets from production-base to production
 COPY --from=production-base /app/.output /app/.output
 
 # Service hostname
