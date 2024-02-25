@@ -1,44 +1,46 @@
-# see https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG NODE_VERSION=node:20
+# Use a smaller base image
+ARG NODE_VERSION=node:20-alpine
 
+# Stage 1: Build dependencies
 FROM $NODE_VERSION AS dependency-base
 
-# create destination directory
-RUN mkdir -p /app
+# Create app directory
 WORKDIR /app
 
 # Install pnpm
 RUN npm install -g pnpm
 
-# copy the app, note .dockerignore
-COPY package.json .
-COPY pnpm-lock.yaml .
+# Copy the package files
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies using pnpm
 RUN pnpm install --frozen-lockfile
 
+# Stage 2: Build the application
 FROM dependency-base AS production-base
 
-# Copy the source code and build the application
+# Copy the source code
 COPY . .
+
+# Build the application
 RUN pnpm run build
 
+# Stage 3: Production image
 FROM $NODE_VERSION AS production
 
-# Copy built assets from production-base to production
+# Copy built assets from previous stage
 COPY --from=production-base /app/.output /app/.output
 
-# Service hostname
-ENV NUXT_HOST=0.0.0.0
+# Define environment variables
+ENV NUXT_HOST=0.0.0.0 \
+    NUXT_APP_VERSION=latest \
+    DATABASE_URL=file:./db.sqlite \
+    NODE_ENV=production
 
-# Service version
-ARG NUXT_APP_VERSION
-ENV NUXT_APP_VERSION=${NUXT_APP_VERSION}
+# Set the working directory
+WORKDIR /app
 
-ENV DATABASE_URL=file:./db.sqlite
+EXPOSE 3000
 
-# Run in production mode
-ENV NODE_ENV=production
-
-# start the app
-CMD [ "node", "/app/.output/server/index.mjs" ]
+# Start the app
+CMD ["node", "/app/.output/server/index.mjs"]
