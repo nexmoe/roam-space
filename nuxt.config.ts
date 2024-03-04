@@ -9,12 +9,17 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		version: '0.0.1',
 	},
-	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler'],
+	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler', '@nuxtjs/google-fonts'],
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
 		quality: 80,
 		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com']
+	},
+	googleFonts: {
+		families: {
+			'Noto Serif SC': true
+		}
 	},
 	typescript: {
 		shim: false,

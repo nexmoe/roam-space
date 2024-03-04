@@ -8,9 +8,11 @@
 	"[ts]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
-	"tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
 	"files.associations": {
 		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		"strings": true
 	},
 	"volar.autoCompleteRefs": true,
 	"prisma.fileWatcher": true,

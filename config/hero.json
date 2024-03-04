@@ -16,17 +16,17 @@
 	"menus": [
 		{
 			"title": "人生大事",
-			"url": "https://blog.nexmoe.com/line"
+			"url": "https://nexmoe.com/line.html"
 		},
 		{
 			"title": "我的朋友",
-			"url": "https://blog.nexmoe.com/PY"
+			"url": "https://nexmoe.com/PY.html"
 		}
 	],
 	"socials": [
 		{
 			"name": "博客",
-			"url": "https://blog.nexmoe.com",
+			"url": "https://nexmoe.com",
 			"icon": "i-mdi-home"
 		},
 		{
