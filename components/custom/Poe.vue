@@ -20,7 +20,6 @@
 				</div>
 			</div>
 		</div>
-        <div class="author">NEXMOE</div>
 	</div>
 </template>
 
@@ -37,10 +36,7 @@
     animation-fill-mode: forwards;
     white-space: nowrap;
  }
-.author {
-    @apply opacity-0 absolute bottom-0 right-0 m-12 px-1 bg-red-600 text-white border-2 border-white outline outline-1 outline-red-600;
-    animation: fadeIn 1.5s ease-in-out 4s forwards;
-}
+
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }

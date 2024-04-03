@@ -26,15 +26,18 @@ useHead({
 <template>
 	<div class="page">
 		<PublicTab />
-		<CustomPoe />
-		<UContainer class="px-6 lg:px-12">
+		<UContainer class="px-6 lg:px-12 py-12">
 			<CustomHero />
 		</UContainer>
-		<UContainer class="px-6 lg:px-12">
-			<template v-for="flow in flows" :key="flow.id">
-				<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
-			</template>
-		</UContainer>
+		<div class="bg-white min-h-64 shadow-md">
+			<UContainer class="px-6 lg:px-12">
+				<template v-for="flow in flows" :key="flow.id">
+					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
+				</template>
+			</UContainer>
+		</div>
+
+		<CustomPoe />
 	</div>
 </template>
 
@@ -44,6 +47,7 @@ useHead({
 		display: none;
 	}
 }
+
 @media (min-width: 1536px) {
 	.page :deep(.flow-body a:nth-child(n + 9)) {
 		display: none;

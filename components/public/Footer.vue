@@ -5,8 +5,8 @@ const hero = useConfig().hero
 </script>
 
 <template>
-	<div class="flex justify-center">
-		<div class="m-8 mb-16 px-4 pt-0.5 pb-1 rounded-full card">
+	<div class="flex">
+		<div class="m-8 mb-16 px-4 pt-0.5 pb-1">
 			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ hero.title }}, Powered by <a
 				class="underline"
 				href="https://github.com/nexmoe/roam-space" target="_blank"
