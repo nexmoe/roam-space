@@ -9,17 +9,37 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		version: '0.0.1',
 	},
-	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler', '@nuxtjs/google-fonts'],
+	modules: [
+		'nuxt-svgo',
+		'@nuxt/image',
+		'nuxt-scheduler',
+		'@nuxtjs/google-fonts',
+		'shadcn-nuxt',
+		// '@nuxtjs/i18n',
+		// '@vueuse/nuxt',
+		'@nuxtjs/tailwindcss',
+	],
+	shadcn: {
+		/**
+		 * Prefix for all the imported component
+		 */
+		prefix: '',
+		/**
+		 * Directory that the component lives in.
+		 * @default "./components/ui"
+		 */
+		componentDir: './components/ui'
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
 		quality: 80,
-		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com']
+		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com'],
 	},
 	googleFonts: {
 		families: {
-			'Noto Serif SC': true
-		}
+			'Noto Serif SC': true,
+		},
 	},
 	typescript: {
 		shim: false,
