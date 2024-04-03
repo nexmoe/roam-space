@@ -4,6 +4,7 @@ Click on star and wait for the release
 
 ## Feature
 
+- Not a CMS
 - Rsshub
 - Social Button
 
