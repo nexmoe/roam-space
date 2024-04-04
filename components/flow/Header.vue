@@ -22,7 +22,7 @@ const props = defineProps({
 			>
 				更多
 				<template #trailing>
-					<UIcon name="i-heroicons-arrow-right-20-solid" />
+					<Icon name="i-heroicons-arrow-right-20-solid" />
 				</template>
 			</UButton>
 		</a>

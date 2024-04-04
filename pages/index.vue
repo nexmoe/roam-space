@@ -25,16 +25,15 @@ useHead({
 
 <template>
 	<div class="page">
-		<PublicTab />
-		<UContainer class="px-6 lg:px-12 py-12">
+		<div class="container px-6 lg:px-12 py-12">
 			<CustomHero />
-		</UContainer>
+		</div>
 		<div class="bg-white min-h-64 shadow-md">
-			<UContainer class="px-6 lg:px-12">
+			<div class="container py-2 px-6 lg:px-12">
 				<template v-for="flow in flows" :key="flow.id">
 					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
 				</template>
-			</UContainer>
+			</div>
 		</div>
 
 		<CustomPoe />

@@ -13,6 +13,7 @@ useHead({
 		<Title>{{ config.hero.title }}</Title>
 		<Meta name="description" :content="config.hero.description" />
 	</Head>
+	<PublicHeader />
 	<div class="nexmoe-bg" />
 	<slot />
 	<PublicTool />
@@ -20,10 +21,6 @@ useHead({
 </template>
 
 <style>
-body {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='rgb(195,195,195)'%3E%3Ccircle cx='16' cy='16' r='1'/%3E%3C/svg%3E");
-}
-
 body * {
 	font-family: Noto Serif SC;
 }

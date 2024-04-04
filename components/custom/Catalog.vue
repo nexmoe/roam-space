@@ -66,7 +66,7 @@ if (list.value && list.value.length > 0)
 				<div class="text-base truncate">
 					{{ item.title }}
 				</div>
-				<UIcon name="i-mdi-open-in-new" />
+				<Icon name="i-mdi-open-in-new" />
 			</a>
 			<div class="border-b pt-3 !mb-4" />
 			<div

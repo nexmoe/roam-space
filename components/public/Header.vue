@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const config = useConfig()
 const menus = config.hero.menus
 </script>
@@ -13,7 +13,7 @@ const menus = config.hero.menus
 				<div class="text-base truncate">
 					{{ item.title }}
 				</div>
-				<UIcon name="i-mdi-open-in-new" />
+				<Icon name="mdi:open-in-new" />
 			</a>
 		</div>
 		<div class="flex-1 flex items-center justify-end">1111</div>

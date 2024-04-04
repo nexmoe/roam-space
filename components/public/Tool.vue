@@ -34,7 +34,7 @@ onUnmounted(() => {
 				class="hover:scale-125 transition-all flex items-center justify-center overflow-hidden w-12 h-12 bg-white shadow-lg ring-1 ring-gray-900/5 rounded-full"
 				@click="scrollToTop()"
 			>
-				<UIcon name="i-ion-arrow-up" />
+				<Icon name="i-ion-arrow-up" />
 			</button>
 		</transition>
 	</div>
