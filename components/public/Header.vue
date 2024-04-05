@@ -76,7 +76,7 @@ const socials = config.hero.socials
 }
 
 .item.active {
-	@apply bg-gray-100;
+	@apply bg-[#f7d038] text-[#1a1306];
 }
 
 .author {}

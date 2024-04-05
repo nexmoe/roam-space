@@ -29,6 +29,6 @@ provide('flow', props.flow)
 	@apply flex flex-col gap-6;
 }
 .flow-body {
-	@apply grid grid-cols-1 gap-6 mb-32 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+	@apply grid grid-cols-1 gap-4 mb-32 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
 }
 </style>
