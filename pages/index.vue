@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const hero = useConfig().hero
+
 // Fetching data from the server side only
 const { data: flows, error } = useFetch('/api/flow', {
 	server: true,
@@ -25,12 +27,20 @@ useHead({
 
 <template>
 	<div class="page">
-		<div class="container px-6 lg:px-12 py-12">
-			<CustomHero />
-		</div>
-		<div class="bg-white min-h-64 shadow-md">
-			<div class="container py-2 px-6 lg:px-12">
-				<template v-for="flow in flows" :key="flow.id">
+		<PublicProse title="Hi, I'm Nexmoe">
+			Dreaming up ideas and making them come true is where my passion lies. 
+			<div class="flex flex-row flex-wrap gap-2">
+				<div
+					v-for="item in hero.tags" :key="item"
+					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5 !rounded-md"
+				>
+					{{ item }}
+				</div>
+			</div>
+		</PublicProse>
+		<div class="bg-white min-h-64 nexmoe-shadow ">
+			<div class="container py-2 px-6">
+				<template v-for=" flow in flows " :key="flow.id">
 					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
 				</template>
 			</div>
