@@ -16,17 +16,12 @@ provide('flow', flow)
 		<PublicProse :title="flow.title">
 			{{ flow.title }}
 		</PublicProse>
-		<div class="py-8">
-			<div class="container">
-				<div class="flow-body">
-					<a
-						v-for="(module, index) in flow.module" :key="module.url + index" :href="module.url"
-						target="_blank"
-					>
-						<ModuleList v-if="flow.configCard === 'list'" v-bind="{ module }" />
-						<ModuleImage v-else v-bind="{ module }" />
-					</a>
-				</div>
+		<div class="container">
+			<div class="flow-body">
+				<a v-for="(module, index) in flow.module" :key="module.url + index" :href="module.url" target="_blank">
+					<ModuleList v-if="flow.configCard === 'list'" v-bind="{ module }" />
+					<ModuleImage v-else v-bind="{ module }" />
+				</a>
 			</div>
 		</div>
 	</div>

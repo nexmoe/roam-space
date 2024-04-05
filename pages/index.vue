@@ -28,22 +28,20 @@ useHead({
 <template>
 	<div class="page">
 		<PublicProse title="Hi, I'm Nexmoe">
-			Dreaming up ideas and making them come true is where my passion lies. 
+			Dreaming up ideas and making them come true is where my passion lies.
 			<div class="flex flex-row flex-wrap gap-2">
 				<div
 					v-for="item in hero.tags" :key="item"
-					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5 !rounded-md"
+					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5"
 				>
 					{{ item }}
 				</div>
 			</div>
 		</PublicProse>
-		<div class="min-h-64">
-			<div class="container py-2">
-				<template v-for=" flow in flows " :key="flow.id">
-					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
-				</template>
-			</div>
+		<div class="container">
+			<template v-for=" flow in flows " :key="flow.id">
+				<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
+			</template>
 		</div>
 
 		<CustomPoe />

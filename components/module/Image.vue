@@ -13,27 +13,14 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 <template>
 	<div class="module shu-card p-5 space-y-3 flex flex-col justify-between">
 		<div class="space-y-3 ">
-			<div
-				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
-				class="flex flex-row items-center gap-1"
-			>
-				<template v-if="(props.module.platform?.length || 0) > 1">
-					<div
-						v-for="platform in props.module.platform" :key="platform" class="w-5 h-5 block"
-						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
-					>
-						<LinkIcon :url="platform" />
-					</div>
-				</template>
-			</div>
-			<div v-if="props.module.image" class="max-h-48 rounded-xl relative overflow-hidden">
+			<div v-if="props.module.image" class="rounded-xl relative overflow-hidden">
 				<NuxtImg
 					class="w-full" format="webp" :src="props.module.image" :alt="module.title"
 					referrerpolicy="no-referrer" loading="lazy" width="320px" height="200px"
 				/>
 			</div>
 		</div>
-		<div class="space-y-3">
+		<div class="space-y-3 pb-1">
 			<div>
 				{{ formatDateTime(module.date) }}
 			</div>
@@ -42,6 +29,19 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 			</div>
 			<div v-if="!flow.configNoContent && text !== ' '">
 				<div v-html="text" />
+			</div>
+			<div
+				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
+				class="flex flex-row items-center gap-1"
+			>
+				<template v-if="(props.module.platform?.length || 0) > 1">
+					<div
+						v-for="platform in props.module.platform" :key="platform" class="w-7 h-7 block"
+						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
+					>
+						<LinkIcon :url="platform" />
+					</div>
+				</template>
 			</div>
 		</div>
 	</div>

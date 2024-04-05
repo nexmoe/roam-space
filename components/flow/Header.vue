@@ -7,19 +7,17 @@ const props = defineProps({
 </script>
 
 <template>
-	<div :id="props.title" class="pl-2.5 mt-32 flex items-center justify-between">
+	<div :id="props.title" class="pl-2.5 flex items-center justify-between">
 		<div class="flex items-center space-x-3">
 			<div class="text-xl -mt-1 font-bold sm:truncate sm:text-3xl sm:tracking-tight">
 				{{ props.title }}
 			</div>
 		</div>
 		<a v-if="props.url" :href="props.url" target="_blank">
-			<UButton color="white" variant="solid" :ui="{ rounded: 'rounded-full' }">
+			<div class="py-2 px-5 flex items-center flex-row bg-white rounded-full">
 				更多
-				<template #trailing>
-					<Icon name="i-heroicons-arrow-right-20-solid" />
-				</template>
-			</UButton>
+				<Icon name="i-heroicons-arrow-right-20-solid" />
+			</div>
 		</a>
 	</div>
 </template>

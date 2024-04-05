@@ -5,8 +5,8 @@ const hero = useConfig().hero
 </script>
 
 <template>
-	<div class="flex">
-		<div class="m-8 mb-16 px-4 pt-0.5 pb-1">
+	<div class="container flex">
+		<div class="mb-16">
 			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ hero.title }}, Powered by <a
 				class="underline"
 				href="https://github.com/nexmoe/roam-space" target="_blank"

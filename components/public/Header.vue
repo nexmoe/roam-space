@@ -14,27 +14,28 @@ const socials = config.hero.socials
 </script>
 
 <template>
-	<div
-		class="container bg-white md:bg-transparent header justify-between md:justify-normal flex py-4">
+	<div class="container header justify-between flex pt-6">
 		<div class="flex-1 flex items-center">
 			<NuxtLink :to="'/'" class="flex items-center gap-2">
 				<NuxtImg class="w-8 rounded-full" src="https://unavatar.io/nexmoe" />
 				<div>NEXMOE</div>
 			</NuxtLink>
 		</div>
-		<div class="hidden md:flex flex-2 tab rounded-full">
-			<NuxtLink class="item" :class="{
+		<div class="flex flex-row gap-6">
+			<div class="hidden md:flex flex-2 tab rounded-full">
+				<NuxtLink class="item" :class="{
 				active: $route.path === item.url
 			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in menus" :key="item.title" :to="item.url">
-				<div class="text-base truncate">
-					{{ item.title }}
-				</div>
-				<Icon v-if="item.url.startsWith('https://')" name="mdi:open-in-new" />
-			</NuxtLink>
-		</div>
-		<div class="hidden md:flex flex-1 items-center flex-row gap-3 justify-end">
-			<Social v-for="item in socials" :key="item.url" :url="item.url" :icon="item.icon" :color="item.color"
-				:tip="item.name" :path="item.path" />
+					<div class="text-base truncate">
+						{{ item.title }}
+					</div>
+					<Icon v-if="item.url.startsWith('https://')" name="mdi:open-in-new" />
+				</NuxtLink>
+			</div>
+			<div class="hidden md:flex flex-1 items-center flex-row gap-3 justify-end">
+				<Social v-for="item in socials" :key="item.url" :url="item.url" :icon="item.icon" :color="item.color"
+					:tip="item.name" :path="item.path" />
+			</div>
 		</div>
 		<Sheet>
 			<SheetTrigger>
