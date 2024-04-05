@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<div :id="props.title" class="pl-2.5 flex items-center justify-between">
+	<div :id="props.title" class="flow-header pl-2.5 flex items-center justify-between">
 		<div class="flex items-center space-x-3">
 			<div class="text-xl -mt-1 font-bold sm:truncate sm:text-3xl sm:tracking-tight">
 				{{ props.title }}
@@ -21,3 +21,9 @@ const props = defineProps({
 		</a>
 	</div>
 </template>
+
+<style>
+.flow-header {
+	padding-left: var(--n-spacing)
+}
+</style>

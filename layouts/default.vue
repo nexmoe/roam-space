@@ -23,7 +23,8 @@ useHead({
 
 <style>
 :root {
-	--color-primary: #ff4e6a;
+	--n-color-primary: #ff4e6a;
+	--n-spacing: 0.25rem;
 }
 
 body {

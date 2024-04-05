@@ -29,7 +29,7 @@ useHead({
 	<div class="page">
 		<PublicProse title="Hi, I'm Nexmoe">
 			Dreaming up ideas and making them come true is where my passion lies.
-			<div class="flex flex-row flex-wrap gap-2">
+			<div class="tags flex flex-row flex-wrap gap-2">
 				<div
 					v-for="item in hero.tags" :key="item"
 					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5"
@@ -59,5 +59,8 @@ useHead({
 	.page :deep(.flow-body a:nth-child(n + 9)) {
 		display: none;
 	}
+}
+.tags {
+	margin-left: calc(0 - var(--n-spacing));
 }
 </style>
