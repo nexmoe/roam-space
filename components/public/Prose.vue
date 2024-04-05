@@ -20,7 +20,7 @@ const props = defineProps<Props>()
 
 <style scoped>
 .prose {
-    @apply pb-16 pt-12 m-auto flex flex-col gap-4;
+    @apply pb-24 pt-16 m-auto flex flex-col gap-4;
     max-width: 70ch;
     font-size: 1rem;
     line-height: 1.75;

@@ -38,8 +38,8 @@ useHead({
 				</div>
 			</div>
 		</PublicProse>
-		<div class="bg-white min-h-64 nexmoe-shadow ">
-			<div class="container py-2 px-6">
+		<div class="min-h-64">
+			<div class="container py-2">
 				<template v-for=" flow in flows " :key="flow.id">
 					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
 				</template>

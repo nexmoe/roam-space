@@ -28,6 +28,6 @@ provide('flow', props.flow)
 
 <style>
 .flow-body {
-	@apply grid grid-cols-1 gap-7 mt-5 mb-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+	@apply grid grid-cols-1 gap-7 mt-5 mb-16 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
 }
 </style>

@@ -11,7 +11,7 @@ export function extractTextFromHTML(html) {
 	const text = html.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ')
 
 	// 提取前 300 个字符
-	const extractedText = text.substring(0, 300)
+	const extractedText = `${text.substring(0, 120)}...`
 
 	return extractedText
 }
