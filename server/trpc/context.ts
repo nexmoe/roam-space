@@ -6,9 +6,9 @@ import { PrismaClient } from '@prisma/client'
  * @link https://trpc.io/docs/context
  */
 export function createContext() {
-    const prisma = new PrismaClient()
+	const prisma = new PrismaClient()
 
-    return { prisma }
+	return { prisma }
 }
 
 export type Context = inferAsyncReturnType<typeof createContext>

@@ -29,7 +29,6 @@ provide('flows', flows)
 	<IndexTool />
 </template>
 
-
 <style scoped>
 .sidebar {
 	@apply fixed w-0 lg:w-64 bg-white h-full;

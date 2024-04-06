@@ -8,11 +8,11 @@ export default eventHandler(async (event: H3Event) => {
 		where: { id: params?.id },
 		include: {
 			flow: {
-				orderBy: { index: "asc" },
+				orderBy: { index: 'asc' },
 				include: {
 					module: {
 						take: 9,
-						orderBy: { date: "desc" },
+						orderBy: { date: 'desc' },
 					},
 				},
 			},

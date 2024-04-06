@@ -12,7 +12,6 @@ interface Swo {
 const props = defineProps<Props>()
 
 const { data: res } = await useFetch<Swo>(`https://api.swo.moe/stats/${extractPlatformUsername(props.module.url)}`)
-
 </script>
 
 <template>

@@ -13,7 +13,7 @@ export default eventHandler(async (event: H3Event) => {
 		},
 		orderBy: { index: 'asc' },
 	})
-	
+
 	for (const flow of flows) {
 		if (flow.module.length === 0 && flow.id)
 			flowingByFlowId(flow.id)

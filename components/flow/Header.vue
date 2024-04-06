@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const props = defineProps({
 	url: String,
 	title: String,
