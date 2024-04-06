@@ -1,13 +1,13 @@
 <script setup>
 import dayjs from 'dayjs'
 
-const hero = useConfig().hero
+const config = await useGetConfig()
 </script>
 
 <template>
 	<div class="container flex">
 		<div class="footer mb-16">
-			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ hero.title }}, Powered by <a
+			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ config.title }}, Powered by <a
 				class="underline"
 				href="https://github.com/nexmoe/roam-space" target="_blank"
 			>Roam Space</a>

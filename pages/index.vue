@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const hero = useConfig().hero
-
 // Fetching data from the server side only
 const { data: flows, error } = useFetch('/api/flow', {
 	server: true,
@@ -14,9 +12,7 @@ onMounted(() => {
 	// toast.add({ title: 'Error fetching data' })
 })
 
-const { $client } = useNuxtApp()
-
-const hello = await $client.hello.useQuery({ text: 'client' })
+const config = await useGetConfig()
 
 // Providing the 'flows' data to the component tree
 provide('flows', flows)
@@ -30,13 +26,13 @@ useHead({
 
 <template>
 	<div class="page">
-		<PublicProse title="Hi, I'm Nexmoe">
-			一个开发者、创造者，未来主义狂热份子<br>关于勇敢与热爱，喜欢赛博朋克
-			<p>{{ hello.data }}</p>
-
+		<PublicProse :title="`Hi, I'm ${config.title}`">
+			<div class="whitespace-pre-wrap" v-html="config.description" />
 			<div class="tags flex flex-row flex-wrap gap-2">
-				<div v-for="item in hero.tags" :key="item"
-					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5">
+				<div
+					v-for="item in config.tags" :key="item"
+					class="text-black inline-block shu-card border-none text-sm px-3 py-0.5"
+				>
 					{{ item }}
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const config = useConfig()
+const config = await useGetConfig()
 
 useHead({
 	htmlAttrs: {
@@ -9,10 +9,9 @@ useHead({
 </script>
 
 <template>
-
 	<Head>
-		<Title>{{ config.hero.title }}</Title>
-		<Meta name="description" :content="config.hero.description" />
+		<Title>{{ config.title }}</Title>
+		<Meta name="description" :content="config.description" />
 	</Head>
 	<PublicHeader />
 	<!-- <div class="nexmoe-bg" /> -->

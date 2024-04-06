@@ -2,39 +2,34 @@
 import {
 	Sheet,
 	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
 	SheetTrigger,
 } from '@/components/ui/sheet'
 
-const config = useConfig()
-const menus = config.hero.menus
-const socials = config.hero.socials
+const config = await useGetConfig()
 </script>
 
 <template>
 	<div class="container header justify-between flex pt-6">
 		<div class="flex-1 flex items-center">
 			<NuxtLink :to="'/'" class="flex items-center gap-2">
-				<NuxtImg class="w-8 rounded-full" src="https://unavatar.io/nexmoe" />
-				<div>NEXMOE</div>
+				<NuxtImg class="w-8 rounded-full" :src="config.avatar" />
+				<div class="uppercase">{{ config.title }}</div>
 			</NuxtLink>
 		</div>
-		<div class="flex flex-row gap-6">
-			<div class="hidden md:flex flex-2 tab rounded-full">
+		<div class="hidden md:flex flex-row gap-6">
+			<div class="flex flex-2 tab rounded-full">
 				<NuxtLink class="item" :class="{
 				active: $route.path === item.url
-			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in menus" :key="item.title" :to="item.url">
+			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in config.menus" :key="item.title"
+					:to="item.url">
 					<div class="text-base truncate">
 						{{ item.title }}
 					</div>
 					<Icon v-if="item.url.startsWith('https://')" name="mdi:open-in-new" />
 				</NuxtLink>
 			</div>
-			<div class="hidden md:flex flex-1 items-center flex-row gap-3 justify-end">
-				<Social v-for="item in socials" :key="item.url" :url="item.url" :icon="item.icon" :color="item.color"
-					:tip="item.name" :path="item.path" />
+			<div class="flex flex-1 items-center flex-row gap-3 justify-end">
+				<Social v-for="item in config.socials" v-bind="item" :key="item.url" />
 			</div>
 		</div>
 		<Sheet>
@@ -47,14 +42,15 @@ const socials = config.hero.socials
 				<div class="py-6 gap-3 flex flex-col">
 					<NuxtLink class="item !py-3 !px-3" :class="{
 				active: $route.path === item.url
-			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in menus" :key="item.title" :to="item.url">
+			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in config.menus" :key="item.title"
+						:to="item.url">
 						<div class="text-base truncate">
 							{{ item.title }}
 						</div>
 						<Icon v-if="item.url.startsWith('https://')" name="mdi:open-in-new" />
 					</NuxtLink>
 					<div class="flex items-center flex-row gap-3">
-						<div v-for="item in socials" :key="item.url" class="item !p-3">
+						<div v-for="item in config.socials" :key="item.url" class="item !p-3">
 							<Social v-bind="item" />
 						</div>
 					</div>
