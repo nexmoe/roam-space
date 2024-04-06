@@ -37,8 +37,9 @@ body {
 }
 
 .nexmoe-bg {
-	background-image: url(https://dogefs.s3.ladydaily.com/~/source/unsplash/photo-1559251606-c623743a6d76?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTN8fHBpbmt8ZW58MHx8fHwxNjYzMDQ0Nzc2&ixlib=rb-1.2.1&w=1920);
+	/* background-image: url(https://dogefs.s3.ladydaily.com/~/source/unsplash/photo-1559251606-c623743a6d76?ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTN8fHBpbmt8ZW58MHx8fHwxNjYzMDQ0Nzc2&ixlib=rb-1.2.1&w=1920); */
 	opacity: 0.2;
+	background: linear-gradient(to bottom, #ff4e6a, white);
 	background-size: cover;
 	/* filter: blur(30px); */
 	height: 100vh;

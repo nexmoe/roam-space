@@ -14,7 +14,7 @@ const props = defineProps({
 			</div>
 		</div>
 		<a v-if="props.url" :href="props.url" target="_blank">
-			<div class="py-2 px-5 flex items-center flex-row bg-white rounded-full">
+			<div class="py-2 px-5 flex items-center gap-1 flex-row bg-white rounded-full">
 				更多
 				<Icon name="i-heroicons-arrow-right-20-solid" />
 			</div>

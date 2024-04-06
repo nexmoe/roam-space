@@ -9,6 +9,9 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		version: '0.0.1',
 	},
+	build: {
+		transpile: ['trpc-nuxt'],
+	},
 	modules: [
 		'nuxt-svgo',
 		'@nuxt/image',
@@ -29,7 +32,7 @@ export default defineNuxtConfig({
 		 * Directory that the component lives in.
 		 * @default "./components/ui"
 		 */
-		componentDir: './components/ui'
+		componentDir: './components/ui',
 	},
 	extends: ['@sidebase/core'],
 	image: {

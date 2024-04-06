@@ -10,6 +10,12 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+model Config {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+}
+
 model API {
   id      String  @id @default(uuid())
   url     String
