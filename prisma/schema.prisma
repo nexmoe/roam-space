@@ -45,13 +45,14 @@ model Flow {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   title           String
+  description     String?
   homepage        String?
   index           Int?
   api             API[]
   configCard      String?
-  configNoContent Boolean? @default(false)
-  configNoTitle   Boolean? @default(false)
-  configOpenURL   Boolean? @default(false)
+  configNoContent Boolean  @default(false)
+  configNoTitle   Boolean  @default(false)
+  configOpenURL   Boolean  @default(false)
   module          Module[]
   space           Space?   @relation(fields: [spaceId], references: [id])
   spaceId         String?

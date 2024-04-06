@@ -10,7 +10,6 @@ interface Props {
 	url: string
 	path: string
 	icon: string
-	color: string
 	tip: string
 }
 

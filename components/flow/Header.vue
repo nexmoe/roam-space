@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const props = defineProps({
-	url: String,
-	title: String,
-})
+interface Props {
+	url?: string
+	title: string
+	id: string
+}
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -12,12 +14,15 @@ const props = defineProps({
 				{{ props.title }}
 			</div>
 		</div>
-		<a v-if="props.url" :href="props.url" target="_blank">
+		<NuxtLink
+			:to="props.url ? props.url : `/flow/${props.id}`"
+			:target="props.url?.startsWith('https://') ? '_blank' : ''"
+		>
 			<div class="py-2 px-5 flex items-center gap-1 flex-row bg-white rounded-full">
 				更多
 				<Icon name="i-heroicons-arrow-right-20-solid" />
 			</div>
-		</a>
+		</NuxtLink>
 	</div>
 </template>
 

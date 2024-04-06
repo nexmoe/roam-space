@@ -6,14 +6,12 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-    <div class="container">
-        <div class="prose">
-            <h1 class="font-bold text-3xl">
-                {{ props.title }}
-            </h1>
-            <div class="description flex flex-col gap-4">
-                <slot />
-            </div>
+    <div class="prose">
+        <h1 class="font-bold text-3xl">
+            {{ props.title }}
+        </h1>
+        <div v-if="$slots.default" class="description flex flex-col gap-4">
+            <slot />
         </div>
     </div>
 </template>
