@@ -22,6 +22,8 @@ export default defineNuxtConfig({
 		// '@vueuse/nuxt',
 		'nuxt-icon',
 		'@nuxtjs/tailwindcss',
+		'@nuxtjs/seo',
+		'@nuxtjs/i18n',
 	],
 	shadcn: {
 		/**
