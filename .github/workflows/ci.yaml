@@ -20,10 +20,10 @@ jobs:
       - run: npm install -g pnpm
       - run: pnpm install
 
-      # Generate prisma client & push to db
-      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
-      - run: npx prisma db push
-      - run: npx prisma generate
+      # # Generate prisma client & push to db
+      # - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      # - run: npx prisma db push
+      # - run: npx prisma generate
 
       # Run linting and typechecking
       - run: pnpm run lint
@@ -45,10 +45,10 @@ jobs:
       - run: npm install -g pnpm
       - run: pnpm install
 
-      # Generate prisma client & push to db
-      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
-      - run: npx prisma db push
-      - run: npx prisma generate
+      # # Generate prisma client & push to db
+      # - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      # - run: npx prisma db push
+      # - run: npx prisma generate
 
       # Start app in dev mode and load `/`-index page
       - run: '(timeout 60 pnpm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful'
