@@ -13,7 +13,6 @@ useHead({
 		<Title>{{ config.title }}</Title>
 		<Meta name="description" :content="config.description" />
 	</Head>
-	<PublicHeader />
 	<!-- <div class="nexmoe-bg" /> -->
 	<slot />
 	<PublicTool />

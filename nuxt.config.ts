@@ -17,25 +17,10 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'nuxt-scheduler',
 		'@nuxtjs/google-fonts',
-		'shadcn-nuxt',
-		// '@nuxtjs/i18n',
-		// '@vueuse/nuxt',
 		'nuxt-icon',
-		'@nuxtjs/tailwindcss',
 		'@nuxtjs/seo',
-		'@nuxtjs/i18n',
+		'@nuxtjs/tailwindcss',
 	],
-	shadcn: {
-		/**
-		 * Prefix for all the imported component
-		 */
-		prefix: '',
-		/**
-		 * Directory that the component lives in.
-		 * @default "./components/ui"
-		 */
-		componentDir: './components/ui',
-	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],

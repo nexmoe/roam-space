@@ -1,5 +1,3 @@
-const animate = require('tailwindcss-animate')
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
@@ -81,6 +79,5 @@ module.exports = {
 				'collapsible-up': 'collapsible-up 0.2s ease-in-out',
 			},
 		},
-	},
-	plugins: [animate],
+	}
 }
