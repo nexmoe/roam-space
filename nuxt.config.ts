@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 		fonts: [
 			// will load the Noto Sans font from Google fonts
 			'Noto+Serif+SC',
-		]
+		],
 	},
 	extends: ['@sidebase/core'],
 	image: {
