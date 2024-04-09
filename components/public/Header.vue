@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {
-	Sheet,
-	SheetContent,
-	SheetTrigger,
-} from '@/components/ui/sheet'
+// import {
+// 	Sheet,
+// 	SheetContent,
+// 	SheetTrigger,
+// } from '@/components/ui/sheet'
 
 const config = await useGetConfig()
 </script>
@@ -32,7 +32,7 @@ const config = await useGetConfig()
 				<Social v-for="item in config.socials" v-bind="item" :key="item.url" />
 			</div>
 		</div>
-		<Sheet>
+		<!-- <Sheet>
 			<SheetTrigger>
 				<div class="md:hidden text-2xl text-gray-600 flex">
 					<Icon name="mdi:menu" />
@@ -57,7 +57,7 @@ const config = await useGetConfig()
 				</div>
 
 			</SheetContent>
-		</Sheet>
+		</Sheet> -->
 	</div>
 </template>
 
