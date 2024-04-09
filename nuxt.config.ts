@@ -18,9 +18,16 @@ export default defineNuxtConfig({
 		'nuxt-scheduler',
 		'@nuxtjs/google-fonts',
 		'nuxt-icon',
-		'@nuxtjs/seo',
+		// '@nuxtjs/seo',
 		'@nuxtjs/tailwindcss',
 	],
+	ogImage: {
+		googleFontMirror: true,
+		fonts: [
+			// will load the Noto Sans font from Google fonts
+			'Noto+Serif+SC',
+		]
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
