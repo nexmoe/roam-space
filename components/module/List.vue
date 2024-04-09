@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import type { Flow } from '@prisma/client'
+import type { inferRouterOutputs } from '@trpc/server'
+import type { AppRouter } from '@/server/trpc/routers'
+
+type RouterOutput = inferRouterOutputs<AppRouter>
+type ModuleOutput = RouterOutput['module']['get']
+type FlowOutput = RouterOutput['flow']['get']
 
 interface Props {
-	module: NModule
+	module: ModuleOutput
 }
 
 const props = defineProps<Props>()
-const flow = inject('flow') as Flow
+const flow = inject('flow') as FlowOutput
 const text = extractTextFromHTML(props.module.content)
 </script>
 

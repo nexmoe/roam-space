@@ -1,21 +1,17 @@
 <script setup>
 const id = useRoute().params.id
+const { $client } = useNuxtApp()
+const flow = await $client.flow.get.query({ id })
 
-const { data: flow, error } = useFetch(`/api/flow/${id}`)
-
-if (error.value) {
-	console.error(`Error fetching data`, error.value)
-	const toast = useToast()
-	toast.add({ title: 'Error fetching data' })
-}
 provide('flow', flow)
 </script>
 
 <template>
-	<div class="flow-body">
-		<a v-for="(module, index) in flow.module" :key="module.url + index" :href="module.url" target="_blank">
-			<ModuleList v-if="flow.configCard === 'list'" v-bind="{ module }" />
-			<ModuleImage v-else v-bind="{ module }" />
-		</a>
+	<div class="container">
+		<PublicProse v-if="flow.description" :title="flow.title">
+			{{ flow.description }}
+		</PublicProse>
+		<PublicProse v-else :title="flow.title" />
+		<Flow v-if="flow.module.length > 0" v-bind="{ flow, header: false }" />
 	</div>
 </template>

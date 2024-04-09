@@ -9,17 +9,35 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		version: '0.0.1',
 	},
-	modules: ['nuxt-svgo', '@nuxt/ui', '@nuxt/image', 'nuxt-scheduler', '@nuxtjs/google-fonts'],
+	build: {
+		transpile: ['trpc-nuxt'],
+	},
+	modules: [
+		'nuxt-svgo',
+		'@nuxt/image',
+		'nuxt-scheduler',
+		'@nuxtjs/google-fonts',
+		'nuxt-icon',
+		// '@nuxtjs/seo',
+		'@nuxtjs/tailwindcss',
+	],
+	ogImage: {
+		googleFontMirror: true,
+		fonts: [
+			// will load the Noto Sans font from Google fonts
+			'Noto+Serif+SC',
+		],
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
 		quality: 80,
-		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com']
+		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com'],
 	},
 	googleFonts: {
 		families: {
-			'Noto Serif SC': true
-		}
+			'Noto Serif SC': true,
+		},
 	},
 	typescript: {
 		shim: false,

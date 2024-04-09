@@ -1,75 +1,52 @@
 <script setup lang="ts">
-import type { Flow } from '@prisma/client'
+import type { inferRouterOutputs } from '@trpc/server'
+import type { AppRouter } from '@/server/trpc/routers'
+
+type RouterOutput = inferRouterOutputs<AppRouter>
+type ModuleOutput = RouterOutput['module']['get']
+type FlowOutput = RouterOutput['flow']['get']
 
 interface Props {
-	module: NModule
+	module: ModuleOutput
 }
 
 const props = defineProps<Props>()
-const flow = inject('flow') as Flow
+const flow = inject('flow') as FlowOutput
 const text = computed(() => extractTextFromHTML(props.module.content))
-
-function getOrigin(url: string) {
-	const urlx = new URL(url)
-	return urlx.origin.toString()
-}
-
-function getUrl(url: string) {
-	const urlx = new URL(url)
-	return urlx.host.replace('www.', '') + urlx.pathname
-}
 </script>
 
 <template>
-	<div
-		class="module shu-card py-4 space-y-3"
-	>
-		<div v-if="!flow.configNoTitle" class="mx-6 font-bold tracking-tight text-black">
-			{{ props.module.title }}
-		</div>
-
-		<div v-if="!props.module.image || (props.module.platform?.length || 0) > 1" class="mx-6 flex flex-row items-center gap-1">
-			<UBadge v-if="!props.module.image" class="mr-2 -ml-px" color="gray" variant="solid">
-				{{ formatDateTime(module.date) }}
-			</UBadge>
-			<template v-if="(props.module.platform?.length || 0) > 1">
-				<div
-					v-for="platform in props.module.platform"
-					:key="platform" class="w-5 h-5 block"
-					@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
-				>
-					<LinkIcon :url="platform" />
-				</div>
-			</template>
-		</div>
-		<div v-if="props.module.image" class="max-h-48 relative overflow-hidden">
-			<NuxtImg
-				class="w-full" format="webp" :src="props.module.image" :alt="module.title" referrerpolicy="no-referrer" loading="lazy"
-				width="320px" height="200px"
-			/>
-			<div class="absolute pb-5 px-6 w-full bottom-0 left-0">
-				<UBadge color="white" variant="solid">
-					{{ formatDateTime(module.date) }}
-				</UBadge>
+	<div class="module shu-card p-5 space-y-3 flex flex-col justify-between">
+		<div class="space-y-3 ">
+			<div v-if="props.module.image" class="rounded-xl relative overflow-hidden">
+				<NuxtImg
+					class="w-full" format="webp" :src="props.module!.image" :alt="module.title"
+					referrerpolicy="no-referrer" loading="lazy" width="320px" height="200px"
+				/>
 			</div>
 		</div>
-		<div v-if="!flow.configNoContent && text !== ' '" class="mx-6 max-h-24">
-			<div v-html="text" />
-		</div>
-		<div class="absolute w-full bottom-0 left-0">
-			<div class="bg-gradient-to-t from-white h-12" />
-			<div v-if="flow.configOpenURL" class="px-6 pb-3 bg-white/95">
-				<div class="flex flex-row items-center gap-1">
-					<div class="-ml-px w-5 h-5 block">
-						<img
-							class="rounded-md outline-2 hover:outline" :src="`https://lib.xiaoshuapp.com/icon/x?url=${getOrigin(props.module.url)}`"
-							:alt="module.title" referrerpolicy="no-referrer" loading="lazy"
-						>
+		<div class="space-y-3 pb-1">
+			<div>
+				{{ formatDateTime(module.date) }}
+			</div>
+			<div v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
+				{{ props.module.title }}
+			</div>
+			<div v-if="!flow.configNoContent && text !== ' '">
+				<div v-html="text" />
+			</div>
+			<div
+				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
+				class="flex flex-row items-center gap-1"
+			>
+				<template v-if="(props.module.platform?.length || 0) > 1">
+					<div
+						v-for="platform in props.module.platform" :key="platform" class="w-7 h-7 block"
+						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
+					>
+						<LinkIcon :url="platform" />
 					</div>
-					<div class="flex-1 text-blue-400 truncate">
-						{{ getUrl(props.module.url) }}
-					</div>
-				</div>
+				</template>
 			</div>
 		</div>
 	</div>

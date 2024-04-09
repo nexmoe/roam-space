@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<div class="pt-12 h-screen pb-12">
+	<div class="body pt-12 h-screen pb-12">
 		<div class="relative flex flex-row items-center justify-center gap-2 h-full">
 			<div class="major text-6xl text-center font-bold tracking-tight text-black">
 				谁怕？一蓑烟雨任平生
@@ -20,36 +20,51 @@
 				</div>
 			</div>
 		</div>
-        <div class="author">NEXMOE</div>
 	</div>
 </template>
 
 <style scoped>
-.major {
-    @apply opacity-0;
-    animation: fadeIn 1.5s ease-in-out 3.5s forwards;
+.body {
+	font-family: Noto Serif SC;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='24' height='24' fill='rgb(195,195,195)'%3E%3Ccircle cx='16' cy='16' r='1'/%3E%3C/svg%3E");
 }
+
+.major {
+	@apply opacity-0;
+	animation: fadeIn 1.5s ease-in-out 3.5s forwards;
+}
+
 .poe {
 	writing-mode: vertical-lr;
 }
+
 .poe div {
 	@apply block m-3 z-10 opacity-20 hover:opacity-100 duration-200;
-    animation-fill-mode: forwards;
-    white-space: nowrap;
- }
-.author {
-    @apply opacity-0 absolute bottom-0 right-0 m-12 px-1 bg-red-600 text-white border-2 border-white outline outline-1 outline-red-600;
-    animation: fadeIn 1.5s ease-in-out 4s forwards;
+	animation-fill-mode: forwards;
+	white-space: nowrap;
 }
+
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 </style>
 
 <style>
 @keyframes fadeInOut {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
+
+	0%,
+	100% {
+		opacity: 0.2;
+	}
+
+	50% {
+		opacity: 1;
+	}
 }
 </style>

@@ -2,11 +2,11 @@
 const id = useRoute().params.id
 
 const { data: space, error } = useFetch(`/api/space/${id}`)
-if (error.value) {
+if (error.value)
 	console.error(`Error fetching data`, error.value)
-	const toast = useToast()
-	toast.add({ title: 'Error fetching data' })
-}
+	// const toast = useToast()
+	// toast.add({ title: 'Error fetching data' })
+
 const flows = space.flow
 
 provide('flows', flows)
@@ -29,11 +29,11 @@ provide('flows', flows)
 	<IndexTool />
 </template>
 
-
 <style scoped>
 .sidebar {
 	@apply fixed w-0 lg:w-64 bg-white h-full;
 }
+
 .content {
 	@apply lg:pl-72 lg:pr-8;
 }

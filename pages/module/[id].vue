@@ -1,20 +1,10 @@
 <script setup lang="ts">
 const id = useRoute().params.id
 const useImg = useImage()
+const { $client } = useNuxtApp()
 
 // Fetching data from the server side only
-const { data: module, error } = useFetch(`/api/module/${id}`, {
-  server: true 
-});
-
-// Only perform client-side operations within onMounted to avoid SSR issues
-onMounted(() => {
-  if (error.value) {
-    console.error('Error fetching data', error.value);
-    const toast = useToast();
-    toast.add({ title: 'Error fetching data' });
-  }
-});
+const module = await $client.module.get.query({ id })
 
 function replaceImg(html: string) {
 	// Define a regular expression to match img tags and capture the src attribute

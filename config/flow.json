@@ -11,7 +11,6 @@
 		]
 	},
 	{
-		"homepage": "https://nex.xlog.app",
 		"title": "文章",
 		"api": [
 			{
@@ -40,7 +39,6 @@
 		"configNoTitle": true
 	},
 	{
-		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
 		"api": [
 			{
 				"adapter": "rsshub_json",
@@ -54,7 +52,6 @@
 		"title": "收藏文章"
 	},
 	{
-		"homepage": "https://www.xiaohongshu.com/user/profile/64ddaa5200000000010069c5",
 		"api": [
 			{
 				"adapter": "rsshub_json",
@@ -69,7 +66,6 @@
 		"configNoTitle": true
 	},
 	{
-		"homepage": "https://juejin.cn/column/7287241187447308345",
 		"api": [
 			{
 				"url": "{rsshub}/juejin/column/7287241187447308345.json?limit=9",

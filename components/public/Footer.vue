@@ -1,16 +1,22 @@
 <script setup>
 import dayjs from 'dayjs'
 
-const hero = useConfig().hero
+const config = await useGetConfig()
 </script>
 
 <template>
-	<div class="flex justify-center">
-		<div class="m-8 mb-16 px-4 pt-0.5 pb-1 rounded-full card">
-			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ hero.title }}, Powered by <a
+	<div class="container flex">
+		<div class="footer mb-16">
+			Copyright © {{ dayjs(new Date()).format('YYYY') }} {{ config.title }}, Powered by <a
 				class="underline"
 				href="https://github.com/nexmoe/roam-space" target="_blank"
 			>Roam Space</a>
 		</div>
 	</div>
 </template>
+
+<style>
+.footer {
+	padding-left: var(--n-spacing)
+}
+</style>

@@ -1,23 +1,25 @@
-<script setup>
-const props = defineProps({
-	url: String,
-	path: String,
-	icon: String,
-	color: String,
-	tip: String,
-})
-let res = {}
-if (props.path) {
-	const { data } = await useFetch(`https://api.swo.moe/stats/${props.path}`)
-	res = data
+<script setup lang="ts">
+const props = defineProps<Props>()
+
+const iconMap = {
+	github: 'mdi:github',
+	telegram: 'mdi:telegram',
+	medium: 'mdi:medium',
+	twitter: 'mdi:twitter',
+	bilibili: 'i-ri-bilibili-fill',
+}
+
+type IconKey = keyof typeof iconMap
+
+export interface Props {
+	url: string
+	icon: IconKey
+	tip: string
 }
 </script>
 
 <template>
-	<a :href="url" target="_blank" :title="props.tip">
-		<UTooltip :text="props.tip">
-			<UButton :aria-label="props.tip" size="xs" class="mr-2" :color="color" variant="outline" :ui="{ rounded: 'rounded-full' }">{{
-				props.tip }} {{ res.count ? `${res.count} 粉` : "" }}</UButton>
-		</UTooltip>
+	<a class="text-2xl text-gray-600 flex" :href="url" target="_blank" :title="props.tip">
+		<Icon :name="iconMap[props.icon]" />
 	</a>
 </template>
