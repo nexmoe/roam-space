@@ -4,19 +4,19 @@ import { configRouter } from './config'
 import { flowRouter } from './flow'
 
 export const appRouter = router({
-    hello: publicProcedure
-        .input(
-            z.object({
-                text: z.string().nullish(),
-            }),
-        )
-        .query(({ input }) => {
-            return {
-                greeting: `hello ${input?.text ?? 'world'}`,
-            }
-        }),
-    config: configRouter,
-    flow: flowRouter,
+	hello: publicProcedure
+		.input(
+			z.object({
+				text: z.string().nullish(),
+			}),
+		)
+		.query(({ input }) => {
+			return {
+				greeting: `hello ${input?.text ?? 'world'}`,
+			}
+		}),
+	config: configRouter,
+	flow: flowRouter,
 })
 
 // export type definition of API
