@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 import { configRouter } from './config'
 import { flowRouter } from './flow'
+import module from './module'
 
 export const appRouter = router({
 	hello: publicProcedure
@@ -17,6 +18,7 @@ export const appRouter = router({
 		}),
 	config: configRouter,
 	flow: flowRouter,
+	module,
 })
 
 // export type definition of API

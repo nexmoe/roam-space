@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 
-export const flowRouter = router({
+export default router({
 	get: publicProcedure
 		.input(
 			z.object({

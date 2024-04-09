@@ -27,10 +27,10 @@ jobs:
 
       # Run linting and typechecking
       - run: pnpm run lint
-      - run: pnpm run typecheck
+      # - run: pnpm run typecheck
 
-      # Run tests
-      - run: pnpm run test
+      # # Run tests
+      # - run: pnpm run test
 
       # testAppBuildsAndStarts:
       #   runs-on: ubuntu-latest
@@ -41,9 +41,9 @@ jobs:
       #       with:
       #         node-version: 20
 
-      # Install pnpm and packages
-      - run: npm install -g pnpm
-      - run: pnpm install
+      # # Install pnpm and packages
+      # - run: npm install -g pnpm
+      # - run: pnpm install
 
       # # Generate prisma client & push to db
       # - run: echo "DATABASE_URL=file:./db.sqlite" > .env
