@@ -1,13 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
 model Config {
@@ -21,8 +18,8 @@ model API {
   id      String  @id @default(uuid())
   url     String
   adapter String
-  flow    Flow?   @relation(fields: [flowId], references: [id], onDelete: Cascade)
   flowId  String?
+  flow    Flow?   @relation(fields: [flowId], references: [id], onDelete: Cascade)
 }
 
 model Module {
@@ -35,8 +32,8 @@ model Module {
   content   String
   date      DateTime
   platform  String[]
-  flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
   flowId    String?
+  flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
 }
 
 /// Flow is a section includes modules
@@ -48,21 +45,22 @@ model Flow {
   description     String?
   homepage        String?
   index           Int?
-  api             API[]
   configCard      String?
   configNoContent Boolean  @default(false)
   configNoTitle   Boolean  @default(false)
   configOpenURL   Boolean  @default(false)
-  module          Module[]
-  space           Space?   @relation(fields: [spaceId], references: [id])
   spaceId         String?
+  api             API[]
+  space           Space?   @relation(fields: [spaceId], references: [id])
+  module          Module[]
 }
 
 model Space {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  details   String
-  flow      Flow[]
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  details     String
+  description String?
+  flow        Flow[]
 }

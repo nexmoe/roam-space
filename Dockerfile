@@ -30,6 +30,8 @@ FROM $NODE_VERSION AS production
 
 # Copy built assets from previous stage
 COPY --from=production-base /app/.output /app/.output
+COPY --from=production-base /app/package.json /app
+COPY --from=production-base /app/prisma  /app/prisma
 
 # Define environment variables
 ENV NUXT_HOST=0.0.0.0 \
@@ -43,4 +45,4 @@ WORKDIR /app
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "/app/.output/server/index.mjs"]
+CMD ["npm", "run", "start"]
