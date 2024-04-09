@@ -11,9 +11,8 @@ const iconMap = {
 
 type IconKey = keyof typeof iconMap
 
-interface Props {
+export interface Props {
 	url: string
-	path: string
 	icon: IconKey
 	tip: string
 }

@@ -7,7 +7,7 @@ type FlowOutput = RouterOutput['flow']['get']
 
 interface Props {
 	flow: FlowOutput
-	header: boolean
+	header?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {

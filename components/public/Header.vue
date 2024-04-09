@@ -17,7 +17,7 @@ const config = await useGetConfig()
 			</NuxtLink>
 		</div>
 		<div class="hidden md:flex flex-row gap-6">
-			<div class="flex flex-2 tab rounded-full">
+			<div v-if="config.menus" class="flex flex-2 tab rounded-full">
 				<NuxtLink class="item" :class="{
 				active: $route.path === item.url
 			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in config.menus" :key="item.title"

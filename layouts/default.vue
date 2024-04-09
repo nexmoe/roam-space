@@ -14,6 +14,7 @@ useHead({
 		<Meta name="description" :content="config.description" />
 	</Head>
 	<!-- <div class="nexmoe-bg" /> -->
+	<PublicHeader />
 	<slot />
 	<PublicTool />
 	<PublicFooter />

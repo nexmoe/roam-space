@@ -1,4 +1,5 @@
-<script setup lang="ts">import type { inferRouterOutputs } from '@trpc/server'
+<script setup lang="ts">
+import type { inferRouterOutputs } from '@trpc/server'
 import type { AppRouter } from '@/server/trpc/routers'
 
 type RouterOutput = inferRouterOutputs<AppRouter>
