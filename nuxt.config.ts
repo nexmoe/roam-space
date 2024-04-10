@@ -32,6 +32,15 @@ export default defineNuxtConfig({
 		url: 'https://i.nexmoe.com',
 		name: 'Nexmoe',
 	},
+	sitemap: {
+		sitemaps: {
+			categories: {
+				sources: [
+					'/api/__sitemap__/urls/categories',
+				]
+			}
+		}
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
