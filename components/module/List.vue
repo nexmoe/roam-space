@@ -30,12 +30,12 @@ const text = extractTextFromHTML(props.module.content)
 				:alt="props.module.title"
 			/>
 
-			<div
+			<h3
 				v-if="!flow.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
-			</div>
+			</h3>
 		</div>
 
 		<div v-if="!flow.configNoContent" class="truncate">

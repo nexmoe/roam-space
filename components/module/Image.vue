@@ -29,9 +29,9 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 			<div>
 				{{ formatDateTime(module.date) }}
 			</div>
-			<div v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
+			<h3 v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
-			</div>
+			</h3>
 			<div v-if="!flow.configNoContent && text !== ' '">
 				<div v-html="text" />
 			</div>

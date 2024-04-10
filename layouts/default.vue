@@ -4,6 +4,7 @@ useHead({
 		lang: 'zh-CN',
 	},
 })
+
 </script>
 
 <template>

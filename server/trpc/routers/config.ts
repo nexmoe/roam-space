@@ -17,6 +17,7 @@ interface Config {
 	siteUrl: string
 	siteName: string
 	siteDescription: string
+	ogTheme: string
 }
 
 interface Menu {

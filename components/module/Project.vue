@@ -26,7 +26,7 @@ const props = defineProps<Props>()
 					:alt="props.module.title"
 				/>
 			</div>
-			<div
+			<h3
 				class="text-xl font-bold tracking-tight text-black"
 				v-html="props.module.title"
 			/>

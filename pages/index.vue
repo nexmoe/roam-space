@@ -11,6 +11,12 @@ useHead({
 		lang: 'zh-CN',
 	},
 })
+
+defineOgImageComponent('NuxtSeo', {
+	theme: config.ogTheme,
+	title: config.siteName,
+	description: config.description,
+})
 </script>
 
 <template>
