@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const config = await useGetConfig()
-
 useHead({
 	htmlAttrs: {
 		lang: 'zh-CN',
@@ -9,10 +7,6 @@ useHead({
 </script>
 
 <template>
-	<Head>
-		<Title>{{ config.siteName }}</Title>
-		<Meta name="description" :content="config.description" />
-	</Head>
 	<!-- <div class="nexmoe-bg" /> -->
 	<PublicHeader />
 	<slot />
@@ -28,7 +22,7 @@ useHead({
 
 body {
 	/* font-family: Noto Serif SC; */
-	background-color: #f7f5fd;
+	/* background-color: #f7f5fd; */
 }
 
 .shu-card {

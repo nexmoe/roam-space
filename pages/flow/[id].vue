@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const id = useRoute().params.id
 const { $client } = useNuxtApp()
 const flow = await $client.flow.get.query({ id })
@@ -8,6 +8,9 @@ provide('flow', flow)
 
 <template>
 	<div class="container">
+		<Head>
+			<Title>{{ flow.title }}</Title>
+		</Head>
 		<PublicProse v-if="flow.description" :title="flow.title">
 			{{ flow.description }}
 		</PublicProse>

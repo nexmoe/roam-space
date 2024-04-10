@@ -1,4 +1,6 @@
 {
+	"avatar": "https://unavatar.io/nexmoe",
+	"description": "一个开发者、创造者，未来主义狂热份子\n关于勇敢与热爱，喜欢赛博朋克",
 	"tags": [
 		"🔆热爱",
 		"🔥内心炽热",
@@ -7,11 +9,10 @@
 		"喜欢创造",
 		"坦诚"
 	],
+	"siteName": "Nexmoe",
+	"siteDescription": "233 test",
+	"siteUrl": "https://i.nexmoe.com",
 	"menus": [
-		{
-			"title": "文章",
-			"url": "/flow/766a88fc-91c7-4134-8fa0-524591a51c5a"
-		},
 		{
 			"title": "人生大事",
 			"url": "https://nexmoe.com/line.html"
@@ -25,13 +26,11 @@
 		{
 			"name": "Github",
 			"url": "https://github.com/nexmoe",
-			"path": "github/nexmoe",
 			"icon": "github"
 		},
 		{
 			"name": "哔哩哔哩",
 			"url": "https://space.bilibili.com/20238211",
-			"path": "bilibili/20238211",
 			"icon": "bilibili"
 		},
 		{
