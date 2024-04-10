@@ -23,7 +23,7 @@ const props = defineProps<Props>()
 					height="48px"
 					:src="props.module.image"
 					loading="lazy"
-					:title="props.module.title"
+					:alt="props.module.title"
 				/>
 			</div>
 			<div

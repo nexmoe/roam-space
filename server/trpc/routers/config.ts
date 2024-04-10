@@ -7,15 +7,17 @@ interface Menu {
 }
 
 interface Config {
-	title: string
 	avatar: string
 	description: string
 	tags?: []
 	menus?: Menu[]
 	socials?: SocialProps[]
+	siteUrl: string
+	siteName: string
+	siteDescription: string
 }
 
-export const configRouter = router({
+export default router({
 	get: publicProcedure
 		.query(async ({ ctx }) => {
 			const res = await ctx.prisma.config.findMany()

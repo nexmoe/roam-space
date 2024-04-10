@@ -16,7 +16,7 @@ useHead({
 <template>
 	<div class="page">
 		<div class="container">
-			<PublicProse :title="`Hi, I'm ${config.title}`">
+			<PublicProse :title="`Hi, I'm ${config.siteName}`">
 				<div class="whitespace-pre-wrap" v-html="config.description" />
 				<div class="tags flex flex-row flex-wrap gap-2">
 					<div

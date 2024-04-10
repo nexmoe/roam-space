@@ -27,7 +27,7 @@ const text = extractTextFromHTML(props.module.content)
 				class="h-10 w-10 rounded-full"
 				:src="props.module.image"
 				loading="lazy"
-				alt="Cover"
+				:alt="props.module.title"
 			/>
 
 			<div

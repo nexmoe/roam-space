@@ -10,7 +10,7 @@ useHead({
 
 <template>
 	<Head>
-		<Title>{{ config.title }}</Title>
+		<Title>{{ config.siteName }}</Title>
 		<Meta name="description" :content="config.description" />
 	</Head>
 	<!-- <div class="nexmoe-bg" /> -->

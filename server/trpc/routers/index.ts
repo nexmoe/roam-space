@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
-import { configRouter } from './config'
+import config from './config'
 import { flowRouter } from './flow'
 import module from './module'
 
@@ -16,7 +16,7 @@ export const appRouter = router({
 				greeting: `hello ${input?.text ?? 'world'}`,
 			}
 		}),
-	config: configRouter,
+	config,
 	flow: flowRouter,
 	module,
 })

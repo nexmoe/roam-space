@@ -11,14 +11,14 @@ const config = await useGetConfig()
 <template>
 	<div class="container header justify-between flex pt-6">
 		<div class="flex-1 flex items-center">
-			<NuxtLink :to="'/'" class="flex items-center gap-2">
-				<NuxtImg class="w-8 rounded-full" :src="config.avatar" />
-				<div class="uppercase">{{ config.title }}</div>
+			<NuxtLink :title="config.siteName" :to="'/'" class="flex items-center gap-2">
+				<NuxtImg :alt="config.siteName" class="w-8 rounded-full" :src="config.avatar" />
+				<div class="uppercase">{{ config.siteName }}</div>
 			</NuxtLink>
 		</div>
 		<div class="hidden md:flex flex-row gap-6">
 			<div v-if="config.menus" class="flex flex-2 tab rounded-full">
-				<NuxtLink class="item" :class="{
+				<NuxtLink :title="item.title" class="item" :class="{
 				active: $route.path === item.url
 			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in config.menus" :key="item.title"
 					:to="item.url">
@@ -40,7 +40,7 @@ const config = await useGetConfig()
 			</SheetTrigger>
 			<SheetContent>
 				<div class="py-6 gap-3 flex flex-col">
-					<NuxtLink class="item !py-3 !px-3" :class="{
+					<NuxtLink :title="item.title" class="item !py-3 !px-3" :class="{
 				active: $route.path === item.url
 			}" :target="item.url.startsWith('https://') ? '_blank' : ''" v-for="item in config.menus" :key="item.title"
 						:to="item.url">

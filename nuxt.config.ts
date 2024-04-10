@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 		'nuxt-scheduler',
 		'@nuxtjs/google-fonts',
 		'nuxt-icon',
-		// '@nuxtjs/seo',
+		'@nuxtjs/seo',
 		'@nuxtjs/tailwindcss',
 	],
 	ogImage: {
@@ -28,11 +28,15 @@ export default defineNuxtConfig({
 			'Noto+Serif+SC',
 		],
 	},
+	site: {
+		url: 'https://i.nexmoe.com',
+		name: 'Nexmoe',
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
 		quality: 80,
-		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com'],
+		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com', 'cdn.dribbble.com', 'picx.zhimg.com'],
 	},
 	googleFonts: {
 		families: {
