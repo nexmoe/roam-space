@@ -17,9 +17,9 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 </script>
 
 <template>
-	<div class="module shu-card p-4 space-y-3 flex flex-col justify-between">
-		<div class="space-y-3">
-			<div class="px-2">
+	<div class="module shu-card p-3 space-y-4 flex flex-col justify-between">
+		<div class="space-y-4">
+			<div class="px-3 pt-1">
 				{{ formatDateTime(module.date) }}
 			</div>
 			<div v-if="props.module.image" class="shadow-sm max-h-96 rounded-xl relative overflow-hidden">
@@ -29,7 +29,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 				/>
 			</div>
 		</div>
-		<div class="space-y-3 px-2 pb-3">
+		<div class="space-y-4 px-3 pb-3">
 			<h3 v-if="!flow?.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
 			</h3>
