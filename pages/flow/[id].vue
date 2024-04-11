@@ -15,7 +15,6 @@ defineOgImageComponent('NuxtSeo', {
 
 <template>
 	<div class="container">
-
 		<Head>
 			<Title>{{ flow.title }}</Title>
 		</Head>

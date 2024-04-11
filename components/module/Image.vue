@@ -32,7 +32,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 			<h3 v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
 			</h3>
-			<div class="line-clamp-3" v-if="!flow.configNoContent && text !== ' '">
+			<div v-if="!flow.configNoContent && text !== ' '" class="line-clamp-3">
 				<div v-html="text" />
 			</div>
 			<div

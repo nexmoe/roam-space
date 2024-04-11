@@ -38,9 +38,9 @@ export default defineNuxtConfig({
 			categories: {
 				sources: [
 					'/api/__sitemap__/urls/categories',
-				]
-			}
-		}
+				],
+			},
+		},
 	},
 	extends: ['@sidebase/core'],
 	image: {
