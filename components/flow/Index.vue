@@ -21,15 +21,11 @@ provide('flow', props.flow)
 	<div class="flow">
 		<FlowHeader v-if="props.header" :id="props.flow!.id" :title="props.flow!.title" :url="props.flow!.homepage" />
 
-		<div
-			class="flow-body" :class="[
-				props.flow!.configCard === 'gallery' ? 'n-gallery' : 'n-grid',
-			]"
-		>
-			<NuxtLink
-				v-for="(module) in props.flow!.module" :key="module.url" :title="module.title" :to="module.url"
-				target="_blank"
-			>
+		<div class="flow-body" :class="[
+			props.flow!.configCard === 'gallery' ? 'n-gallery' : 'n-grid',
+		]">
+			<NuxtLink v-for="(module) in props.flow!.module" :key="module.url" :title="module.title" :to="module.url"
+				target="_blank">
 				<ModuleList v-if="props.flow!.configCard === 'list'" v-bind="{ module }" />
 				<ModuleProject v-else-if="props.flow!.configCard === 'project'" v-bind="{ module }" />
 				<ModuleGallery v-else-if="props.flow!.configCard === 'gallery'" v-bind="{ module }" />
@@ -49,8 +45,9 @@ provide('flow', props.flow)
 }
 
 .flow-body.n-gallery {
-	@apply columns-3 gap-4;
+	@apply columns-1 gap-4 lg:columns-2 xl:columns-3 2xl:columns-4;
 }
+
 .flow-body .module {
 	@apply mb-4;
 }
