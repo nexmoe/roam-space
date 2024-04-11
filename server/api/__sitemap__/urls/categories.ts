@@ -2,8 +2,10 @@ export default defineSitemapEventHandler(async (event) => {
     const prisma = event.context.prisma
 
     const flows = await prisma.flow.findMany({
-
-        orderBy: { index: 'asc' },
+        select: {
+            id: true,
+            updatedAt: true
+        }
     })
 
     const posts = flows.map(p => ({

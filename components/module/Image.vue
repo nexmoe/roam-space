@@ -16,23 +16,23 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 </script>
 
 <template>
-	<div class="module shu-card p-5 space-y-3 flex flex-col justify-between">
+	<div class="module shu-card p-4 space-y-3 flex flex-col justify-between">
 		<div class="space-y-3 ">
-			<div v-if="props.module.image" class="rounded-xl relative overflow-hidden">
+			<div class="p-1">
+				{{ formatDateTime(module.date) }}
+			</div>
+			<div v-if="props.module.image" class="max-h-96 rounded-xl relative overflow-hidden">
 				<NuxtImg
 					class="w-full" format="webp" :src="props.module!.image" :alt="module.title"
 					referrerpolicy="no-referrer" loading="lazy" width="320px" height="200px"
 				/>
 			</div>
 		</div>
-		<div class="space-y-3 pb-1">
-			<div>
-				{{ formatDateTime(module.date) }}
-			</div>
+		<div class="space-y-3 p-1">
 			<h3 v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
 			</h3>
-			<div v-if="!flow.configNoContent && text !== ' '">
+			<div class="line-clamp-3" v-if="!flow.configNoContent && text !== ' '">
 				<div v-html="text" />
 			</div>
 			<div
