@@ -27,15 +27,15 @@ const text = extractTextFromHTML(props.module.content)
 				class="h-10 w-10 rounded-full"
 				:src="props.module.image"
 				loading="lazy"
-				alt="Cover"
+				:alt="props.module.title"
 			/>
 
-			<div
+			<h3
 				v-if="!flow.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
-			</div>
+			</h3>
 		</div>
 
 		<div v-if="!flow.configNoContent" class="truncate">

@@ -121,9 +121,8 @@ async function flowingByFlow(flow: Flow) {
 
 	const response = res.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []))
 	const final = flow.api.length > 0 ? response.reduce(mergeArrays, []) : []
-
-	try {
-		for (const ele of final) {
+	for (const ele of final) {
+		try {
 			await prisma.module.create({
 				data: {
 					...ele,
@@ -132,9 +131,9 @@ async function flowingByFlow(flow: Flow) {
 				},
 			})
 		}
-	}
-	catch (error) {
-		consola.error(error)
+		catch (error) {
+			consola.error(error)
+		}
 	}
 }
 

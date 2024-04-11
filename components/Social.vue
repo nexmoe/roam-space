@@ -14,12 +14,12 @@ type IconKey = keyof typeof iconMap
 export interface Props {
 	url: string
 	icon: IconKey
-	tip: string
+	name: string
 }
 </script>
 
 <template>
-	<a class="text-2xl text-gray-600 flex" :href="url" target="_blank" :title="props.tip">
+	<a class="text-2xl text-gray-600 flex" :href="url" target="_blank" :title="props.name">
 		<Icon :name="iconMap[props.icon]" />
 	</a>
 </template>

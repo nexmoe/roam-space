@@ -22,7 +22,7 @@ provide('flow', props.flow)
 		<FlowHeader v-if="props.header" :id="props.flow!.id" :title="props.flow!.title" :url="props.flow!.homepage" />
 
 		<div class="flow-body">
-			<NuxtLink v-for="(module) in props.flow!.module" :key="module.url" :to="module.url" target="_blank">
+			<NuxtLink v-for="(module) in props.flow!.module" :key="module.url" :title="module.title" :to="module.url" target="_blank">
 				<ModuleList v-if="props.flow!.configCard === 'list'" v-bind="{ module }" />
 				<ModuleProject v-else-if="props.flow!.configCard === 'project'" v-bind="{ module }" />
 				<ModuleImage v-else v-bind="{ module }" />

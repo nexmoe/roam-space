@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 		'nuxt-scheduler',
 		'@nuxtjs/google-fonts',
 		'nuxt-icon',
-		// '@nuxtjs/seo',
+		'@nuxtjs/seo',
 		'@nuxtjs/tailwindcss',
 	],
 	ogImage: {
@@ -28,11 +28,25 @@ export default defineNuxtConfig({
 			'Noto+Serif+SC',
 		],
 	},
+	site: {
+		url: 'https://i.nexmoe.com',
+		name: 'Nexmoe',
+		description: '充满热情的开发者和创造者，热衷于未来主义和赛博朋克，追求良好的用户体验和界面设计。分享技术见解、优化技巧和对生活的热爱，提供有价值的内容和工具，通过技术改善日常生活。',
+	},
+	sitemap: {
+		sitemaps: {
+			categories: {
+				sources: [
+					'/api/__sitemap__/urls/categories',
+				],
+			},
+		},
+	},
 	extends: ['@sidebase/core'],
 	image: {
 		format: ['webp'],
 		quality: 80,
-		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com'],
+		domains: ['p3-juejin.byteimg.com', 'sns-webpic-qc.xhscdn.com', 'cdn.dribbble.com', 'picx.zhimg.com'],
 	},
 	googleFonts: {
 		families: {

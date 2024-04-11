@@ -23,10 +23,10 @@ const props = defineProps<Props>()
 					height="48px"
 					:src="props.module.image"
 					loading="lazy"
-					:title="props.module.title"
+					:alt="props.module.title"
 				/>
 			</div>
-			<div
+			<h3
 				class="text-xl font-bold tracking-tight text-black"
 				v-html="props.module.title"
 			/>
