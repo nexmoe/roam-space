@@ -29,6 +29,7 @@ const props = defineProps<Props>()
 
 <style>
 .flow-header {
-	padding-left: var(--n-spacing)
+	padding-left: var(--n-spacing);
+	font-family: Noto Serif SC;
 }
 </style>
