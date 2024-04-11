@@ -26,7 +26,7 @@ body {
 }
 
 .shu-card {
-	@apply relative hover:scale-105 hover:shadow-2xl transition-all h-full overflow-hidden rounded-3xl bg-white text-sm leading-6;
+	@apply relative hover:shadow-2xl transition-all h-full overflow-hidden rounded-3xl bg-white text-sm leading-6;
 }
 
 .nexmoe-bg {

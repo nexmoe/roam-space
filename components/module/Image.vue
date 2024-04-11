@@ -5,9 +5,10 @@ import type { AppRouter } from '@/server/trpc/routers'
 type RouterOutput = inferRouterOutputs<AppRouter>
 type ModuleOutput = RouterOutput['module']['get']
 type FlowOutput = RouterOutput['flow']['get']
+type Module = Exclude<ModuleOutput, null>;
 
 interface Props {
-	module: ModuleOutput
+	module: Module
 }
 
 const props = defineProps<Props>()
@@ -17,22 +18,22 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 
 <template>
 	<div class="module shu-card p-4 space-y-3 flex flex-col justify-between">
-		<div class="space-y-3 ">
-			<div class="p-1">
+		<div class="space-y-3">
+			<div class="px-2">
 				{{ formatDateTime(module.date) }}
 			</div>
-			<div v-if="props.module.image" class="max-h-96 rounded-xl relative overflow-hidden">
+			<div v-if="props.module.image" class="shadow-sm max-h-96 rounded-xl relative overflow-hidden">
 				<NuxtImg
 					class="w-full" format="webp" :src="props.module!.image" :alt="module.title"
-					referrerpolicy="no-referrer" loading="lazy" width="320px" height="200px"
+					referrerpolicy="no-referrer" loading="lazy" width="420px"
 				/>
 			</div>
 		</div>
-		<div class="space-y-3 p-1">
-			<h3 v-if="!flow.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
+		<div class="space-y-3 px-2 pb-3">
+			<h3 v-if="!flow?.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
 			</h3>
-			<div v-if="!flow.configNoContent && text !== ' '" class="line-clamp-3">
+			<div v-if="!flow?.configNoContent && text !== ' '" class="line-clamp-3">
 				<div v-html="text" />
 			</div>
 			<div
