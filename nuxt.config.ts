@@ -50,8 +50,8 @@ export default defineNuxtConfig({
 			// 'p3-juejin.byteimg.com',
 			// 'sns-webpic-qc.xhscdn.com',
 			// 'cdn.dribbble.com',
-			'picx.zhimg.com',
-			'img.zcool.cn',
+			// 'picx.zhimg.com',
+			// 'img.zcool.cn',
 		],
 	},
 	googleFonts: {
