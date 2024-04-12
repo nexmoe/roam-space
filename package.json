@@ -23,6 +23,7 @@
 		"@trpc/server": "^10.45.2",
 		"@vitest/coverage-v8": "^1.4.0",
 		"consola": "^3.2.3",
+		"sharp": "^0.33.3",
 		"trpc-nuxt": "^0.10.21",
 		"zod": "^3.22.4"
 	},
@@ -53,5 +54,16 @@
 		"vite-svg-loader": "^5.1.0",
 		"vitest": "^1.4.0",
 		"vue-tsc": "^1.8.27"
+	},
+	"pnpm": {
+		"supportedArchitectures": {
+			"os": [
+				"win32",
+				"current"
+			],
+			"cpu": [
+				"x64"
+			]
+		}
 	}
 }
