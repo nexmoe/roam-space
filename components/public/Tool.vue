@@ -25,7 +25,7 @@ onUnmounted(() => {
 
 <template>
 	<div
-		class="fixed flex flex-col text-2xl space-y-4 bottom-8 right-8 md:bottom-16 md:right-16"
+		class="fixed z-50 flex flex-col text-2xl space-y-4 bottom-8 right-8 md:bottom-16 md:right-16"
 	>
 		<transition name="fade">
 			<button
