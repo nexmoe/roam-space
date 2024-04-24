@@ -28,8 +28,10 @@ defineOgImageComponent('NuxtSeo', {
 			<PublicProse :title="`Hi, I'm ${config.siteName}`">
 				<div class="whitespace-pre-wrap" v-html="config.description" />
 				<div class="tags flex flex-row flex-wrap gap-2">
-					<div v-for="item in config.tags" :key="item"
-						class="text-black inline-block shu-card border-none text-sm px-3 py-0.5">
+					<div
+						v-for="item in config.tags" :key="item"
+						class="text-black inline-block shu-card border-none text-sm px-3 py-0.5"
+					>
 						{{ item }}
 					</div>
 				</div>
