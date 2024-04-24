@@ -6,12 +6,23 @@ export default defineNuxtConfig({
 	app: {
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
+
 	runtimeConfig: {
 		version: '0.0.1',
 	},
+
 	build: {
 		transpile: ['trpc-nuxt'],
 	},
+
+	webVitals: {
+		ga: { id: 'G-JF2ZGKT7MM' },
+	},
+
+	gtag: {
+		id: 'G-JF2ZGKT7MM',
+	},
+
 	modules: [
 		'nuxt-svgo',
 		'@nuxt/image',
@@ -29,18 +40,23 @@ export default defineNuxtConfig({
 				],
 			},
 		],
+		'@nuxtjs/html-validator',
+		'@nuxtjs/web-vitals',
+		'nuxt-gtag',
 	],
+
 	shadcn: {
 		/**
-		 * Prefix for all the imported component
-		 */
+			* Prefix for all the imported component
+			*/
 		prefix: '',
 		/**
-		 * Directory that the component lives in.
-		 * @default "./components/ui"
-		 */
+			* Directory that the component lives in.
+			* @default "./components/ui"
+			*/
 		componentDir: './components/ui',
 	},
+
 	ogImage: {
 		googleFontMirror: true,
 		fonts: [
@@ -48,11 +64,13 @@ export default defineNuxtConfig({
 			'Noto+Serif+SC',
 		],
 	},
+
 	site: {
 		url: 'https://i.nexmoe.com',
 		name: 'Nexmoe',
 		description: '充满热情的开发者和创造者，热衷于未来主义和赛博朋克，追求良好的用户体验和界面设计。分享技术见解、优化技巧和对生活的热爱，提供有价值的内容和工具，通过技术改善日常生活。',
 	},
+
 	sitemap: {
 		sitemaps: {
 			categories: {
@@ -62,7 +80,9 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+
 	extends: ['@sidebase/core'],
+
 	image: {
 		format: ['webp'],
 		quality: 80,
@@ -74,14 +94,17 @@ export default defineNuxtConfig({
 			// 'img.zcool.cn',
 		],
 	},
+
 	googleFonts: {
 		families: {
 			'Noto Serif SC': true,
 		},
 	},
+
 	typescript: {
 		shim: false,
 	},
+
 	imports: {
 		dirs: [
 			// Scan top-level modules
@@ -91,5 +114,11 @@ export default defineNuxtConfig({
 			// ... or scan all modules within given directory
 			'composables/**',
 		],
+	},
+
+	devtools: {
+		timeline: {
+			enabled: true,
+		},
 	},
 })

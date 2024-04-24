@@ -3,17 +3,18 @@ const globalStore = useGlobalStore()
 const route = useRoute()
 
 watch(
-  () => route.path,
-  () => {
-    globalStore.setCatalog([])
-  },
+	() => route.path,
+	() => {
+		globalStore.setCatalog([])
+	},
 )
 </script>
 
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+	<NuxtLayout>
+		<NuxtLoadingIndicator color="repeating-linear-gradient(90deg, #f7d038, #ffe993)" />
+		<NuxtPage />
+	</NuxtLayout>
 </template>
 
 <style>
