@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+
 interface List {
   active: boolean
   title: string
@@ -49,17 +55,28 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="hidden md:flex py-6 px-4 items-center h-full shu-card !rounded-none">
-    <div class="space-y-1 w-full">
-      <div v-for="item in list" :key="item.title" class="item" :class="{
-        active: item.active,
-      }" @click="scrollToTitle(`#${item.anchor}`)">
-        <div class="text-base truncate">
-          {{ item.title }}
+  <Sheet>
+    <SheetTrigger>
+      <button aria-label="catalog"
+        class="hover:scale-125 transition-all flex items-center justify-center overflow-hidden w-12 h-12 bg-white shadow-lg ring-1 ring-gray-900/5 rounded-full">
+        <Icon name="mdi:menu" />
+      </button>
+    </SheetTrigger>
+    <SheetContent class="w-72">
+      <div class="flex py-6 items-center h-full">
+        <div class="space-y-1 w-full">
+          <div v-for="item in list" :key="item.title" class="item" :class="{
+            active: item.active
+          }" @click="scrollToTitle(`#${item.anchor}`)">
+            <div class="text-base truncate">
+              {{ item.title }}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </SheetContent>
+  </Sheet>
+
 </template>
 
 <style scoped>
@@ -68,6 +85,6 @@ onUnmounted(() => {
 }
 
 .active {
-  @apply bg-black text-white hover:bg-black;
+  @apply bg-[#f7d038] text-[#1a1306] hover:bg-[#f7d038];
 }
 </style>
