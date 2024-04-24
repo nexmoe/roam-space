@@ -28,7 +28,7 @@ onUnmounted(() => {
 	<div
 		class="fixed z-50 flex flex-col text-2xl space-y-4 bottom-8 right-8 md:bottom-16 md:right-16"
 	>
-		<PublicCatalog :list="globalStore.catalog" v-if="globalStore.catalog.length > 0" />
+		<!-- <PublicCatalog :list="globalStore.catalog" v-if="globalStore.catalog.length > 0" /> -->
 		<transition name="fade">
 			<button
 				v-if="showButton"
