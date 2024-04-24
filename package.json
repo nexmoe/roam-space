@@ -49,7 +49,6 @@
 		"nuxt-svgo": "^4.0.0",
 		"playwright": "^1.43.0",
 		"prisma": "^5.12.1",
-		"shadcn-nuxt": "^0.10.2",
 		"typescript": "^5.4.5",
 		"unplugin-auto-import": "^0.17.5",
 		"unplugin-vue-components": "^0.26.0",
