@@ -9,7 +9,7 @@ const prisma = new PrismaClient()
 /**
  * 计算两个字符串之间的Levenshtein距离。
  * Levenshtein距离是一个字符串相似度的度量，表示从一个字符串转换成另一个字符串所需的最少编辑操作次数（插入、删除或替换字符）。
- * 
+ *
  * @param a 字符串a，作为比较的基准。
  * @param b 字符串b，与字符串a进行比较。
  * @returns 两个字符串之间的Levenshtein距离，返回一个数字。
@@ -37,9 +37,9 @@ function levenshteinDistance(a: string, b: string): number {
 			// 计算当前字符替换、插入或删除的代价
 			const cost = a[i - 1] === b[j - 1] ? 0 : 1
 			matrix[i][j] = Math.min(
-				matrix[i - 1][j] + 1,    // 插入操作
-				matrix[i][j - 1] + 1,    // 删除操作
-				matrix[i - 1][j - 1] + cost,  // 替换操作
+				matrix[i - 1][j] + 1, // 插入操作
+				matrix[i][j - 1] + 1, // 删除操作
+				matrix[i - 1][j - 1] + cost, // 替换操作
 			)
 		}
 	}

@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 		'nuxt-icon',
 		'@nuxtjs/seo',
 		'@nuxtjs/tailwindcss',
-		'shadcn-nuxt'
+		'shadcn-nuxt',
 	],
 	shadcn: {
 		/**
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 		 * Directory that the component lives in.
 		 * @default "./components/ui"
 		 */
-		componentDir: './components/ui'
+		componentDir: './components/ui',
 	},
 	ogImage: {
 		googleFontMirror: true,
