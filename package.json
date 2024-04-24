@@ -17,12 +17,14 @@
 	},
 	"dependencies": {
 		"@nuxt/image": "^1.5.0",
+		"@pinia/nuxt": "^0.5.1",
 		"@prisma/client": "^5.12.1",
 		"@sidebase/core": "^0.1.4",
 		"@trpc/client": "^10.45.2",
 		"@trpc/server": "^10.45.2",
 		"@vitest/coverage-v8": "^1.4.0",
 		"consola": "^3.2.3",
+		"pinia": "^2.1.7",
 		"sharp": "^0.33.3",
 		"trpc-nuxt": "^0.10.21",
 		"zod": "^3.22.4"

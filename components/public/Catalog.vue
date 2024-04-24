@@ -21,20 +21,15 @@ function scrollToTitle(anchor: string) {
 }
 
 function updateActiveSection() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
   const screenHeight = window.innerHeight
-
-  let minDistanceToCenter = Number.POSITIVE_INFINITY
 
   props.list.forEach((section, index) => {
     const element = document.getElementById(section.title)
     if (element) {
       const rect = element.getBoundingClientRect()
-      const distanceToCenter = Math.abs(rect.top + rect.height / 2 - (scrollTop + screenHeight / 2))
 
-      if (distanceToCenter < minDistanceToCenter) {
+      if (rect.top < screenHeight / 2) {
         activeSectionIndex = index
-        minDistanceToCenter = distanceToCenter
       }
     }
   })
@@ -54,25 +49,25 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<div class="hidden md:flex py-6 px-4 items-center h-full shu-card !rounded-none">
-		<div class="space-y-1 w-full">
-			<div v-for="item in list" :key="item.title" class="item" :class="{
-				active: item.active,
-			}" @click="scrollToTitle(`#${item.anchor}`)">
-				<div class="text-base truncate">
-					{{ item.title }}
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="hidden md:flex py-6 px-4 items-center h-full shu-card !rounded-none">
+    <div class="space-y-1 w-full">
+      <div v-for="item in list" :key="item.title" class="item" :class="{
+        active: item.active,
+      }" @click="scrollToTitle(`#${item.anchor}`)">
+        <div class="text-base truncate">
+          {{ item.title }}
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .item {
-	@apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-xl;
+  @apply flex flex-row justify-between text-base cursor-pointer transition-all hover:bg-gray-100 w-full space-x-3 items-center py-3 px-5 overflow-hidden rounded-xl;
 }
 
 .active {
-	@apply bg-black text-white hover:bg-black;
+  @apply bg-black text-white hover:bg-black;
 }
 </style>

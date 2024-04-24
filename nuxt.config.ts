@@ -20,6 +20,15 @@ export default defineNuxtConfig({
 		'nuxt-icon',
 		'@nuxtjs/seo',
 		'@nuxtjs/tailwindcss',
+		[
+			'@pinia/nuxt',
+			{
+				autoImports: [
+					// 自动引入 `defineStore()`
+					'defineStore',
+				],
+			},
+		],
 	],
 	ogImage: {
 		googleFontMirror: true,

@@ -3,6 +3,9 @@ const { $client } = useNuxtApp()
 const flows = await $client.flow.list.query()
 
 const config = await useGetConfig()
+const globalStore = useGlobalStore()
+
+globalStore.setCatalog(flows.map(x => ({ title: x.title, anchor: x.title, active: false })))
 
 provide('flows', flows)
 
