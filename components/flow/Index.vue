@@ -30,10 +30,10 @@ provide('flow', props.flow)
 				v-for="(module) in props.flow!.module" :key="module.url" :title="module.title" :to="module.url"
 				target="_blank"
 			>
-				<ModuleList v-if="props.flow!.configCard === 'list'" v-bind="{ module }" />
-				<ModuleProject v-else-if="props.flow!.configCard === 'project'" v-bind="{ module }" />
-				<ModuleGallery v-else-if="props.flow!.configCard === 'gallery'" v-bind="{ module }" />
-				<ModuleImage v-else v-bind="{ module }" />
+				<LazyModuleList v-if="props.flow!.configCard === 'list'" v-bind="{ module }" />
+				<LazyModuleProject v-else-if="props.flow!.configCard === 'project'" v-bind="{ module }" />
+				<LazyModuleGallery v-else-if="props.flow!.configCard === 'gallery'" v-bind="{ module }" />
+				<LazyModuleImage v-else v-bind="{ module }" />
 			</NuxtLink>
 		</div>
 	</div>

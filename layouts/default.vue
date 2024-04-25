@@ -10,8 +10,8 @@ useHead({
 	<!-- <div class="nexmoe-bg" /> -->
 	<PublicHeader />
 	<slot />
-	<PublicTool />
-	<PublicFooter />
+	<LazyPublicTool />
+	<LazyPublicFooter v-once />
 </template>
 
 <style>

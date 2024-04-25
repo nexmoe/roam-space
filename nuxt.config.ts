@@ -11,6 +11,17 @@ export default defineNuxtConfig({
 		version: '0.0.1',
 	},
 
+	routeRules: {
+		// generated on demand, revalidates in background, cached until API response changes
+		'/': { swr: true },
+		'/flow': { swr: true },
+		'/flow/**': { swr: true },
+		// Admin dashboard renders only on client-side
+		'/admin/**': { ssr: false },
+		// Add cors headers on API routes
+		'/api/**': { cors: true },
+	},
+
 	build: {
 		transpile: ['trpc-nuxt'],
 	},
