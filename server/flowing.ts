@@ -111,9 +111,20 @@ async function upsert(ele: NModule, flowId: string) {
 		},
 	})
 
-	// 如果找到已存在的模块，则打印信息并返回
+	// 如果找到已存在的模块，则打印信息并更新
 	if (res) {
 		consola.info(`Exists: ${ele.title}`)
+		await prisma.module.update({
+			where: {
+				id: res.id,
+			},
+			data: {
+				title: ele.title,
+				content: ele.content,
+				image: ele.image,
+				date: ele.date,
+			},
+		})
 		return
 	}
 

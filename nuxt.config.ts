@@ -54,7 +54,16 @@ export default defineNuxtConfig({
 		'@nuxtjs/html-validator',
 		'@nuxtjs/web-vitals',
 		'nuxt-gtag',
+		"@nuxt/eslint"
 	],
+
+	eslint: {
+		config: {
+			stylistic: {
+				indent: 'tab',
+			}
+		}
+	},
 
 	shadcn: {
 		/**
@@ -102,7 +111,7 @@ export default defineNuxtConfig({
 			// 'sns-webpic-qc.xhscdn.com',
 			// 'cdn.dribbble.com',
 			// 'picx.zhimg.com',
-			// 'img.zcool.cn',
+			'img.zcool.cn',
 		],
 	},
 

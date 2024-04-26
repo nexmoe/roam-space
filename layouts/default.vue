@@ -7,11 +7,12 @@ useHead({
 </script>
 
 <template>
-	<!-- <div class="nexmoe-bg" /> -->
+	<div>
 	<PublicHeader />
 	<slot />
 	<LazyPublicTool />
 	<LazyPublicFooter v-once />
+	</div>
 </template>
 
 <style>

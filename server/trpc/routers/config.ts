@@ -5,7 +5,7 @@ import defaultData from '~/config/hero.json'
 interface PrismaConfigItem {
 	key: keyof Config
 	value?: string
-	json?: any
+	json?: unknown
 }
 
 interface Config {

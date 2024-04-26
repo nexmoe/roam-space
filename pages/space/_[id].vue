@@ -23,10 +23,10 @@ provide('flows', flows)
 					<Flow v-if="flow.module.length > 0" v-bind="{ flow }" />
 				</template>
 			</UContainer>
+			<IndexTool />
 			<IndexFooter />
 		</div>
 	</div>
-	<IndexTool />
 </template>
 
 <style scoped>

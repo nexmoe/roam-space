@@ -17,9 +17,9 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 </script>
 
 <template>
-	<div class="module shu-card p-3 space-y-4 flex flex-col justify-between">
+	<div class="module shu-card p-3 gap-1 flex flex-col justify-between">
 		<div class="space-y-4">
-			<div class="flex flex-row items-center pt-1 gap-2 px-2">
+			<div class="flex flex-row items-center pt-1 gap-2 px-2.5">
 				<div class="w-5 h-5 block rounded-full overflow-hidden">
 					<LinkIcon :url="props.module.url" />
 				</div>
@@ -34,13 +34,11 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 				/>
 			</div>
 		</div>
-		<div class="space-y-4 px-3 pb-3">
-			<h3 v-if="!flow?.configNoTitle" class="font-bold text-2xl tracking-tight text-black">
+		<div class="space-y-4 px-3 pb-3 pt-0">
+			<h3 v-if="!flow?.configNoTitle" class="card-title font-bold text-2xl tracking-tight text-black">
 				{{ props.module.title }}
 			</h3>
-			<div v-if="!flow?.configNoContent && text !== ' '" class="line-clamp-3">
-				<div v-html="text" />
-			</div>
+			<div v-if="!flow?.configNoContent && text !== ' '" class="line-clamp-3" v-html="text" />
 			<div
 				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
 				class="flex flex-row items-center gap-1"
@@ -68,5 +66,8 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 
 .card :deep(iframe) {
 	max-width: 100%;
+}
+.card-title {
+	font-family: Noto Serif SC;
 }
 </style>
