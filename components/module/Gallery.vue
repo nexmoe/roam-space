@@ -17,7 +17,10 @@ const props = defineProps<Props>()
 	<div class="module shu-card p-3 flex flex-col">
 		<div class="flex flex-row items-center pt-1 pb-3 gap-2 px-2">
 			<div class="w-5 h-5 block rounded-full overflow-hidden">
-				<LinkIcon :url="props.module.url" />
+				<LinkIcon
+					:width="20"
+					:url="props.module.url"
+				/>
 			</div>
 			<div>
 				{{ formatDateTime(module.date) }}

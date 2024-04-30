@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props {
 	url: string
+	width?: number
 }
 const props = defineProps<Props>()
 
@@ -17,5 +18,7 @@ function getOrigin(url: string) {
 		:alt="props.url"
 		referrerpolicy="no-referrer"
 		loading="lazy"
+		:width="props.width"
+		:height="props.width"
 	/>
 </template>

@@ -12,7 +12,7 @@ const config = await useGetConfig()
 	<div class="container header justify-between flex pt-6">
 		<div class="flex-1 flex items-center">
 			<NuxtLink :title="config.siteName" :to="'/'" class="flex items-center gap-2">
-				<NuxtImg :alt="config.siteName" class="w-10 rounded-full" :src="config.avatar" />
+				<NuxtImg :alt="config.siteName" width="40" height="40" class="w-10 rounded-full" :src="config.avatar" />
 				<div class="uppercase">{{ config.siteName }}</div>
 			</NuxtLink>
 		</div>

@@ -105,7 +105,7 @@ export default defineNuxtConfig({
 
 	image: {
 		format: ['webp'],
-		quality: 80,
+		quality: 85,
 		domains: [
 			'p3-juejin.byteimg.com',
 			'sns-webpic-qc.xhscdn.com',
@@ -113,6 +113,13 @@ export default defineNuxtConfig({
 			'picx.zhimg.com',
 			'img.zcool.cn',
 			'image.coolapk.com',
+			'pic1.zhimg.com',
+			'pic2.zhimg.com',
+			'pic3.zhimg.com',
+			'pic4.zhimg.com',
+			'unavatar.io',
+			'i.dawnlab.me',
+			'ipfs.crossbell.io'
 		],
 	},
 

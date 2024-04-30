@@ -65,7 +65,10 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 						class="w-7 h-7 block"
 						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
 					>
-						<LinkIcon :url="platform" />
+						<LinkIcon
+							:width="28"
+							:url="platform"
+						/>
 					</div>
 				</template>
 			</div>

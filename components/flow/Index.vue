@@ -73,7 +73,7 @@ provide('flow', props.flow)
 	@apply columns-1 gap-4 lg:columns-2 xl:columns-3 2xl:columns-4;
 }
 
-.flow-body .module {
+.flow-body.n-gallery .module {
 	@apply mb-4;
 }
 </style>
