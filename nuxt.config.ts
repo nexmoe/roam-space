@@ -107,11 +107,11 @@ export default defineNuxtConfig({
 		format: ['webp'],
 		quality: 80,
 		domains: [
-			// 'p3-juejin.byteimg.com',
-			// 'sns-webpic-qc.xhscdn.com',
-			// 'cdn.dribbble.com',
-			// 'picx.zhimg.com',
-			// 'img.zcool.cn',
+			'p3-juejin.byteimg.com',
+			'sns-webpic-qc.xhscdn.com',
+			'cdn.dribbble.com',
+			'picx.zhimg.com',
+			'img.zcool.cn',
 			'image.coolapk.com'
 		],
 	},
