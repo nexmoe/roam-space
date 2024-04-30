@@ -112,6 +112,7 @@ export default defineNuxtConfig({
 			// 'cdn.dribbble.com',
 			// 'picx.zhimg.com',
 			// 'img.zcool.cn',
+			'image.coolapk.com'
 		],
 	},
 
