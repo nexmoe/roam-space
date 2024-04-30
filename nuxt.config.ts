@@ -111,7 +111,7 @@ export default defineNuxtConfig({
 			// 'sns-webpic-qc.xhscdn.com',
 			// 'cdn.dribbble.com',
 			// 'picx.zhimg.com',
-			'img.zcool.cn',
+			// 'img.zcool.cn',
 		],
 	},
 
