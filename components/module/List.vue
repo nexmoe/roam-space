@@ -38,7 +38,10 @@ const text = extractTextFromHTML(props.module.content)
 			</h3>
 		</div>
 
-		<div v-if="!flow.configNoContent" class="truncate">
+		<div
+			v-if="!flow.configNoContent"
+			class="truncate"
+		>
 			<div v-html="text" />
 		</div>
 	</div>

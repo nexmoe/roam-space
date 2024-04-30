@@ -14,6 +14,8 @@ function getOrigin(url: string) {
 	<NuxtImg
 		class="rounded-md outline-2 hover:outline cursor-pointer"
 		:src="`https://lib.xiaoshuapp.com/icon/x?url=${getOrigin(props.url)}`"
-		:alt="props.url" referrerpolicy="no-referrer" loading="lazy"
+		:alt="props.url"
+		referrerpolicy="no-referrer"
+		loading="lazy"
 	/>
 </template>

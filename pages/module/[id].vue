@@ -26,10 +26,12 @@ function replaceImg(html: string) {
 <template>
 	<div class="page-module">
 		<UContainer
-			v-if="module" class="relative max-w-4xl bg-white px-4 sm:px-8 lg:px-12 pb-48"
+			v-if="module"
+			class="relative max-w-4xl bg-white px-4 sm:px-8 lg:px-12 pb-48"
 		>
 			<UButton
-				class="sticky rounded-full top-32 left-0 -ml-12 -translate-x-1/2" icon="i-heroicons-chevron-left"
+				class="sticky rounded-full top-32 left-0 -ml-12 -translate-x-1/2"
+				icon="i-heroicons-chevron-left"
 				square
 				size="xl"
 				variant="solid"
@@ -43,10 +45,19 @@ function replaceImg(html: string) {
 				<div class="mr-4 text-lg">
 					{{ formatDateTime(module.date) }}
 				</div>
-				<LinkIcon v-for="platform in module.platform" :key="platform" class="w-6 h-6 block" :url="platform" @click="navigateTo(platform, { open: { target: '_blank' }, external: true })" />
+				<LinkIcon
+					v-for="platform in module.platform"
+					:key="platform"
+					class="w-6 h-6 block"
+					:url="platform"
+					@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
+				/>
 			</div>
 			<div class="my-6 border-b border-gray-200 w-1/3" />
-			<div class="apple-markdown" v-html="replaceImg(module.content)" />
+			<div
+				class="apple-markdown"
+				v-html="replaceImg(module.content)"
+			/>
 		</UContainer>
 	</div>
 </template>

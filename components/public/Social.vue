@@ -19,7 +19,12 @@ export interface Props {
 </script>
 
 <template>
-	<a class="text-2xl text-gray-600 flex" :href="url" target="_blank" :title="props.name">
+	<a
+		class="text-2xl text-gray-600 flex"
+		:href="url"
+		target="_blank"
+		:title="props.name"
+	>
 		<Icon :name="iconMap[props.icon]" />
 	</a>
 </template>

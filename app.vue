@@ -12,7 +12,10 @@ watch(
 
 <template>
 	<NuxtLayout>
-		<NuxtLoadingIndicator :duration="1000" color="repeating-linear-gradient(90deg, #f7d038, #ffe993)" />
+		<NuxtLoadingIndicator
+			:duration="1000"
+			color="repeating-linear-gradient(90deg, #f7d038, #ffe993)"
+		/>
 		<NuxtPage />
 	</NuxtLayout>
 </template>

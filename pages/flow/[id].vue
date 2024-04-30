@@ -27,10 +27,19 @@ defineOgImageComponent('NuxtSeo', {
 		<Head>
 			<Title>{{ flow.title }}</Title>
 		</Head>
-		<PublicProse v-if="flow.description" :title="flow.title">
+		<PublicProse
+			v-if="flow.description"
+			:title="flow.title"
+		>
 			{{ flow.description }}
 		</PublicProse>
-		<PublicProse v-else :title="flow.title" />
-		<Flow v-if="!loading" v-bind="{ flow, header: false }" />
+		<PublicProse
+			v-else
+			:title="flow.title"
+		/>
+		<Flow
+			v-if="!loading"
+			v-bind="{ flow, header: false }"
+		/>
 	</div>
 </template>

@@ -28,18 +28,28 @@ defineOgImageComponent('NuxtSeo', {
 	<div class="page">
 		<div class="container">
 			<PublicProse :title="`Hi, I'm ${config.siteName}`">
-				<div class="whitespace-pre-wrap" v-html="config.description" />
+				<div
+					class="whitespace-pre-wrap"
+					v-html="config.description"
+				/>
 				<div class="tags flex flex-row flex-wrap gap-2">
 					<div
-						v-for="item in config.tags" :key="item"
+						v-for="item in config.tags"
+						:key="item"
 						class="text-black inline-block shu-card border-none text-sm px-3 py-0.5"
 					>
 						{{ item }}
 					</div>
 				</div>
 			</PublicProse>
-			<template v-for=" flow in flows " :key="flow.id">
-				<LazyFlow v-if="flow.module.length > 0" v-bind="{ flow }" />
+			<template
+				v-for=" flow in flows "
+				:key="flow.id"
+			>
+				<LazyFlow
+					v-if="flow.module.length > 0"
+					v-bind="{ flow }"
+				/>
 			</template>
 		</div>
 

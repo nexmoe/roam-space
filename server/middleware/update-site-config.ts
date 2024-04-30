@@ -5,7 +5,7 @@ export default eventHandler(async (e) => {
 	const caller = appRouter.createCaller({ prisma: e.context.prisma })
 
 	const config = await caller.config.get()
-	 
+
 	console.log(config.siteName)
 	// updateSiteConfig({
 	//     name: config.siteName,

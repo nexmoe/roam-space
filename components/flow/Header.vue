@@ -8,7 +8,10 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-	<div :id="props.title" class="flow-header pl-2.5 flex items-center justify-between">
+	<div
+		:id="props.title"
+		class="flow-header pl-2.5 flex items-center justify-between"
+	>
 		<div class="flex items-center space-x-3">
 			<h2 class="text-xl -mt-1 font-bold sm:truncate sm:text-3xl sm:tracking-tight">
 				{{ props.title }}

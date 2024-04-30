@@ -29,7 +29,7 @@ const config = await useGetConfig()
 				</NuxtLink>
 			</div>
 			<div class="flex flex-1 items-center flex-row gap-3 justify-end">
-				<Social v-for="item in config.socials" v-bind="item" :key="item.url" />
+				<PublicSocial v-for="item in config.socials" v-bind="item" :key="item.url" />
 			</div>
 		</div>
 		<Sheet>
@@ -51,7 +51,7 @@ const config = await useGetConfig()
 					</NuxtLink>
 					<div class="flex items-center flex-row gap-3">
 						<div v-for="item in config.socials" :key="item.url" class="item !p-3">
-							<Social v-bind="item" />
+							<PublicSocial v-bind="item" />
 						</div>
 					</div>
 				</div>

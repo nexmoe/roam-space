@@ -23,10 +23,18 @@ const props = defineProps<Props>()
 				{{ formatDateTime(module.date) }}
 			</div>
 		</div>
-		<div v-if="props.module.image" class="min-h-[68px] shadow-sm border rounded-2xl relative overflow-hidden">
+		<div
+			v-if="props.module.image"
+			class="min-h-[68px] shadow-sm border rounded-2xl relative overflow-hidden"
+		>
 			<NuxtImg
-				class="w-full" format="webp" :src="props.module!.image" :alt="module.title"
-				referrerpolicy="no-referrer" loading="lazy" width="420px"
+				class="w-full"
+				format="webp"
+				:src="props.module!.image"
+				:alt="module.title"
+				referrerpolicy="no-referrer"
+				loading="lazy"
+				width="420px"
 			/>
 			<div class="absolute bottom-0 left-0 px-5 pt-5 pb-4 bg-gradient-to-t from-black/35 to-transparent w-full">
 				<h3 class="drop-shadow-md text-white font-bold text-2xl tracking-tight">

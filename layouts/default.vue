@@ -8,10 +8,10 @@ useHead({
 
 <template>
 	<div>
-	<PublicHeader />
-	<slot />
-	<LazyPublicTool />
-	<LazyPublicFooter v-once />
+		<PublicHeader />
+		<slot />
+		<LazyPublicTool />
+		<LazyPublicFooter v-once />
 	</div>
 </template>
 

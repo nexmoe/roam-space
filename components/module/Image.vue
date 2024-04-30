@@ -27,25 +27,42 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 					{{ formatDateTime(module.date) }}
 				</div>
 			</div>
-			<div v-if="props.module.image" class="shadow-sm max-h-96 rounded-xl relative overflow-hidden">
+			<div
+				v-if="props.module.image"
+				class="shadow-sm max-h-96 rounded-xl relative overflow-hidden"
+			>
 				<NuxtImg
-					class="w-full" format="webp" :src="props.module!.image" :alt="module.title"
-					referrerpolicy="no-referrer" loading="lazy" width="420px"
+					class="w-full"
+					format="webp"
+					:src="props.module!.image"
+					:alt="module.title"
+					referrerpolicy="no-referrer"
+					loading="lazy"
+					width="420px"
 				/>
 			</div>
 		</div>
 		<div class="space-y-4 px-3 pb-3 pt-0">
-			<h3 v-if="!flow?.configNoTitle" class="card-title font-bold text-2xl tracking-tight text-black">
+			<h3
+				v-if="!flow?.configNoTitle"
+				class="card-title font-bold text-2xl tracking-tight text-black"
+			>
 				{{ props.module.title }}
 			</h3>
-			<div v-if="!flow?.configNoContent && text !== ' '" class="line-clamp-3" v-html="text" />
+			<div
+				v-if="!flow?.configNoContent && text !== ' '"
+				class="line-clamp-3"
+				v-html="text"
+			/>
 			<div
 				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
 				class="flex flex-row items-center gap-1"
 			>
 				<template v-if="(props.module.platform?.length || 0) > 1">
 					<div
-						v-for="platform in props.module.platform" :key="platform" class="w-7 h-7 block"
+						v-for="platform in props.module.platform"
+						:key="platform"
+						class="w-7 h-7 block"
 						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
 					>
 						<LinkIcon :url="platform" />
