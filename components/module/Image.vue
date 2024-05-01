@@ -38,7 +38,8 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 					:alt="module.title"
 					referrerpolicy="no-referrer"
 					loading="lazy"
-					width="420px"
+					:width="`${module.imageWidth}px`"
+					:height="`${module.imageHeight}px`"
 				/>
 			</div>
 		</div>

@@ -28,6 +28,7 @@
 		"consola": "^3.2.3",
 		"lucide-vue-next": "^0.372.0",
 		"pinia": "^2.1.7",
+		"probe-image-size": "^7.2.3",
 		"radix-vue": "^1.7.2",
 		"sharp": "^0.33.3",
 		"tailwind-merge": "^2.3.0",

@@ -23,17 +23,19 @@ model API {
 }
 
 model Module {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  url       String   @unique
-  image     String?
-  content   String
-  date      DateTime
-  platform  String[]
-  flowId    String?
-  flow      Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  url         String   @unique
+  image       String?
+  imageWidth  Int?
+  imageHeight Int?
+  content     String
+  date        DateTime
+  platform    String[]
+  flowId      String?
+  flow        Flow?    @relation(fields: [flowId], references: [id], onDelete: Cascade)
 }
 
 /// Flow is a section includes modules

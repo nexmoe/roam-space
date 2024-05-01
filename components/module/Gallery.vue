@@ -33,11 +33,13 @@ const props = defineProps<Props>()
 			<NuxtImg
 				class="w-full"
 				format="webp"
+				placeholder 
 				:src="props.module!.image"
 				:alt="module.title"
 				referrerpolicy="no-referrer"
 				loading="lazy"
-				width="420px"
+				:width="`${module.imageWidth}px`"
+				:height="`${module.imageHeight}px`"
 			/>
 			<div class="absolute bottom-0 left-0 px-5 pt-5 pb-4 bg-gradient-to-t from-black/35 to-transparent w-full">
 				<h3 class="drop-shadow-md text-white font-bold text-2xl tracking-tight">

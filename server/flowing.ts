@@ -1,5 +1,6 @@
 import { consola } from 'consola'
 import { type API, type Flow, PrismaClient } from '@prisma/client'
+import probe from 'probe-image-size'
 import type { NModule } from '~/composables/adapter/types'
 import useAdapter from '~/composables/adapter/useAdapter'
 import config from '~/config/config.json'
@@ -111,19 +112,32 @@ async function upsert(ele: NModule, flowId: string) {
 		},
 	})
 
+	let result
+	if (ele.image) {
+		result = await probe(ele.image)
+	}
+
 	// 如果找到已存在的模块，则打印信息并更新
 	if (res) {
 		consola.info(`Exists: ${ele.title}`)
+		let data = {
+			title: ele.title,
+			content: ele.content,
+			image: ele.image,
+			date: ele.date,
+		}
+		if (result?.width && result?.height) {
+			data = {
+				...data,
+				imageWidth: result.width,
+				imageHeight: result.height,
+			}
+		}
 		await prisma.module.update({
 			where: {
 				id: res.id,
 			},
-			data: {
-				title: ele.title,
-				content: ele.content,
-				image: ele.image,
-				date: ele.date,
-			},
+			data,
 		})
 		return
 	}
@@ -131,12 +145,20 @@ async function upsert(ele: NModule, flowId: string) {
 	// 如果未找到已存在的模块，则打印成功消息并尝试插入新模块
 	consola.success(`Add: ${ele.title}`)
 	try {
+		let data = {
+			...ele,
+			date: ele.date || new Date().toISOString(),
+			flowId,
+		}
+		if (result?.width && result?.height) {
+			data = {
+				...data,
+				imageWidth: result.width,
+				imageHeight: result.height,
+			}
+		}
 		await prisma.module.create({
-			data: {
-				...ele,
-				date: ele.date || new Date().toISOString(),
-				flowId,
-			},
+			data,
 		})
 	}
 	catch (error) {
@@ -214,4 +236,26 @@ export async function flowingByFlowId(flowId: string) {
 	})
 	if (flow)
 		await flowingByFlow(flow)
+}
+
+export async function allSize() {
+	const modules = await prisma.module.findMany({
+		where: {
+			imageWidth: null,
+			image: { not: '' },
+		},
+	})
+	for (const module of modules) {
+		const result = await probe(module.image)
+		if (result?.width && result?.height) {
+			consola.success(`Image size updated: ${module.title} `)
+			await prisma.module.update({
+				where: { id: module.id },
+				data: {
+					imageWidth: result.width,
+					imageHeight: result.height,
+				},
+			})
+		}
+	}
 }
