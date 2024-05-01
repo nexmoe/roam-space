@@ -34,7 +34,6 @@ export default defineConfig({
 		globalSetup: ['./tests/setupSqliteDbEnv'],
 		globals: true,
 		environment: 'jsdom',
-		threads: false,
 		coverage: {
 			enabled: true,
 			// We want to catch all js/ts/... files, not only the ones imported in some tests

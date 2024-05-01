@@ -5,13 +5,15 @@ import type { AppRouter } from '@/server/trpc/routers'
 type RouterOutput = inferRouterOutputs<AppRouter>
 type ModuleOutput = RouterOutput['module']['get']
 type FlowOutput = RouterOutput['flow']['get']
+type Module = Exclude<ModuleOutput, null>
+type Flow = Exclude<FlowOutput, null>
 
 interface Props {
-	module: ModuleOutput
+	module: Module
 }
 
 const props = defineProps<Props>()
-const flow = inject('flow') as FlowOutput
+const flow = inject('flow') as Flow
 const text = extractTextFromHTML(props.module.content)
 </script>
 
@@ -31,7 +33,7 @@ const text = extractTextFromHTML(props.module.content)
 			/>
 
 			<h3
-				v-if="!flow.configNoTitle"
+				v-if="flow?.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
@@ -39,7 +41,7 @@ const text = extractTextFromHTML(props.module.content)
 		</div>
 
 		<div
-			v-if="!flow.configNoContent"
+			v-if="flow?.configNoContent"
 			class="truncate"
 		>
 			<div v-html="text" />
