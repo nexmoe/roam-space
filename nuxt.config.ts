@@ -119,7 +119,7 @@ export default defineNuxtConfig({
 			'pic4.zhimg.com',
 			'unavatar.io',
 			'i.dawnlab.me',
-			'ipfs.crossbell.io'
+			'ipfs.crossbell.io',
 		],
 	},
 
