@@ -33,7 +33,7 @@ const text = extractTextFromHTML(props.module.content)
 			/>
 
 			<h3
-				v-if="!flow.configNoTitle"
+				v-if="flow?.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
@@ -41,7 +41,7 @@ const text = extractTextFromHTML(props.module.content)
 		</div>
 
 		<div
-			v-if="!flow.configNoContent"
+			v-if="flow?.configNoContent"
 			class="truncate"
 		>
 			<div v-html="text" />

@@ -101,8 +101,6 @@ export default defineNuxtConfig({
 		},
 	},
 
-	extends: ['@sidebase/core'],
-
 	image: {
 		format: ['webp'],
 		quality: 85,

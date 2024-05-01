@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const id = useRoute().params.id
 
 const { data: space, error } = useFetch(`/api/space/${id}`)

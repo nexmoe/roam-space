@@ -1,5 +1,5 @@
 import { consola } from 'consola'
-import { type API, type Flow, PrismaClient } from '@prisma/client'
+import { type Prisma, type API, PrismaClient } from '@prisma/client'
 import probe from 'probe-image-size'
 import type { NModule } from '~/composables/adapter/types'
 import useAdapter from '~/composables/adapter/useAdapter'
@@ -120,24 +120,19 @@ async function upsert(ele: NModule, flowId: string) {
 	// 如果找到已存在的模块，则打印信息并更新
 	if (res) {
 		consola.info(`Exists: ${ele.title}`)
-		let data = {
-			title: ele.title,
-			content: ele.content,
-			image: ele.image,
-			date: ele.date,
-		}
-		if (result?.width && result?.height) {
-			data = {
-				...data,
-				imageWidth: result.width,
-				imageHeight: result.height,
-			}
-		}
+
 		await prisma.module.update({
 			where: {
 				id: res.id,
 			},
-			data,
+			data: {
+				title: ele.title,
+				content: ele.content,
+				image: ele.image,
+				date: ele.date,
+				imageWidth: result?.width || null,
+				imageHeight: result?.height || null,
+			},
 		})
 		return
 	}
@@ -145,20 +140,14 @@ async function upsert(ele: NModule, flowId: string) {
 	// 如果未找到已存在的模块，则打印成功消息并尝试插入新模块
 	consola.success(`Add: ${ele.title}`)
 	try {
-		let data = {
-			...ele,
-			date: ele.date || new Date().toISOString(),
-			flowId,
-		}
-		if (result?.width && result?.height) {
-			data = {
-				...data,
-				imageWidth: result.width,
-				imageHeight: result.height,
-			}
-		}
 		await prisma.module.create({
-			data,
+			data: {
+				...ele,
+				date: ele.date || new Date().toISOString(),
+				flowId,
+				imageWidth: result?.width || null,
+				imageHeight: result?.height || null,
+			},
 		})
 	}
 	catch (error) {
@@ -178,7 +167,7 @@ async function upsert(ele: NModule, flowId: string) {
  *
  * 对于所有成功抓取的数据适配器，将它们保存到数据库中的module表。
  */
-async function flowingByFlow(flow: Flow) {
+async function flowingByFlow(flow: Prisma.FlowGetPayload<{ include: { api: true } }>) {
 	const tasks = flow.api.map((api: API) => {
 		return (async () => {
 			let originIndex = 0
@@ -246,6 +235,7 @@ export async function allSize() {
 		},
 	})
 	for (const module of modules) {
+		if (!module.image) continue
 		const result = await probe(module.image)
 		if (result?.width && result?.height) {
 			consola.success(`Image size updated: ${module.title} `)

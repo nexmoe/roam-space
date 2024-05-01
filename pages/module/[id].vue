@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const id = useRoute().params.id
+const id = useRoute().params.id as string
 const useImg = useImage()
 const { $client } = useNuxtApp()
 
