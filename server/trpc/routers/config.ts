@@ -1,5 +1,5 @@
 import { publicProcedure, router } from '../trpc'
-import type { Props as SocialProps } from '~/components/Social.vue'
+import type { Props as SocialProps } from '~/components/public/Social.vue'
 import defaultData from '~/config/hero.json'
 
 interface PrismaConfigItem {
