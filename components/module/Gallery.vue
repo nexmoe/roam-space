@@ -28,12 +28,15 @@ const props = defineProps<Props>()
 		</div>
 		<div
 			v-if="props.module.image"
-			class="min-h-[68px] shadow-sm border rounded-2xl relative overflow-hidden"
+			class="shadow-sm border rounded-2xl relative overflow-hidden"
+			:style="{
+				aspectRatio: `${module.imageWidth}/${module.imageHeight}`,
+			}"
 		>
 			<NuxtImg
 				class="w-full"
 				format="webp"
-				placeholder 
+				placeholder
 				:src="props.module!.image"
 				:alt="module.title"
 				referrerpolicy="no-referrer"
