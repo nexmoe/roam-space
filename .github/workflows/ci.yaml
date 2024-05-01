@@ -27,7 +27,7 @@ jobs:
 
       # Run linting and typechecking
       - run: pnpm run lint
-      # - run: pnpm run typecheck
+      - run: pnpm run typecheck
 
       # # Run tests
       # - run: pnpm run test
