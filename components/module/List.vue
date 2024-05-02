@@ -18,9 +18,7 @@ const text = extractTextFromHTML(props.module.content)
 </script>
 
 <template>
-	<div
-		class="module shu-card space-x-4 py-4 px-5"
-	>
+	<div class="module shu-card space-x-4 py-4 px-5">
 		<div class="max-w-full flex space-x-4 items-center">
 			<NuxtImg
 				v-if="props.module.image"
@@ -33,7 +31,7 @@ const text = extractTextFromHTML(props.module.content)
 			/>
 
 			<h3
-				v-if="flow?.configNoTitle"
+				v-if="!flow?.configNoTitle"
 				class="text-base font-bold tracking-tight text-black truncate"
 			>
 				{{ props.module.title }}
@@ -41,7 +39,7 @@ const text = extractTextFromHTML(props.module.content)
 		</div>
 
 		<div
-			v-if="flow?.configNoContent"
+			v-if="!flow?.configNoContent"
 			class="truncate"
 		>
 			<div v-html="text" />
@@ -56,6 +54,7 @@ const text = extractTextFromHTML(props.module.content)
 	max-width: calc(100% + 48px);
 	width: calc(100% + 48px);
 }
+
 .card :deep(iframe) {
 	max-width: 100%;
 }
