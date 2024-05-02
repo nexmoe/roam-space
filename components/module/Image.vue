@@ -42,7 +42,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 				/>
 			</div>
 		</div>
-		<div class="space-y-4 px-3 pb-3 pt-0">
+		<div class="space-y-4 px-3 py-3">
 			<h3
 				v-if="!flow?.configNoTitle"
 				class="card-title font-bold text-2xl tracking-tight text-black"
