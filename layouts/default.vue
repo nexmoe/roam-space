@@ -4,6 +4,7 @@ useHead({
 		lang: 'zh-CN',
 	},
 })
+const config = await useGetConfig()
 </script>
 
 <template>
@@ -11,7 +12,11 @@ useHead({
 		<PublicHeader />
 		<slot />
 		<LazyPublicTool />
-		<LazyPublicFooter v-once />
+		<LazyPublicFooter
+			v-once
+			:site-name="config.siteName"
+			:sitemap="config.stiemap"
+		/>
 	</div>
 </template>
 

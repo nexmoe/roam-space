@@ -1,5 +1,7 @@
 import { publicProcedure, router } from '../trpc'
 import type { Props as SocialProps } from '~/components/public/Social.vue'
+import type { Sitemap as FooterSitemap } from '~/components/public/Footer.vue'
+
 import defaultData from '~/config/hero.json'
 
 interface PrismaConfigItem {
@@ -14,6 +16,7 @@ interface Config {
 	tags?: string[]
 	menus?: Menu[]
 	socials?: SocialProps[]
+	footerLinks?: FooterSitemap[]
 	siteUrl: string
 	siteName: string
 	siteDescription: string
