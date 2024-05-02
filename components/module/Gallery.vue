@@ -16,7 +16,7 @@ const props = defineProps<Props>()
 <template>
 	<div class="module shu-card p-3 flex flex-col">
 		<div class="flex flex-row items-center pt-1 pb-3 gap-2 px-2">
-			<div class="w-5 h-5 block rounded-full overflow-hidden">
+			<div class="w-5 h-5 block overflow-hidden">
 				<LinkIcon
 					:width="20"
 					:url="props.module.url"
@@ -41,7 +41,7 @@ const props = defineProps<Props>()
 				:alt="module.title"
 				referrerpolicy="no-referrer"
 				loading="lazy"
-				:width="`600px`"
+				:width="`500px`"
 			/>
 			<div class="absolute bottom-0 left-0 px-5 pt-5 pb-4 bg-gradient-to-t from-black/35 to-transparent w-full">
 				<h3 class="drop-shadow-md text-white font-bold text-2xl tracking-tight">

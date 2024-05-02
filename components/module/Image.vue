@@ -20,7 +20,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 	<div class="module shu-card p-3 gap-1 flex flex-col justify-between">
 		<div class="space-y-4">
 			<div class="flex flex-row items-center pt-1 gap-2 px-2.5">
-				<div class="w-5 h-5 block rounded-full overflow-hidden">
+				<div class="w-5 h-5 block overflow-hidden">
 					<LinkIcon :url="props.module.url" />
 				</div>
 				<div>
@@ -38,12 +38,11 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 					:alt="module.title"
 					referrerpolicy="no-referrer"
 					loading="lazy"
-					:width="`${module.imageWidth}px`"
-					:height="`${module.imageHeight}px`"
+					:width="`400px`"
 				/>
 			</div>
 		</div>
-		<div class="space-y-4 px-3 pb-3 pt-0">
+		<div class="space-y-4 px-3 py-3">
 			<h3
 				v-if="!flow?.configNoTitle"
 				class="card-title font-bold text-2xl tracking-tight text-black"
