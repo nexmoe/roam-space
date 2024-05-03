@@ -16,4 +16,22 @@ export default router({
 				where: { id },
 			})
 		}),
+	search: publicProcedure
+		.input(
+			z.object({
+				query: z.string(),
+			}),
+		)
+		.query(async ({ ctx, input }) => {
+			const prisma = ctx.prisma
+			const { query } = input
+			return prisma.module.findMany({
+				where: {
+					OR: [
+						{ title: { contains: query } },
+						{ content: { contains: query } },
+					],
+				},
+			})
+		}),
 })
