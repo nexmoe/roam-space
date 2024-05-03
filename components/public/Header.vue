@@ -72,7 +72,7 @@ const config = await useGetConfig()
 }
 
 .item.active {
-	@apply bg-[#f7d038] text-[#1a1306];
+	@apply bg-primary text-primary-foreground;
 }
 
 .author {}
