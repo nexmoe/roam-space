@@ -15,7 +15,7 @@ const config = await useGetConfig()
 		<LazyPublicFooter
 			v-once
 			:site-name="config.siteName"
-			:sitemap="config.stiemap"
+			:sitemap="config.footerLinks"
 		/>
 	</div>
 </template>

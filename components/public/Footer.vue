@@ -12,7 +12,7 @@ export interface Sitemap {
 }
 
 export interface Props {
-	sitemap: Sitemap[]
+	sitemap?: Sitemap[]
 	siteName: string
 }
 
@@ -22,8 +22,8 @@ const props = defineProps<Props>()
 <template>
 	<footer class="mt-12 bg-white dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl">
-			<div v-if="sitemap?.length > 0" class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-				<div v-for="item in sitemap" :key="item.title">
+			<div v-if="props.sitemap" class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+				<div v-for="item in props.sitemap" :key="item.title">
 					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{{ item.title }}</h2>
 					<ul v-for="list in item.list" :key="list.title"
 						class="text-gray-500 dark:text-gray-400 font-medium">
@@ -35,7 +35,7 @@ const props = defineProps<Props>()
 			</div>
 			<div class="px-4 py-6 md:flex md:items-center md:justify-between">
 				<span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© {{ dayjs(new
-				Date()).format('YYYY') }} {{ props.siteName }} All Rights Reserved. Powered by <a class="underline"
+			Date()).format('YYYY') }} {{ props.siteName }} All Rights Reserved. Powered by <a class="underline"
 						href="https://github.com/nexmoe/roam-space" target="_blank">Roam Space</a>
 				</span>
 			</div>
