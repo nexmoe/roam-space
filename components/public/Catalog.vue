@@ -85,6 +85,6 @@ onUnmounted(() => {
 }
 
 .active {
-  @apply bg-[#f7d038] text-[#1a1306] hover:bg-[#f7d038];
+  @apply bg-primary text-primary-foreground hover:bg-primary;
 }
 </style>
