@@ -1,17 +1,37 @@
 <script setup lang="ts">
 const { $client } = useNuxtApp()
-const modules = await $client.module.search.query({
-	query: 'tail',
-})
+const modules = ref()
+const query = ref('')
+const loading = ref(false)
 
-const query = ref('tail')
+async function performSearch() {
+	try {
+		loading.value = true
+		const queryValue = query.value.trim()
+		if (queryValue) {
+			modules.value = await $client.module.search.query({ query: queryValue })
+			loading.value = false
+		}
+	}
+	catch (error) {
+		console.error('Error during search:', error)
+	}
+}
+
+function handleSearch(e: Event) {
+	e.preventDefault()
+	performSearch()
+}
 </script>
 
 <template>
 	<div class="page">
 		<div class="container">
 			<div class="py-36">
-				<form class="max-w-lg mx-auto">
+				<form
+					class="max-w-lg mx-auto"
+					@submit="handleSearch"
+				>
 					<label
 						for="default-search"
 						class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -36,15 +56,15 @@ const query = ref('tail')
 						</div>
 						<input
 							id="default-search"
+							v-model="query"
 							type="search"
 							class="block w-full p-4 ps-12 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 							placeholder="Search Mockups, Logos..."
 							required
-                            v-model="query"
 						>
 						<button
 							type="submit"
-							class="text-primary-foreground hover:bg-blue-800 absolute end-2.5 bottom-2.5 bg-primary focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2"
+							class="text-primary-foreground absolute end-2.5 bottom-2.5 bg-primary focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2"
 						>
 							Search
 						</button>
@@ -52,7 +72,7 @@ const query = ref('tail')
 				</form>
 			</div>
 			<div
-				v-if="modules.length > 0"
+				v-if="modules?.length > 0 && !loading"
 				class="flow-body n-grid"
 			>
 				<NuxtLink
@@ -67,9 +87,12 @@ const query = ref('tail')
 			</div>
 			<div
 				v-else
-				class="h-64 flex justify-center w-full items-center"
+				class="h-64 pb-36 flex justify-center w-full items-center"
 			>
-				暂无搜索结果
+				<PublicLoading v-if="loading" />
+				<div v-else>
+					暂无搜索结果
+				</div>
 			</div>
 		</div>
 	</div>
