@@ -11,6 +11,8 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
+const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s3Key}` : props.module.image
 </script>
 
 <template>
@@ -37,7 +39,7 @@ const props = defineProps<Props>()
 				class="w-full h-full"
 				format="webp"
 				placeholder
-				:src="props.module!.image"
+				:src="cover || undefined"
 				:alt="module.title"
 				referrerpolicy="no-referrer"
 				loading="lazy"

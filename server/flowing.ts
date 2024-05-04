@@ -4,6 +4,7 @@ import probe from 'probe-image-size'
 import type { NModule } from '~/composables/adapter/types'
 import useAdapter from '~/composables/adapter/useAdapter'
 import config from '~/config/config.json'
+import { uploadRemoteImageToS3 } from '~/server/s3'
 
 const prisma = new PrismaClient()
 
@@ -247,5 +248,35 @@ export async function allSize() {
 				},
 			})
 		}
+	}
+}
+
+export async function allS3() {
+	const modules = await prisma.module.findMany({
+		where: {
+			image: { not: null },
+			s3Key: null,
+		},
+	})
+
+	for (const module of modules) {
+		if (!module.image) continue
+		try {
+			console.log(await uploadRemoteImageToS3(module.image, `module/cover/${module.id}`))
+			await prisma.module.update({
+				where: { id: module.id },
+				data: {
+					s3Key: `module/cover/${module.id}`,
+				},
+			})
+		}
+		catch (e) {
+			console.error(e)
+			continue
+		}
+	}
+
+	return {
+		status: 'healthy',
 	}
 }

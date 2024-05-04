@@ -9,6 +9,12 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		version: '0.0.1',
+		s3: {
+			endpoint: '',
+			bucket: '',
+			accessKeyId: '',
+			secretAccessKey: '',
+		},
 	},
 
 	routeRules: {
@@ -107,9 +113,7 @@ export default defineNuxtConfig({
 		domains: [
 			'p3-juejin.byteimg.com',
 			'sns-webpic-qc.xhscdn.com',
-			'cdn.dribbble.com',
 			'picx.zhimg.com',
-			'img.zcool.cn',
 			'image.coolapk.com',
 			'pic1.zhimg.com',
 			'pic2.zhimg.com',
@@ -118,6 +122,7 @@ export default defineNuxtConfig({
 			'unavatar.io',
 			'i.dawnlab.me',
 			'ipfs.crossbell.io',
+			'space.r2.102415.xyz',
 		],
 	},
 

@@ -1,5 +1,5 @@
 import { useScheduler } from '#scheduler'
-import { flowing, allSize } from '~/server/flowing'
+import { flowing, allSize, allS3 } from '~/server/flowing'
 
 export default defineNitroPlugin(() => {
 	startScheduler()
@@ -11,9 +11,7 @@ function startScheduler() {
 	// fetch every 3 hour
 	scheduler.run(async () => {
 		await flowing()
-	}).everyHours(3)
-
-	scheduler.run(async () => {
 		await allSize()
-	}).everyDays(14)
+		await allS3()
+	}).everyHours(3)
 }
