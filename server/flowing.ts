@@ -262,16 +262,17 @@ export async function allS3() {
 	for (const module of modules) {
 		if (!module.image) continue
 		try {
-			console.log(await uploadRemoteImageToS3(module.image, `module/cover/${module.id}`))
+			await uploadRemoteImageToS3(module.image, `module/cover/${module.id}`)
 			await prisma.module.update({
 				where: { id: module.id },
 				data: {
 					s3Key: `module/cover/${module.id}`,
 				},
 			})
+			consola.success('Image uploaded to S3: ', module.title)
 		}
 		catch (e) {
-			console.error(e)
+			consola.error('Error uploading image:', e)
 			continue
 		}
 	}

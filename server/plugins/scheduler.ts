@@ -6,12 +6,16 @@ export default defineNitroPlugin(() => {
 })
 
 function startScheduler() {
+	const config = useRuntimeConfig()
+
 	const scheduler = useScheduler()
 
 	// fetch every 3 hour
 	scheduler.run(async () => {
 		await flowing()
 		await allSize()
-		await allS3()
+		if (config.s3.accessKeyId) {
+			await allS3()
+		}
 	}).everyHours(3)
 }
