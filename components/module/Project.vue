@@ -11,6 +11,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s3Key}` : props.module.image
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const props = defineProps<Props>()
 				<NuxtImg
 					width="48px"
 					height="48px"
-					:src="props.module.image ?? undefined"
+					:src="cover || undefined"
 					loading="lazy"
 					:alt="props.module.title"
 				/>
