@@ -14,6 +14,7 @@ interface Props {
 const props = defineProps<Props>()
 const flow = inject('flow') as FlowOutput
 const text = computed(() => extractTextFromHTML(props.module.content))
+const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s3Key}` : props.module.image
 </script>
 
 <template>
@@ -34,7 +35,7 @@ const text = computed(() => extractTextFromHTML(props.module.content))
 				<NuxtImg
 					class="w-full"
 					format="webp"
-					:src="props.module!.image"
+					:src="cover || undefined"
 					:alt="module.title"
 					referrerpolicy="no-referrer"
 					loading="lazy"
