@@ -39,7 +39,9 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 					:alt="module.title"
 					referrerpolicy="no-referrer"
 					loading="lazy"
-					:width="`400px`"
+					:width="module.imageWidth || undefined"
+					:height="module.imageHeight || undefined"
+					sizes="500px"
 				/>
 			</div>
 		</div>
