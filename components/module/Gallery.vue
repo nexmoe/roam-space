@@ -43,7 +43,9 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 				:alt="module.title"
 				referrerpolicy="no-referrer"
 				loading="lazy"
-				:width="`500px`"
+				:width="module.imageWidth || undefined"
+				:height="module.imageHeight || undefined"
+				sizes="500px"
 			/>
 			<div class="absolute bottom-0 left-0 px-5 pt-5 pb-4 bg-gradient-to-t from-black/35 to-transparent w-full">
 				<h3 class="drop-shadow-md text-white font-bold text-2xl tracking-tight">
