@@ -20,6 +20,9 @@ defineOgImageComponent('NuxtSeo', {
 
 <template>
 	<div class="page">
+		<Head>
+			<Title>{{ space.title }}</Title>
+		</Head>
 		<div class="container">
 			<PublicProse
 				v-if="space.description"

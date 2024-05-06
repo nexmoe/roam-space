@@ -27,12 +27,11 @@ const props = defineProps<Props>()
 				target="_blank"
 				class="flex flex-row items-center gap-2 hover:bg-gray-100 focus:bg-gray-200 rounded-2xl px-3 py-2 transition duration-300"
 			>
-				<div class="w-5 h-5">
-					<LinkIcon
-						:width="20"
-						:url="module.url"
-					/>
-				</div>
+				<LinkIcon
+					class="w-5 h-5 basis-5"
+					:width="20"
+					:url="module.url"
+				/>
 				<div class="truncate ">
 					{{ module.title }}
 				</div>
