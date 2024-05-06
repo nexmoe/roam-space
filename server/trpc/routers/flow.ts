@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 import { flowingByFlowId } from '~/server/flowing'
 
-export const flowRouter = router({
+export default router({
 	list: publicProcedure
 		.query(async ({ ctx }) => {
 			const prisma = ctx.prisma

@@ -1,24 +1,14 @@
-import { z } from 'zod'
-import { publicProcedure, router } from '../trpc'
+import { router } from '../trpc'
 import config from './config'
-import { flowRouter } from './flow'
+import flow from './flow'
 import module from './module'
+import space from './space'
 
 export const appRouter = router({
-	hello: publicProcedure
-		.input(
-			z.object({
-				text: z.string().nullish(),
-			}),
-		)
-		.query(({ input }) => {
-			return {
-				greeting: `hello ${input?.text ?? 'world'}`,
-			}
-		}),
 	config,
-	flow: flowRouter,
+	flow,
 	module,
+	space,
 })
 
 // export type definition of API

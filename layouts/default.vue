@@ -52,4 +52,20 @@ body {
 .nexmoe-shadow {
 	box-shadow: 0 0.125rem 0.5rem rgb(204 177 161 / 30%);
 }
+
+.flow {
+	@apply flex flex-col gap-6;
+}
+
+.flow-body.n-grid {
+	@apply grid grid-cols-1 gap-4 mb-32 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
+}
+
+.flow-body.n-gallery {
+	@apply columns-1 gap-4 lg:columns-2 xl:columns-3 2xl:columns-4;
+}
+
+.flow-body.n-gallery .module {
+	@apply mb-4;
+}
 </style>

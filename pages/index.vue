@@ -43,7 +43,7 @@ defineOgImageComponent('NuxtSeo', {
 				</div>
 			</PublicProse>
 			<template
-				v-for=" flow in flows "
+				v-for="flow in flows "
 				:key="flow.id"
 			>
 				<LazyFlow
