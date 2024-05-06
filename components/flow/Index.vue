@@ -4,9 +4,10 @@ import type { AppRouter } from '@/server/trpc/routers'
 
 type RouterOutput = inferRouterOutputs<AppRouter>
 type FlowOutput = RouterOutput['flow']['get']
+type Flow = Exclude<FlowOutput, null | undefined>
 
 interface Props {
-	flow: FlowOutput
+	flow: Flow
 	header?: boolean
 }
 
@@ -21,34 +22,34 @@ provide('flow', props.flow)
 	<div class="flow">
 		<FlowHeader
 			v-if="props.header"
-			:id="props.flow!.id"
-			:title="props.flow!.title"
-			:url="props.flow!.homepage"
+			:id="props.flow.id"
+			:title="props.flow.title"
+			:url="props.flow.homepage"
 		/>
 
 		<div
 			class="flow-body"
 			:class="[
-				props.flow!.configCard === 'gallery' ? 'n-gallery' : 'n-grid',
+				props.flow.configCard === 'gallery' ? 'n-gallery' : 'n-grid',
 			]"
 		>
 			<NuxtLink
-				v-for="(module) in props.flow!.module"
+				v-for="(module) in props.flow.module"
 				:key="module.url"
 				:title="module.title"
 				:to="module.url"
 				target="_blank"
 			>
 				<LazyModuleList
-					v-if="props.flow!.configCard === 'list'"
+					v-if="props.flow.configCard === 'list'"
 					v-bind="{ module }"
 				/>
 				<LazyModuleProject
-					v-else-if="props.flow!.configCard === 'project'"
+					v-else-if="props.flow.configCard === 'project'"
 					v-bind="{ module }"
 				/>
 				<LazyModuleGallery
-					v-else-if="props.flow!.configCard === 'gallery'"
+					v-else-if="props.flow.configCard === 'gallery'"
 					v-bind="{ module }"
 				/>
 				<LazyModuleImage
@@ -59,21 +60,3 @@ provide('flow', props.flow)
 		</div>
 	</div>
 </template>
-
-<style>
-.flow {
-	@apply flex flex-col gap-6;
-}
-
-.flow-body.n-grid {
-	@apply grid grid-cols-1 gap-4 mb-32 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
-}
-
-.flow-body.n-gallery {
-	@apply columns-1 gap-4 lg:columns-2 xl:columns-3 2xl:columns-4;
-}
-
-.flow-body.n-gallery .module {
-	@apply mb-4;
-}
-</style>

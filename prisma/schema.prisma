@@ -52,10 +52,9 @@ model Flow {
   configNoContent Boolean  @default(false)
   configNoTitle   Boolean  @default(false)
   configOpenURL   Boolean  @default(false)
-  spaceId         String?
   api             API[]
-  space           Space?   @relation(fields: [spaceId], references: [id])
   module          Module[]
+  spaces          Space[]
 }
 
 model Space {
@@ -65,5 +64,5 @@ model Space {
   title       String
   details     String
   description String?
-  flow        Flow[]
+  flows       Flow[]
 }
