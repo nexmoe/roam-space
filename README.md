@@ -7,6 +7,7 @@
 - Rsshub
 - Social Button
 - SEO 良好
+- 集成 S3 来做静态资源持久化
 
 ## 极低的维护负担
 
