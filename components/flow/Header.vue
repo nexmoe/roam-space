@@ -3,6 +3,7 @@ interface Props {
 	url?: string | null
 	title: string
 	id: string
+	space: boolean
 }
 const props = defineProps<Props>()
 </script>
@@ -18,13 +19,20 @@ const props = defineProps<Props>()
 			</h2>
 		</div>
 		<NuxtLink
-			:to="props.url ? props.url : `/flow/${props.id}`"
+			:to="props.url ? props.url : `/${props.space ? 'space' : 'flow'}/${props.id}`"
 			:target="props.url?.startsWith('https://') ? '_blank' : ''"
 			:title="props.title"
 		>
 			<div class="py-2 px-5 flex items-center gap-1 flex-row bg-white rounded-full">
 				更多
-				<Icon name="i-heroicons-arrow-right-20-solid" />
+				<Icon
+					v-if="props.url"
+					name="mdi:open-in-new"
+				/>
+				<Icon
+					v-else
+					name="i-heroicons-arrow-right-20-solid"
+				/>
 			</div>
 		</NuxtLink>
 	</div>

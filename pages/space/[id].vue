@@ -4,12 +4,17 @@ const { $client } = useNuxtApp()
 
 const space = await $client.space.get.query({ id })
 const config = await useGetConfig()
+const globalStore = useGlobalStore()
 
 if (!space) {
 	throw createError({
 		statusCode: 404,
 	})
 }
+
+onMounted(() => {
+	globalStore.setCatalog(space.flows.map(x => ({ title: x.title, anchor: x.title, active: false })))
+})
 
 defineOgImageComponent('NuxtSeo', {
 	theme: config.ogTheme,

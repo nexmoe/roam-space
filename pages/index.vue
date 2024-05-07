@@ -1,12 +1,28 @@
 <script setup lang="ts">
 const { $client } = useNuxtApp()
-const flows = await $client.flow.list.query()
+
+const space = await $client.space.get.query({ id: 'bfa294b0-face-4780-bf72-050b5d114bca' })
+const dev = await $client.space.get.query({ id: '76a6249e-ae4e-4adf-9089-a2cd7e25e1ff' })
+
+if (!space || !dev) {
+	throw createError({
+		statusCode: 404,
+	})
+}
+
+const flows = space.flows
+const catalog = flows.map(x => ({ title: x.title, anchor: x.title, active: false }))
+catalog.push({
+	title: dev.title,
+	anchor: dev.title,
+	active: false,
+})
 
 const config = await useGetConfig()
 const globalStore = useGlobalStore()
 
 onMounted(() => {
-	globalStore.setCatalog(flows.map(x => ({ title: x.title, anchor: x.title, active: false })))
+	globalStore.setCatalog(catalog)
 })
 
 provide('flows', flows)
@@ -51,6 +67,7 @@ defineOgImageComponent('NuxtSeo', {
 					v-bind="{ flow }"
 				/>
 			</template>
+			<SpaceFlow v-bind="{ space: dev }" />
 		</div>
 
 		<CustomPoe />

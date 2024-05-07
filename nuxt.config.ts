@@ -20,8 +20,9 @@ export default defineNuxtConfig({
 	routeRules: {
 		// generated on demand, revalidates in background, cached until API response changes
 		'/': { swr: true },
-		'/flow': { swr: true },
 		'/flow/**': { swr: true },
+		'/space': { swr: true },
+		'/space/**': { swr: true },
 		// Admin dashboard renders only on client-side
 		'/admin/**': { ssr: false },
 		// Add cors headers on API routes
