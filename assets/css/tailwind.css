@@ -22,8 +22,8 @@
     --primary: 47.75deg 92.27% 59.41%;
     --primary-foreground: 39deg 62.5% 6.27%;
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 47.75deg 92.27% 59.41% / 32%;
+    --secondary-foreground: 39deg 62.5% 6.27%;
  
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
