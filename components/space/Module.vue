@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { inferRouterOutputs } from '@trpc/server'
+import dayjs from 'dayjs'
 import type { AppRouter } from '@/server/trpc/routers'
 
 type RouterOutput = inferRouterOutputs<AppRouter>
@@ -32,8 +33,10 @@ const props = defineProps<Props>()
 					:width="20"
 					:url="module.url"
 				/>
-				<div class="truncate ">
-					{{ module.title }}
+				<div class="truncate">
+					<span
+						class="bg-accent color-accent-foreground rounded-full px-2 py-0.5 mr-1"
+					>{{ dayjs(module.date).format('M') }} 月</span>{{ module.title }}
 				</div>
 			</NuxtLink>
 		</div>

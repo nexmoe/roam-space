@@ -130,6 +130,7 @@ export default defineNuxtConfig({
 	googleFonts: {
 		families: {
 			'Noto Serif SC': true,
+			'Zhi Mang Xing': true,
 		},
 	},
 
