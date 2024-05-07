@@ -3,7 +3,7 @@ interface Props {
 	url?: string | null
 	title: string
 	id: string
-	space: boolean
+	space?: boolean
 }
 const props = defineProps<Props>()
 </script>
