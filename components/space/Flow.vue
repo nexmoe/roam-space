@@ -22,17 +22,16 @@ const props = withDefaults(defineProps<Props>(), {
 			v-if="props.header"
 			:id="props.space.id"
 			:title="props.space.title"
+			:space="true"
 		/>
 
 		<div class="flow-body n-grid">
-			<NuxtLink
+			<div
 				v-for="flow in props.space.flows"
 				:key="flow.id"
-				:title="flow.title"
-				target="_blank"
 			>
 				<LazySpaceModule v-bind="{ flow }" />
-			</NuxtLink>
+			</div>
 		</div>
 	</div>
 </template>
