@@ -25,6 +25,7 @@
 		"@trpc/client": "^10.45.2",
 		"@trpc/server": "^10.45.2",
 		"@vitest/coverage-v8": "^1.4.0",
+		"@vueuse/nuxt": "^10.9.0",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"consola": "^3.2.3",
