@@ -1,10 +1,19 @@
 <script setup lang="ts">
+import { useElementVisibility } from '@vueuse/core'
 
+const elePoe = ref<HTMLElement | null>(null)
+const targetIsVisible = useElementVisibility(elePoe)
 </script>
 
 <template>
-	<div class="body pt-12 h-screen pb-12">
-		<div class="relative flex flex-row items-center justify-center gap-2 h-full">
+	<div
+		ref="elePoe"
+		class="body pt-12 h-screen pb-12"
+	>
+		<div
+			:class="{ animate: targetIsVisible }"
+			class="relative flex flex-row items-center justify-center gap-2 h-full"
+		>
 			<div class="major text-7xl text-center font-bold tracking-tight text-black">
 				谁怕？一蓑烟雨任平生
 			</div>
@@ -32,6 +41,7 @@
 .major {
 	@apply opacity-0;
 	animation: fadeIn 1.5s ease-in-out 3.5s forwards;
+	animation-play-state: paused !important;
 }
 
 .poe {
@@ -40,8 +50,13 @@
 
 .poe div {
 	@apply block m-3 z-10 opacity-20 hover:opacity-100 duration-200;
-	animation-fill-mode: forwards;
+	animation-play-state: paused !important;
 	white-space: nowrap;
+}
+
+.animate .major,
+.animate .poe div {
+	animation-play-state: running !important;
 }
 
 @keyframes fadeIn {

@@ -62,6 +62,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/web-vitals',
 		'nuxt-gtag',
 		'@nuxt/eslint',
+		'@vueuse/nuxt',
 	],
 
 	eslint: {
