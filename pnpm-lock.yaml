@@ -91,7 +91,7 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2(rollup@4.16.4)(vitest@1.5.2(@types/node@20.12.7)(@vitest/ui@1.5.2)(sass@1.75.0)(terser@5.30.4))
       '@nuxtjs/i18n':
-        specifier: ^8.3.0
+        specifier: ^8.3.1
         version: 8.3.1(rollup@4.16.4)(vue@3.4.25(typescript@5.4.5))
       '@nuxtjs/seo':
         specifier: 2.0.0-rc.10

@@ -63,7 +63,21 @@ export default defineNuxtConfig({
 		'nuxt-gtag',
 		'@nuxt/eslint',
 		'@vueuse/nuxt',
+		'@nuxtjs/i18n',
 	],
+
+	i18n: {
+		locales: [
+			{
+				code: 'zh-CN',
+				file: 'zh-CN.json',
+				name: '简体中文',
+			},
+		],
+		defaultLocale: 'zh-CN',
+		// lazy: true,
+		langDir: 'locales/',
+	},
 
 	eslint: {
 		config: {
