@@ -30,7 +30,7 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 		</div>
 		<div
 			v-if="props.module.image"
-			class="shadow-sm border rounded-2xl relative overflow-hidden"
+			class="shadow-sm border rounded-xl relative overflow-hidden"
 			:style="{
 				aspectRatio: `${module.imageWidth}/${module.imageHeight}`,
 			}"

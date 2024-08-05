@@ -27,12 +27,11 @@ const config = await useGetConfig()
 }
 
 body {
-	/* font-family: Noto Serif SC; */
 	/* background-color: #f7f5fd; */
 }
 
 .shu-card {
-	@apply relative hover:z-10 hover:shadow-2xl transition-all h-full overflow-hidden rounded-3xl bg-white text-sm leading-6;
+	@apply relative hover:z-10 hover:shadow-2xl transition-all h-full overflow-hidden rounded-2xl bg-white text-sm leading-6;
 }
 
 .nexmoe-bg {

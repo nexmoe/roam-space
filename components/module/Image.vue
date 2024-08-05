@@ -18,17 +18,48 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 </script>
 
 <template>
-	<div class="module shu-card p-3 gap-1 flex flex-col justify-between">
-		<div class="space-y-4">
-			<div class="flex flex-row items-center pt-1 gap-2 px-2.5">
-				<div class="w-5 h-5 block overflow-hidden">
-					<LinkIcon
-						:width="20"
-						:url="props.module.url"
-					/>
-				</div>
-				<div>
-					{{ formatDateTime(module.date) }}
+	<div class="module shu-card p-7 gap-3 flex flex-col justify-between">
+		<div class="flex flex-row items-center gap-2">
+			<div class="text-neutral-600">
+				{{ formatDateTime(module.date) }}
+			</div>
+			<div class="w-5 h-5 block overflow-hidden">
+				<LinkIcon
+					:width="20"
+					:url="props.module.url"
+				/>
+			</div>
+		</div>
+		<div class="space-y-6">
+			<div class="space-y-4">
+				<h3
+					v-if="!flow?.configNoTitle"
+					class="card-title font-bold text-2xl tracking-tight text-neutral-950"
+				>
+					{{ props.module.title }}
+				</h3>
+				<div
+					v-if="!flow?.configNoContent && text !== ' '"
+					class="text-base line-clamp-4"
+					v-html="text"
+				/>
+				<div
+					v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
+					class="flex flex-row items-center gap-1"
+				>
+					<template v-if="(props.module.platform?.length || 0) > 1">
+						<div
+							v-for="platform in props.module.platform"
+							:key="platform"
+							class="w-7 h-7 block"
+							@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
+						>
+							<LinkIcon
+								:width="28"
+								:url="platform"
+							/>
+						</div>
+					</template>
 				</div>
 			</div>
 			<div
@@ -48,37 +79,6 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 				/>
 			</div>
 		</div>
-		<div class="space-y-4 px-3 py-3">
-			<h3
-				v-if="!flow?.configNoTitle"
-				class="card-title font-bold text-2xl tracking-tight text-black"
-			>
-				{{ props.module.title }}
-			</h3>
-			<div
-				v-if="!flow?.configNoContent && text !== ' '"
-				class="line-clamp-3"
-				v-html="text"
-			/>
-			<div
-				v-if="!props.module.image || (props.module.platform?.length || 0) > 1"
-				class="flex flex-row items-center gap-1"
-			>
-				<template v-if="(props.module.platform?.length || 0) > 1">
-					<div
-						v-for="platform in props.module.platform"
-						:key="platform"
-						class="w-7 h-7 block"
-						@click="navigateTo(platform, { open: { target: '_blank' }, external: true })"
-					>
-						<LinkIcon
-							:width="28"
-							:url="platform"
-						/>
-					</div>
-				</template>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -92,8 +92,5 @@ const cover = props.module.s3Key ? `https://space.r2.102415.xyz/${props.module.s
 
 .card :deep(iframe) {
 	max-width: 100%;
-}
-.card-title {
-	font-family: Noto Serif SC;
 }
 </style>

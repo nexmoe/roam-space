@@ -20,13 +20,13 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-	<footer class="mt-12 bg-white dark:bg-gray-900">
+	<footer class="mt-12 bg-white dark:bg-neutral-900">
 		<div class="mx-auto w-full max-w-screen-xl">
 			<div v-if="props.sitemap" class="grid grid-cols-2 gap-8 px-4 pt-12 md:grid-cols-4">
 				<div v-for="item in props.sitemap" :key="item.title">
-					<h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">{{ item.title }}</h2>
+					<h2 class="mb-6 text-sm font-semibold text-neutral-900 uppercase dark:text-white">{{ item.title }}</h2>
 					<ul v-for="list in item.list" :key="list.title"
-						class="text-gray-500 dark:text-gray-400 font-medium">
+						class="text-neutral-500 dark:neutral-gray-400 font-medium">
 						<li class="mb-4">
 							<a :href="list.url" class="hover:underline">{{ list.title }}</a>
 						</li>
@@ -34,7 +34,7 @@ const props = defineProps<Props>()
 				</div>
 			</div>
 			<div class="px-4 py-6 md:flex md:items-center md:justify-between">
-				<span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© {{ dayjs(new
+				<span class="text-sm text-neutral-500 dark:text-neutral-300 sm:text-center">© {{ dayjs(new
 			Date()).format('YYYY') }} {{ props.siteName }} All Rights Reserved. Powered by <a class="underline"
 						href="https://github.com/nexmoe/roam-space" target="_blank">Roam Space</a>
 				</span>

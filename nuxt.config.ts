@@ -129,9 +129,10 @@ export default defineNuxtConfig({
 	},
 
 	googleFonts: {
+		text: '莫听穿林打叶声何妨吟啸且徐行竹杖芒鞋轻胜马谁怕？一蓑烟雨任平生',
 		families: {
-			'Noto Serif SC': true,
-			'Zhi Mang Xing': true,
+			'Zhi Mang Xing': {
+			},
 		},
 	},
 
