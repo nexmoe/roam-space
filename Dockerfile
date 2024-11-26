@@ -22,8 +22,10 @@ FROM dependency-base AS production-base
 # Copy the source code
 COPY . .
 
-# Build the application
-RUN pnpm run build
+# Build the application with verbose logging
+RUN set -x && \
+    pnpm run build && \
+    ls -la /app/.output || exit 1
 
 # Stage 3: Production image
 FROM $NODE_VERSION AS production
