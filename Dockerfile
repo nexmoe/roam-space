@@ -22,6 +22,8 @@ FROM dependency-base AS production-base
 # Copy the source code
 COPY . .
 
+RUN mkdir -p /app/.output
+
 # Build the application with verbose logging
 RUN set -x && \
     pnpm run build && \
